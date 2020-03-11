@@ -46,7 +46,6 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
         Debug.Log("Battle button was clicked");
         battleButton.SetActive(false);
         cancelButton.SetActive(true);
-        Thread.Sleep(5000); //Pause execution for 5 secs. Gives player time to cancel lobby join
         PhotonNetwork.JoinRandomRoom();
     }
 
