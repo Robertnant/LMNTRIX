@@ -2,6 +2,7 @@
 using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -45,6 +46,7 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
         Debug.Log("Battle button was clicked");
         battleButton.SetActive(false);
         cancelButton.SetActive(true);
+        Thread.Sleep(5000); //Pause execution for 5 secs. Gives player time to cancel lobby join
         PhotonNetwork.JoinRandomRoom();
     }
 
@@ -72,9 +74,10 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
 
     public void OnCancelButtonClicked()
     {
+        PhotonNetwork.LeaveLobby();
         cancelButton.SetActive(false);
         battleButton.SetActive(true);
-        PhotonNetwork.LeaveLobby();
+        
     }
     // Update is called once per frame
     void Update()
