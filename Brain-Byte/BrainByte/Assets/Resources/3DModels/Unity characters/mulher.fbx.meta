@@ -174,7 +174,157 @@ ModelImporter:
     13700008: Hair
     13700010: Shoes
     13700012: Tops
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bodymat
+    second: {fileID: 2100000, guid: 6f868173db236804b88316ab7b8d268c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bottommat
+    second: {fileID: 2100000, guid: f7d87a2865b46814fb5b835cf7148aab, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hairmat
+    second: {fileID: 2100000, guid: 84f64407f030ac94a8fde3f45ab98fba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shoesmat
+    second: {fileID: 2100000, guid: 787812f18e9be1342a2c55e45cbc0fef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Topmat
+    second: {fileID: 2100000, guid: be64d2749b9989045ac7a5e42dc43d54, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mulher_Body_Diffuse
+    second: {fileID: 2800000, guid: e2b885c84cb02e3478acf3686e88aad0, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mulher_Body_Gloss
+    second: {fileID: 2800000, guid: d66e1fb685ede9049822e31f06bbe21a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mulher_Body_Normal
+    second: {fileID: 2800000, guid: 6daecd100b262b74bb252dd4d5ab9f44, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mulher_Body_Opacity
+    second: {fileID: 2800000, guid: 2ec6c83bf88fb3144b59943d7f095334, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mulher_Body_Specular
+    second: {fileID: 2800000, guid: 8ea65a27cd7d8154692bc0626c5a5d4e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mulher_Bottom_Diffuse
+    second: {fileID: 2800000, guid: 267b52f4d7d06cc4d9ed25bf0d186445, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mulher_Bottom_Gloss
+    second: {fileID: 2800000, guid: 4036a437403b45041a5a563b57c09bd6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mulher_Bottom_Normal
+    second: {fileID: 2800000, guid: 7cf9c35f9f7220c43b2900f8d63d397c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mulher_Bottom_Opacity
+    second: {fileID: 2800000, guid: 29ed266ea48f5bb46a7a37ac0a6ab264, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mulher_Bottom_Specular
+    second: {fileID: 2800000, guid: 075948604bb68b247b0ef6aa79486b20, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mulher_Hair_Diffuse
+    second: {fileID: 2800000, guid: 0a19237a995324c4080102e44605da9b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mulher_Hair_Gloss
+    second: {fileID: 2800000, guid: 86ad8313829eb0c41ad3d0c421b7eb85, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mulher_Hair_Normal
+    second: {fileID: 2800000, guid: 60648c247cd12ba4f978c3f2ea4e55a6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mulher_Hair_Opacity
+    second: {fileID: 2800000, guid: b117db38df78e9f48a0362b13b8dc57b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mulher_Hair_Specular
+    second: {fileID: 2800000, guid: 45fd1e6cc11a5d54595330477e762731, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mulher_Shoes_Diffuse
+    second: {fileID: 2800000, guid: 7f2cf3719421f0c489723aea9e7f5106, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mulher_Shoes_Gloss
+    second: {fileID: 2800000, guid: 0e016d77185b5084d99c9279e61cbb5c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mulher_Shoes_Normal
+    second: {fileID: 2800000, guid: 4a4a2911110aacd4894ecdad65eede02, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mulher_Shoes_Opacity
+    second: {fileID: 2800000, guid: 467cd53206516804ebd88002745a8d76, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mulher_Shoes_Specular
+    second: {fileID: 2800000, guid: 1b9e31517f004364792ad2aa171eaa59, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mulher_Top_Diffuse
+    second: {fileID: 2800000, guid: e297a7c37558d4b4493d4f595ac9e0b3, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mulher_Top_Gloss
+    second: {fileID: 2800000, guid: 8abdc226badf6654abc16c722edb994f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mulher_Top_Normal
+    second: {fileID: 2800000, guid: afbb0261d21cb9a4dbb2db12b13e0aa6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mulher_Top_Opacity
+    second: {fileID: 2800000, guid: e0642726b25e5334382a051ec97e1910, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mulher_Top_Specular
+    second: {fileID: 2800000, guid: 23764d45f4e321a468ccaabbf88a99a5, type: 3}
   materials:
     importMaterials: 1
     materialName: 0

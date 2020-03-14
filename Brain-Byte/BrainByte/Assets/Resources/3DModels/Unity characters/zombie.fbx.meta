@@ -164,7 +164,97 @@ ModelImporter:
     13700004: default
     13700006: Eyelashes
     13700008: Hats
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bodymat
+    second: {fileID: 2100000, guid: 357fe2a44d1bdc54386ff599d9d8e096, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bottommat
+    second: {fileID: 2100000, guid: 3325ef767e8085b4e828ecb0bc7ffef1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hatmat
+    second: {fileID: 2100000, guid: 7c13aef34bda4c84e99f3dcf79b714a1, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: zombie_Body_Diffuse
+    second: {fileID: 2800000, guid: d8b5de6fe7d6396498cad1d324e25168, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: zombie_Body_Gloss
+    second: {fileID: 2800000, guid: d013f9194cca7aa41b10ad79ea4315e6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: zombie_Body_Normal
+    second: {fileID: 2800000, guid: 6ad3ad4b1404ee14984e28e43d47d00d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: zombie_Body_Opacity
+    second: {fileID: 2800000, guid: efffecc275578264bb62eeff6340f1e0, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: zombie_Body_Specular
+    second: {fileID: 2800000, guid: b2d1d27239846de44a5df3835726abef, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: zombie_Bottom_Diffuse
+    second: {fileID: 2800000, guid: ee20f1d5e47248843a853244ea52bf49, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: zombie_Bottom_Gloss
+    second: {fileID: 2800000, guid: 5c28acacd9ddb314bb82633c4bba4177, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: zombie_Bottom_Normal
+    second: {fileID: 2800000, guid: 3d1bafd725dc18248aeab1ded7a0885e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: zombie_Bottom_Opacity
+    second: {fileID: 2800000, guid: 3912057f36b0bdd44a2ea115612da9b1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: zombie_Bottom_Specular
+    second: {fileID: 2800000, guid: b4c4e7c66597aa34eb2b85b1ca725f0c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: zombie_Hat_Diffuse
+    second: {fileID: 2800000, guid: 8b8047d6ae332784c9ae10a5f1a3a49e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: zombie_Hat_Gloss
+    second: {fileID: 2800000, guid: 51ce446c96211f546a50ceb711baf898, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: zombie_Hat_Normal
+    second: {fileID: 2800000, guid: c54253fefce76944fa29eafd568eec5e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: zombie_Hat_Opacity
+    second: {fileID: 2800000, guid: 7162b3bb7a5e2844393589baa5c9bb5e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: zombie_Hat_Specular
+    second: {fileID: 2800000, guid: 1794df4eac5abe341be4ccf9b2e36d46, type: 3}
   materials:
     importMaterials: 1
     materialName: 0

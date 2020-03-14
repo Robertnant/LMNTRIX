@@ -184,7 +184,217 @@ ModelImporter:
     13700012: Moustaches
     13700014: Shoes
     13700016: Tops
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Beardmat
+    second: {fileID: 2100000, guid: 56e93c1a4810ee24390646e1bae0c7dd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bodymat
+    second: {fileID: 2100000, guid: 75aa6e6bd8e1bc849a49510f6deadd5d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bottommat
+    second: {fileID: 2100000, guid: 582f2e66ca0bfcf4d84027bb2c522bc2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hairmat
+    second: {fileID: 2100000, guid: 65bc647edec0fd940ba4bbbfd4f270ae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Moustachemat
+    second: {fileID: 2100000, guid: cb8bd4661460a934d82e4c512db57f74, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shoesmat
+    second: {fileID: 2100000, guid: 8b5b3299318e2024b8d15d33979a0f28, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Topmat
+    second: {fileID: 2100000, guid: f2b134722887c9d40ac4a72efc01537b, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bigode_Beard_Diffuse
+    second: {fileID: 2800000, guid: 91261afaab5e1a04bbccd32d153a6c47, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bigode_Beard_Gloss
+    second: {fileID: 2800000, guid: f814e1c3957525a4faf7d5f4cb7b5d63, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bigode_Beard_Normal
+    second: {fileID: 2800000, guid: d9e3098d49ed2d14ca3d4d08d5f01b04, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bigode_Beard_Opacity
+    second: {fileID: 2800000, guid: 7d01cb22342b90b46b7fbbf2a2c832b7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bigode_Beard_Specular
+    second: {fileID: 2800000, guid: c8b64a88412606c49abb90b5846e1331, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bigode_Body_Diffuse
+    second: {fileID: 2800000, guid: 2af93b498ef89854b9c281f1b9b80c19, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bigode_Body_Gloss
+    second: {fileID: 2800000, guid: e741d288772fd3641be4f884404cb93c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bigode_Body_Normal
+    second: {fileID: 2800000, guid: 924a57ae96018294bb985e8e571502c8, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bigode_Body_Opacity
+    second: {fileID: 2800000, guid: 4e6b18a1875a089499cf35e6df0eba18, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bigode_Body_Specular
+    second: {fileID: 2800000, guid: 8f6337d9230c24848af9e63316a9f368, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bigode_Bottom_Diffuse
+    second: {fileID: 2800000, guid: 5bfcfe4d6d23c2d4bb93104ce9e3beb9, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bigode_Bottom_Gloss
+    second: {fileID: 2800000, guid: 67cef84ee36ab7b40a76dc59a4d0430d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bigode_Bottom_Normal
+    second: {fileID: 2800000, guid: ae88f7305a7ff014c9a28a8007a08921, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bigode_Bottom_Opacity
+    second: {fileID: 2800000, guid: 68bd6c2ca10311e4698994b37176c487, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bigode_Bottom_Specular
+    second: {fileID: 2800000, guid: 701577e6918f47447b0905fd18cd6804, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bigode_Hair_Diffuse
+    second: {fileID: 2800000, guid: 543f501015770fb4bbf8c8ddf6fc1723, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bigode_Hair_Gloss
+    second: {fileID: 2800000, guid: 34dc43ed45bbd864ba0e2ce21acd8b8e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bigode_Hair_Normal
+    second: {fileID: 2800000, guid: b38b4d30d7d93e04589d3f19b57c27e4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bigode_Hair_Opacity
+    second: {fileID: 2800000, guid: 04cd79a88b884e64ca0788f7195fe4d8, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bigode_Hair_Specular
+    second: {fileID: 2800000, guid: b519ee4cbac1bed45bc325bde1555224, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bigode_Moustache_Diffuse
+    second: {fileID: 2800000, guid: 052ae8d38c0498741b5bf1da41caeff3, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bigode_Moustache_Gloss
+    second: {fileID: 2800000, guid: 8b9eb9dcfe40eed4fb04dcaeb1b6a5ba, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bigode_Moustache_Normal
+    second: {fileID: 2800000, guid: 28f63d7b15641cf4ea618e477ff21191, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bigode_Moustache_Opacity
+    second: {fileID: 2800000, guid: daabd024b86582d42939d11b66886bfc, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bigode_Moustache_Specular
+    second: {fileID: 2800000, guid: 69d18555ab677224a9d1f875c7840868, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bigode_Shoes_Diffuse
+    second: {fileID: 2800000, guid: 7940ffab339c9c146a9779a4f22f02d7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bigode_Shoes_Gloss
+    second: {fileID: 2800000, guid: 2ec39ad99b3f6d44c96f591698625ab8, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bigode_Shoes_Normal
+    second: {fileID: 2800000, guid: bc8c2f736e27bcb488f2503b97316482, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bigode_Shoes_Opacity
+    second: {fileID: 2800000, guid: 3979f27fcf0bfe741a506628c0217476, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bigode_Shoes_Specular
+    second: {fileID: 2800000, guid: b5ed69b6b8a63684da9d2859ab326b1a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bigode_Top_Diffuse
+    second: {fileID: 2800000, guid: f5ba742ad6692d1438f0961d388c4c08, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bigode_Top_Gloss
+    second: {fileID: 2800000, guid: aa1940e0f9c9b884db87e6861107c326, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bigode_Top_Normal
+    second: {fileID: 2800000, guid: 94bb0170c8b895e4991264b9ef042bb3, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bigode_Top_Opacity
+    second: {fileID: 2800000, guid: 64f513485d67f53469c9cc5586ecb585, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bigode_Top_Specular
+    second: {fileID: 2800000, guid: a73110a6fd7695f4c9c3e6ca393e6547, type: 3}
   materials:
     importMaterials: 1
     materialName: 0

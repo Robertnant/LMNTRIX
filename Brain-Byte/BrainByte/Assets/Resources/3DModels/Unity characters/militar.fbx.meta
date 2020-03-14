@@ -194,7 +194,277 @@ ModelImporter:
     13700016: Moustaches
     13700018: Shoes
     13700020: Tops
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Beardmat
+    second: {fileID: 2100000, guid: 76355d7c2242e8947a88758e7f91dda4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bodymat
+    second: {fileID: 2100000, guid: 3a625c095991895459c18d7e608d9595, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bottommat
+    second: {fileID: 2100000, guid: c64ab9fa6a7609e4a9e0feb72d775583, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glovemat
+    second: {fileID: 2100000, guid: 24986d558c7aff04e981b29a48eb39da, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hairmat
+    second: {fileID: 2100000, guid: de925459ec65a8a448ea0479cd43a529, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hatmat
+    second: {fileID: 2100000, guid: 17db59be4e8f56646b421fd988d0d4d5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Moustachemat
+    second: {fileID: 2100000, guid: 6d33f33cac600264a910bf57a1aa70be, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shoesmat
+    second: {fileID: 2100000, guid: 0e10a7d6d31dc124183e1292806378a7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Topmat
+    second: {fileID: 2100000, guid: ea8af4d84efe4044eaad5210c56b6c2c, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Beard_Diffuse
+    second: {fileID: 2800000, guid: 19663fdf40fef984499724b53b950874, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Beard_Gloss
+    second: {fileID: 2800000, guid: 32665482e2687ea41a06639ab4a6366f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Beard_Normal
+    second: {fileID: 2800000, guid: 651d77fdfb963f944967a5d3e0ad36f5, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Beard_Opacity
+    second: {fileID: 2800000, guid: 1a0af0246cd8f1d4d80805bc783b2348, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Beard_Specular
+    second: {fileID: 2800000, guid: fb325eda695bd8d4e95906b80e294fbc, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Body_Diffuse
+    second: {fileID: 2800000, guid: c5295dfc519f518428b6b72e2afc3e06, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Body_Gloss
+    second: {fileID: 2800000, guid: 5fafbf389b763514cb4e10894074e189, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Body_Normal
+    second: {fileID: 2800000, guid: d91b963c6e6ad714e92439d3f10d4eec, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Body_Opacity
+    second: {fileID: 2800000, guid: 980b0f9f67cfd1e43b4c487d3768850e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Body_Specular
+    second: {fileID: 2800000, guid: 223b116bbf5090641af01f340b9c4db2, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Bottom_Diffuse
+    second: {fileID: 2800000, guid: 482d59a9e25fd48429e2cb131ddb1770, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Bottom_Gloss
+    second: {fileID: 2800000, guid: 6fb500eede9e978498bfd2ccfabc658b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Bottom_Normal
+    second: {fileID: 2800000, guid: ab2b0e1950fa8104590736881b7e49a6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Bottom_Opacity
+    second: {fileID: 2800000, guid: 3650f7e008debb84a9b84099a908b9a7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Bottom_Specular
+    second: {fileID: 2800000, guid: 704481afc9345ea44af3dc60e8d66730, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Glove_Diffuse
+    second: {fileID: 2800000, guid: 18d9eaad69ba2ec4f834f26e9e52d744, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Glove_Gloss
+    second: {fileID: 2800000, guid: 1a865ad7141b8cb4e886bea3c4a40d36, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Glove_Normal
+    second: {fileID: 2800000, guid: d23c88eb6f4e6a144a386301276ab02c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Glove_Opacity
+    second: {fileID: 2800000, guid: 6fc76ab7fe228544cb792b1846e9daa7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Glove_Specular
+    second: {fileID: 2800000, guid: a522ad831a7f92849a3e0c37620be69a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Hair_Diffuse
+    second: {fileID: 2800000, guid: 45041115aa2403b438537b0fbe62020d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Hair_Gloss
+    second: {fileID: 2800000, guid: b2818c82bd21e604290402e0c945e6b7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Hair_Normal
+    second: {fileID: 2800000, guid: a6732e0328369c9499bc23c58e023cd7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Hair_Opacity
+    second: {fileID: 2800000, guid: 55e39b1230efbfb409be4811fdf1717e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Hair_Specular
+    second: {fileID: 2800000, guid: ff1ca234376d48c479e2cb68b48e3690, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Hat_Diffuse
+    second: {fileID: 2800000, guid: eff911aec1c07df41b9bf74b457e5746, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Hat_Gloss
+    second: {fileID: 2800000, guid: e933d496378b77e43bbe2fa206570435, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Hat_Normal
+    second: {fileID: 2800000, guid: 517366c3e63971845b4599c5992fddf9, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Hat_Opacity
+    second: {fileID: 2800000, guid: ccb04b7ce2579bc4dbdaec412809b738, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Hat_Specular
+    second: {fileID: 2800000, guid: 98ed596472e69d94cb9088174a85f07e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Moustache_Diffuse
+    second: {fileID: 2800000, guid: bf036d6ede264404eab9ae850855d567, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Moustache_Gloss
+    second: {fileID: 2800000, guid: d342e773d7202cf499cedb3ad1c47ab5, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Moustache_Normal
+    second: {fileID: 2800000, guid: bb48bb6bd1aea49478bc16c48c73105b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Moustache_Opacity
+    second: {fileID: 2800000, guid: b3dce40a1bd15d04fadbd0031d54bc42, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Moustache_Specular
+    second: {fileID: 2800000, guid: d1b00cde21ce92e4eb0cff58d549ae04, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Shoes_Diffuse
+    second: {fileID: 2800000, guid: f51a00c415f452146a1c578eeb81636a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Shoes_Gloss
+    second: {fileID: 2800000, guid: 78ffc602703135f42941261a192a74bf, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Shoes_Normal
+    second: {fileID: 2800000, guid: 1a09ba105313b75458361b8b7ffb0c28, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Shoes_Opacity
+    second: {fileID: 2800000, guid: a406db02e49608245b97b0d1280d1a80, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Shoes_Specular
+    second: {fileID: 2800000, guid: ccef63d04b9d12e459e980eb2e8541da, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Top_Diffuse
+    second: {fileID: 2800000, guid: 297798c096a39eb40aa2ee6a1d166ac3, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Top_Gloss
+    second: {fileID: 2800000, guid: bc60779949b764841afac4f0e1fcdc00, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Top_Normal
+    second: {fileID: 2800000, guid: 0391f69319d16f44c87e071ef32a3d4e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Top_Opacity
+    second: {fileID: 2800000, guid: 4353f33739eb30948a63abe0c6f1519b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: militar_Top_Specular
+    second: {fileID: 2800000, guid: c8e12b26e90c48b47b8c300aca8de74c, type: 3}
   materials:
     importMaterials: 1
     materialName: 0

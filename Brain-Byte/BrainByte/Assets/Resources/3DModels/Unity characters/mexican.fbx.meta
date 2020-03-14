@@ -184,7 +184,217 @@ ModelImporter:
     13700012: Moustaches
     13700014: Shoes
     13700016: Tops
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bodymat
+    second: {fileID: 2100000, guid: 37877aa62c6f9d74da835c8aeabc9628, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bottommat
+    second: {fileID: 2100000, guid: 4ddba56d6d9582349a4495db53e83857, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glovemat
+    second: {fileID: 2100000, guid: ca7bb49e52818204596dd9f1b7345e5f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hairmat
+    second: {fileID: 2100000, guid: cd5e7727ce488c943b32754a16fbc7e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Moustachemat
+    second: {fileID: 2100000, guid: 5108e1cd11623b540b5d400a8eda93f5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shoesmat
+    second: {fileID: 2100000, guid: e4315af8d4f6a944a820560f378ff013, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Topmat
+    second: {fileID: 2100000, guid: 9c1fc8a899d8e46498f1ce2e35222cab, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mexican_Body_Diffuse
+    second: {fileID: 2800000, guid: d9288866b93141b438fea4c3f9d3ab87, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mexican_Body_Gloss
+    second: {fileID: 2800000, guid: 326be0a2275c9e64093a5111b1917a18, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mexican_Body_Normal
+    second: {fileID: 2800000, guid: 8673aa90015a7004093a77ff08123f64, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mexican_Body_Opacity
+    second: {fileID: 2800000, guid: 8bf7863af23f6fb40bb4a16e0aaf80a7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mexican_Body_Specular
+    second: {fileID: 2800000, guid: 1344bdd181c55034d88090c4a2e64ed2, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mexican_Bottom_Diffuse
+    second: {fileID: 2800000, guid: 861023ba5d147de4b91b2ab4f34bd863, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mexican_Bottom_Gloss
+    second: {fileID: 2800000, guid: 1b40d98f42105c74b842a20ba97c1e90, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mexican_Bottom_Normal
+    second: {fileID: 2800000, guid: ff14966fc5203d948a13a2ebfc43385b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mexican_Bottom_Opacity
+    second: {fileID: 2800000, guid: 6e6f16a56100e3a4eaa6334fb33aa3e1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mexican_Bottom_Specular
+    second: {fileID: 2800000, guid: 7f94bdf1c06c0d94f8c0d2382322dfba, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mexican_Glove_Diffuse
+    second: {fileID: 2800000, guid: 034c9b2f7da01644f95b415c15140160, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mexican_Glove_Gloss
+    second: {fileID: 2800000, guid: facd704575618de4c8ac2b15178bef79, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mexican_Glove_Normal
+    second: {fileID: 2800000, guid: 69a14d62570384e46b18c2f1f09b9d90, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mexican_Glove_Opacity
+    second: {fileID: 2800000, guid: b3d08fe479981c547b5ab687f96f0458, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mexican_Glove_Specular
+    second: {fileID: 2800000, guid: 42c8d26c0bf517146aa19e1b31d21ab5, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mexican_Hair_Diffuse
+    second: {fileID: 2800000, guid: 54154784a11a1794992d8722323c5f6f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mexican_Hair_Gloss
+    second: {fileID: 2800000, guid: a05d36913f0c00c4ab43abd93fee2e60, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mexican_Hair_Normal
+    second: {fileID: 2800000, guid: fa39141fbde571845bb8c38c27c1ce90, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mexican_Hair_Opacity
+    second: {fileID: 2800000, guid: cc602a049c45b754a8b7da147a3acfe1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mexican_Hair_Specular
+    second: {fileID: 2800000, guid: 3a139fe2b260f1a4b876d3067765ca24, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mexican_Moustache_Diffuse
+    second: {fileID: 2800000, guid: 17b404af738b77944981ec2929379aac, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mexican_Moustache_Gloss
+    second: {fileID: 2800000, guid: 08e1693f53491c24bb8330884ee4d55a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mexican_Moustache_Normal
+    second: {fileID: 2800000, guid: 9b665481472c4784881a393fe4b7440c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mexican_Moustache_Opacity
+    second: {fileID: 2800000, guid: d1217e90a96b22443bdb036e3b3751ce, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mexican_Moustache_Specular
+    second: {fileID: 2800000, guid: 2b67c1672d201a94d94e11bedc931712, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mexican_Shoes_Diffuse
+    second: {fileID: 2800000, guid: 10fcdddbded014244b908745e7d6db04, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mexican_Shoes_Gloss
+    second: {fileID: 2800000, guid: d1c4f691b8b9919488ef5e79cf6aa573, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mexican_Shoes_Normal
+    second: {fileID: 2800000, guid: f0b01bc93cb9dc34192607678375685e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mexican_Shoes_Opacity
+    second: {fileID: 2800000, guid: ccfd1739f271d444c850ecd01efb57b4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mexican_Shoes_Specular
+    second: {fileID: 2800000, guid: 28eebf3dda95da544b2c8874773d7b31, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mexican_Top_Diffuse
+    second: {fileID: 2800000, guid: 311ed66ac6cbb124c85b059e4bd1005d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mexican_Top_Gloss
+    second: {fileID: 2800000, guid: f9228ebf2a17f704fac85dbc63a57c37, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mexican_Top_Normal
+    second: {fileID: 2800000, guid: 444ff815f10fbda4aa5e8d60edb3c7d5, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mexican_Top_Opacity
+    second: {fileID: 2800000, guid: d99dcbc93bb95fe4fb5b7f7ad3c5596e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mexican_Top_Specular
+    second: {fileID: 2800000, guid: 3630d5fdc47063c4099246663da0d84e, type: 3}
   materials:
     importMaterials: 1
     materialName: 0

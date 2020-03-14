@@ -169,7 +169,127 @@ ModelImporter:
     13700006: Eyelashes
     13700008: Shoes
     13700010: Tops
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bodymat
+    second: {fileID: 2100000, guid: 31042210a1f918241a29c19ad11f5e58, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bottommat
+    second: {fileID: 2100000, guid: c90a242041b304a4bbaa9f79f004dddb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shoesmat
+    second: {fileID: 2100000, guid: cef08fef722fd704097ea1d360980f95, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Topmat
+    second: {fileID: 2100000, guid: 1d54a0af2733ab6449a8f1e0272f3a15, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: et_different_Body_Diffuse
+    second: {fileID: 2800000, guid: d2aa8e74a40c3684d99d535bc45fc89e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: et_different_Body_Gloss
+    second: {fileID: 2800000, guid: f0425a9720348e249b246aa68437520f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: et_different_Body_Normal
+    second: {fileID: 2800000, guid: 46ec585cc6bb6524694866d7fa5b7d96, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: et_different_Body_Opacity
+    second: {fileID: 2800000, guid: 954f1af6d57389745b5cf3cdaad3a8ae, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: et_different_Body_Specular
+    second: {fileID: 2800000, guid: 9060b42f61fac0144ab51cbe0cf9908d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: et_different_Bottom_Diffuse
+    second: {fileID: 2800000, guid: 76c7dd4bc50b6604b9a9e7c9a72b498d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: et_different_Bottom_Gloss
+    second: {fileID: 2800000, guid: ac5ce90555d145d4fa07b4c3967c5fdd, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: et_different_Bottom_Normal
+    second: {fileID: 2800000, guid: 5025bfb4c8fc96343a30614301521aad, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: et_different_Bottom_Opacity
+    second: {fileID: 2800000, guid: 964f1616b3f8b414da6dd13cc2d29b35, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: et_different_Bottom_Specular
+    second: {fileID: 2800000, guid: d1b5df1b63041214a820564308e3109e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: et_different_Shoes_Diffuse
+    second: {fileID: 2800000, guid: 81ee3014c996a494e830c72d1845e119, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: et_different_Shoes_Gloss
+    second: {fileID: 2800000, guid: cbb7608311b127a4e9967e70099cd0c6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: et_different_Shoes_Normal
+    second: {fileID: 2800000, guid: d35a78fa4ef8664469af12cbc460889d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: et_different_Shoes_Opacity
+    second: {fileID: 2800000, guid: b3bdbe37945855a419d7b4c01e06cfb6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: et_different_Shoes_Specular
+    second: {fileID: 2800000, guid: 8113aaf427f26e9448d458c5f4ae009c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: et_different_Top_Diffuse
+    second: {fileID: 2800000, guid: 5cceb3f13cac40a45a5da1dcb8238453, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: et_different_Top_Gloss
+    second: {fileID: 2800000, guid: 9d367050273f4fd4e9f3749a99d599b5, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: et_different_Top_Normal
+    second: {fileID: 2800000, guid: 628bfb390733da247af840426b5cd274, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: et_different_Top_Opacity
+    second: {fileID: 2800000, guid: 226e7d7027dd6b84db9a35991a3db70d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: et_different_Top_Specular
+    second: {fileID: 2800000, guid: f835b0fca8451af45a7a4f191c4e6e44, type: 3}
   materials:
     importMaterials: 1
     materialName: 0

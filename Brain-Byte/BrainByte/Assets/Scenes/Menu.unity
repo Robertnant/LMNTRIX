@@ -777,10 +777,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedCharacter: 0
   allCharacters:
-  - {fileID: 8788400296833404410, guid: 6f593a870f90e424da268c5e450ba4b1, type: 3}
-  - {fileID: 3719588874126877503, guid: 85347842b51f36b408c6282aaf3a60dc, type: 3}
-  - {fileID: 4055725935828405098, guid: 1d2aeb0e28a9b834dba5d73dd6f311cb, type: 3}
-  - {fileID: 6853350112206730042, guid: e4893ad32c30a764197790207f0bb59f, type: 3}
+  - {fileID: 5163394548128526649, guid: 69a4583afc17d81499eb3555a2c4e670, type: 3}
+  - {fileID: 7958995828192705055, guid: 85347842b51f36b408c6282aaf3a60dc, type: 3}
+  - {fileID: 5623326589318874462, guid: 1d2aeb0e28a9b834dba5d73dd6f311cb, type: 3}
+  - {fileID: 3195169986640382480, guid: e4893ad32c30a764197790207f0bb59f, type: 3}
 --- !u!4 &175391913
 Transform:
   m_ObjectHideFlags: 0
@@ -6133,7 +6133,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Offline
+  m_Text: offline
 --- !u!222 &1572017395
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6988,7 +6988,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1267912803}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -6999,7 +6999,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 374354008}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:

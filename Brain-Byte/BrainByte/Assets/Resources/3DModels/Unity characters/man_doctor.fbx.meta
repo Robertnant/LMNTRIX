@@ -184,7 +184,217 @@ ModelImporter:
     13700012: Masks
     13700014: Shoes
     13700016: Tops
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Beardmat
+    second: {fileID: 2100000, guid: 455c5a8f4d8b08844a30e43603fcbcb9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bodymat
+    second: {fileID: 2100000, guid: 8d6d500e5f1ac414ab4adeed874a27b4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bottommat
+    second: {fileID: 2100000, guid: 7b700b0d10312d842894687187a8b444, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hairmat
+    second: {fileID: 2100000, guid: 813d60ab7b9e7df4e9f85c1a0d5fe968, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Maskmat
+    second: {fileID: 2100000, guid: 64c096652f59678469d5836461f9175d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shoesmat
+    second: {fileID: 2100000, guid: 832ffb9d56de745428076793b63dcdda, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Topmat
+    second: {fileID: 2100000, guid: 10bd926ffc70cde46a5ebd02c02d7922, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: man_doctor_Beard_Diffuse
+    second: {fileID: 2800000, guid: b9ae3ad0c5ab2364197cf7f7302113bd, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: man_doctor_Beard_Gloss
+    second: {fileID: 2800000, guid: 2cb97cf237cbbff4f8745a6f3e662dbd, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: man_doctor_Beard_Normal
+    second: {fileID: 2800000, guid: 4865f91d49462ab42b0a4acca72bbd3b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: man_doctor_Beard_Opacity
+    second: {fileID: 2800000, guid: bee649e97fdf91d40b6d6e30b1bfac14, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: man_doctor_Beard_Specular
+    second: {fileID: 2800000, guid: e2a6cc367e4adfc44bb4dbd863396575, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: man_doctor_Body_Diffuse
+    second: {fileID: 2800000, guid: 90a47e1883faef7408c3174291597f00, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: man_doctor_Body_Gloss
+    second: {fileID: 2800000, guid: 241e94c8a5764b049bc1ae43ff239744, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: man_doctor_Body_Normal
+    second: {fileID: 2800000, guid: 08296df837acc1146bdb039e5071f378, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: man_doctor_Body_Opacity
+    second: {fileID: 2800000, guid: d67bc53dd7a8dfd418151fffcb84b171, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: man_doctor_Body_Specular
+    second: {fileID: 2800000, guid: 98b47c6088c831a4eab63724437a0f34, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: man_doctor_Bottom_Diffuse
+    second: {fileID: 2800000, guid: f7db74a9d709fc24f995b21fdabd6980, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: man_doctor_Bottom_Gloss
+    second: {fileID: 2800000, guid: bb1266f88f502784a87d008fd77af07c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: man_doctor_Bottom_Normal
+    second: {fileID: 2800000, guid: 6aff47dbef7414e4ba816d95f24c39ff, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: man_doctor_Bottom_Opacity
+    second: {fileID: 2800000, guid: fc09752d27112b94580a7a7954aba523, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: man_doctor_Bottom_Specular
+    second: {fileID: 2800000, guid: 2329f691806a700478644d254b447618, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: man_doctor_Hair_Diffuse
+    second: {fileID: 2800000, guid: 00646d556f0e4264cad9029ddda2e639, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: man_doctor_Hair_Gloss
+    second: {fileID: 2800000, guid: 9045d772663b9784f8afcfe659b753b1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: man_doctor_Hair_Normal
+    second: {fileID: 2800000, guid: 4678177ac88088b4590afd853b16a975, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: man_doctor_Hair_Opacity
+    second: {fileID: 2800000, guid: d89b183a12e4c204ab3a9bffec5009ae, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: man_doctor_Hair_Specular
+    second: {fileID: 2800000, guid: 79a24186722397b4b8a32463f227fcc4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: man_doctor_Mask_Diffuse
+    second: {fileID: 2800000, guid: 6eb00b289c5b5db4287b08d02a8a8f08, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: man_doctor_Mask_Gloss
+    second: {fileID: 2800000, guid: fd1756e698db5654794038a8e270be69, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: man_doctor_Mask_Normal
+    second: {fileID: 2800000, guid: 88e6548f02756db43b1fcd4044d9aa28, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: man_doctor_Mask_Opacity
+    second: {fileID: 2800000, guid: 23cff990b8706274588b36bf924ca795, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: man_doctor_Mask_Specular
+    second: {fileID: 2800000, guid: f3118df33766b874a806ffe021a1a187, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: man_doctor_Shoes_Diffuse
+    second: {fileID: 2800000, guid: b74621920a3fd15419b1fa225e12473e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: man_doctor_Shoes_Gloss
+    second: {fileID: 2800000, guid: 3dd1acef0505d40419c42688c1d22c3e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: man_doctor_Shoes_Normal
+    second: {fileID: 2800000, guid: 03d0618e3978bf84db3cd1dd822b5c8f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: man_doctor_Shoes_Opacity
+    second: {fileID: 2800000, guid: 0372c2512b456ee4196f07d2384d43b2, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: man_doctor_Shoes_Specular
+    second: {fileID: 2800000, guid: 07cfd76913d9df24386de19f9e5bf798, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: man_doctor_Top_Diffuse
+    second: {fileID: 2800000, guid: c1a815ef271ae86498d460f7d5bede5b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: man_doctor_Top_Gloss
+    second: {fileID: 2800000, guid: 52d1eb9bc51993644b28514b3a209e67, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: man_doctor_Top_Normal
+    second: {fileID: 2800000, guid: 421b7436d4e771247a94f42f6013eff6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: man_doctor_Top_Opacity
+    second: {fileID: 2800000, guid: bfe490ef52bebb340b781bf859106c28, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: man_doctor_Top_Specular
+    second: {fileID: 2800000, guid: 4559ee078c8c9bd41bc977d39fa8e252, type: 3}
   materials:
     importMaterials: 1
     materialName: 0
