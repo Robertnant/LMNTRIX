@@ -6,4 +6,4 @@ Sound effect sources:
 
 Background Music:
 
-- Created by group using Soundbridge
+- Created by group using Soundbridge and GarageBand

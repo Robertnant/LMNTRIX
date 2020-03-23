@@ -777,10 +777,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedCharacter: 0
   allCharacters:
-  - {fileID: 5163394548128526649, guid: 69a4583afc17d81499eb3555a2c4e670, type: 3}
-  - {fileID: 7958995828192705055, guid: 85347842b51f36b408c6282aaf3a60dc, type: 3}
-  - {fileID: 5623326589318874462, guid: 1d2aeb0e28a9b834dba5d73dd6f311cb, type: 3}
-  - {fileID: 3195169986640382480, guid: e4893ad32c30a764197790207f0bb59f, type: 3}
+  - {fileID: 5088223265345895949, guid: a42b369b7fdb7fa4d84ca8ced2fbc57a, type: 3}
+  - {fileID: 5036414920683141276, guid: e18f732240fb40444a0f8d52fbae7259, type: 3}
+  - {fileID: 4915287742733223843, guid: 724048194f572764c8f9f07762942995, type: 3}
+  - {fileID: 631100102223604649, guid: 1ed4d6e7b01f2b8448fe3da835a1c6a6, type: 3}
 --- !u!4 &175391913
 Transform:
   m_ObjectHideFlags: 0
