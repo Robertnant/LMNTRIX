@@ -13,7 +13,7 @@ namespace LMNTRIX_gLauncher
         {
             try
             {
-                Process.Start("MyFirstGame.exe");
+                Process.Start("BrainByte.exe");
                 //string should later be changed to brainbyte.exe
                 Environment.Exit(0);
             }

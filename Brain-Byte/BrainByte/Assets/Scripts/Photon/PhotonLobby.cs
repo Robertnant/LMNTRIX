@@ -2,6 +2,7 @@
 using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,7 +29,6 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
     {
         Debug.Log("Player has connected to the Photon Master server");
         PhotonNetwork.AutomaticallySyncScene = true;
-        battleButton.SetActive(true);  //Enables possibility to click on battleButton
 
         //Recently added lines (below) 26/02/20
         offlineButton.GetComponentInChildren<Text>().text = "online";
@@ -72,9 +72,10 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
 
     public void OnCancelButtonClicked()
     {
-        cancelButton.SetActive(false);
-        battleButton.SetActive(true);
         PhotonNetwork.LeaveLobby();
+        cancelButton.SetActive(false);
+        //battleButton.SetActive(true);
+        
     }
     // Update is called once per frame
     void Update()

@@ -26,7 +26,7 @@
             </Label.Effect>
         </Label>
         <Button x:Name="Start" Content="Launch" HorizontalAlignment="Left" Margin="334,319.876,0,0" VerticalAlignment="Top" Width="128" RenderTransformOrigin="-3.5,0.604" Height="48" Click="Start_Click" Background="#3FA64444" Grid.Row="1"/>
-        <WebBrowser x:Name="News" HorizontalAlignment="Left" Margin="70,47.876,0,91" Width="660" Source="https://www.epicgames.com/fortnite/fr/news" Grid.Row="1"/>
+        <WebBrowser x:Name="News" HorizontalAlignment="Left" Margin="70,47.876,0,91" Width="660" Source="https://lmntrixs2.github.io/brainbyte/" Grid.Row="1"/>
         <ProgressBar HorizontalAlignment="Left" Height="5" Margin="0,376.876,0,0" VerticalAlignment="Top" Width="792" Grid.Row="1"/>
 
     </Grid>
