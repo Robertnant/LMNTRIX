@@ -37,7 +37,6 @@ public class MovementAnimation : MonoBehaviour
         else
         {
             animator.SetBool("Grounded", true);
-            Debug.Log("Landed");
         }
 
     }
