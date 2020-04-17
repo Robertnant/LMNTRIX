@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using System.IO;
 
 public class AvatarSetup : MonoBehaviour
 {
@@ -13,28 +14,36 @@ public class AvatarSetup : MonoBehaviour
 
     public Camera myCamera;
     private AudioListener myAL;
+    public Animator animator;
 
     void Start()
     {
         PV = GetComponent<PhotonView>();
+        Debug.Log($"{PV.GetInstanceID()}");
         
         if(PV.IsMine)
         {
-            PV.RPC("RPC_AddCharacter", RpcTarget.AllBuffered, PlayerInfo.PI.selectedCharacter);
+            Debug.Log("Added character");
+            AddCharacter(PlayerInfo.PI.selectedCharacter);
         }
         else
         {
             Destroy(myCamera);
             Destroy(myAL);
+            Debug.Log("Did not add character");
         }
     }
 
-    [PunRPC]
-    void RPC_AddCharacter(int characterIndex)
+    void AddCharacter(int characterIndex)
     {
         characterValue = characterIndex;
-        myCharacter = Instantiate(PlayerInfo.PI.allCharacters[characterIndex], transform.position, transform.rotation,
-            transform);
+        myCharacter = PhotonNetwork.Instantiate(Path.Combine(@"PhotonPrefabs\Characters", PlayerInfo.PI.allCharacters[characterIndex].name),
+            transform.position, transform.rotation);
+
+        Debug.Log("Created player");
+
+        myCharacter.transform.parent = transform;
+        animator = myCharacter.GetComponent<Animator>();
 
         foreach(Transform t in myCharacter.transform)
         {

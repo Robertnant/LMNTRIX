@@ -77,9 +77,5 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
         //battleButton.SetActive(true);
         
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 }

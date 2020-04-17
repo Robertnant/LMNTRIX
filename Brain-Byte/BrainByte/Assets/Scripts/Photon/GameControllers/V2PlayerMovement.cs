@@ -10,7 +10,8 @@ public class V2PlayerMovement : MonoBehaviour
     private Rigidbody rigid;
     private Transform transform;
     private Transform myCharacterTransform;     // Transform of the actual character used for Avatar
-    
+    private AvatarSetup avatarSetup;
+
     public float groundDistance = 0.3f;
     public float JumpForce = 500;
     public LayerMask whatIsGround;
@@ -18,28 +19,30 @@ public class V2PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        avatarSetup = GetComponent<AvatarSetup>();
+
         PV = GetComponent<PhotonView>();
-        animator = GetComponent<AvatarSetup>().myCharacter.GetComponent<Animator>();  //Gets animator from player avatar in use (example: detective)
-        rigid = GetComponent<AvatarSetup>().myCharacter.GetComponent<Rigidbody>();
         transform = GetComponent<Transform>();    // Player avatar's transform
-        myCharacterTransform = GetComponent<AvatarSetup>().myCharacter.transform;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(animator == null)
-            animator = GetComponent<AvatarSetup>().myCharacter.GetComponent<Animator>();
-
-        if(rigid == null)
-            rigid = GetComponent<AvatarSetup>().myCharacter.GetComponent<Rigidbody>();
-
-        // Use of previous if statements. Sometimes this script is ran before the one of PlayerSetup
-        // Hence, the variable myCharacter is null if that is the case
-
         if (PV.IsMine)
         {
+            if (animator == null)
+                animator = avatarSetup.animator;
+
+            if (rigid == null)
+                rigid = avatarSetup.myCharacter.GetComponent<Rigidbody>();
+
+            if (myCharacterTransform == null)
+                myCharacterTransform = avatarSetup.myCharacter.transform;
+
+            // Use of previous if statements. Sometimes this script is ran before the one of PlayerSetup
+            // Hence, the variable myCharacter is null if that is the case
+
             animator.SetFloat("Speed", Input.GetAxis("Horizontal"));
             animator.SetFloat("TurningSpeed", Input.GetAxis("Vertical"));
 
@@ -47,6 +50,7 @@ public class V2PlayerMovement : MonoBehaviour
             {
                 rigid.AddForce(Vector3.up * JumpForce);
                 animator.SetTrigger("Jump");
+                Debug.Log($"Player {GetComponent<AvatarSetup>().myCharacter.name} jumped");
             }
             if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, groundDistance, whatIsGround))
             {

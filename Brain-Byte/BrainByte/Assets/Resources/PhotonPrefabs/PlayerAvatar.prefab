@@ -89,6 +89,7 @@ MonoBehaviour:
   playerHealth: 100
   playerDamage: 25
   myCamera: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!114 &114326672079688568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,11 +102,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af4ed913e7341a4dbb565e175cd2d1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundDistance: 0.3
+  groundDistance: 0
   JumpForce: 500
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4096
 --- !u!114 &114954804574709452
 MonoBehaviour:
   m_ObjectHideFlags: 0

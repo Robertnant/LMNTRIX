@@ -18,12 +18,9 @@ public class PhotonPlayer : MonoBehaviour
         {
             myAvatar = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerAvatar"),
                 GameSetup.GS.spawnPoints[spawnPicker].position, GameSetup.GS.spawnPoints[spawnPicker].rotation, 0);
+
+            Debug.Log("Player Avatar instantiated");
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

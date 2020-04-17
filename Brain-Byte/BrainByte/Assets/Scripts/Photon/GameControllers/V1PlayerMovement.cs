@@ -13,7 +13,8 @@ public class V1PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PV = GetComponent<PhotonView>();
+        //PV = GetComponent<PhotonView>();
+        PV = GetComponentInParent<PhotonView>();
         CControl = GetComponent<CharacterController>();
     }
 
