@@ -29,6 +29,15 @@ public class V2PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(animator == null)
+            animator = GetComponent<AvatarSetup>().myCharacter.GetComponent<Animator>();
+
+        if(rigid == null)
+            rigid = GetComponent<AvatarSetup>().myCharacter.GetComponent<Rigidbody>();
+
+        // Use of previous if statements. Sometimes this script is ran before the one of PlayerSetup
+        // Hence, the variable myCharacter is null if that is the case
+
         if (PV.IsMine)
         {
             animator.SetFloat("Speed", Input.GetAxis("Horizontal"));

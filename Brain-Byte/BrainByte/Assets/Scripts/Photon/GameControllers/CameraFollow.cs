@@ -10,14 +10,18 @@ public class CameraFollow : MonoBehaviour
 
     private void Start()
     {
+        
         Vector3 desiredPostion = target.position + offset;
         transform.position = desiredPostion;
+        
     }
     private void FixedUpdate()
     {
+        /*
+        
         //Old non-working script
 
-        /*
+        
         Vector3 desiredPostion = target.position + offset;
         //transform.LookAt(target);
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPostion, smoothSpeed);
@@ -26,7 +30,8 @@ public class CameraFollow : MonoBehaviour
         transform.rotation = target.rotation;
 
         transform.LookAt(target);   //camera focuses on target instead of rotating when player is moved on horizontal axis
-        */
+        
+    */
 
     }
 }
