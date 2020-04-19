@@ -19,6 +19,11 @@ public class PhotonPlayer : MonoBehaviour
             myAvatar = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerAvatar"),
                 GameSetup.GS.spawnPoints[spawnPicker].position, GameSetup.GS.spawnPoints[spawnPicker].rotation, 0);
 
+            // Enable scripts of character object
+            myAvatar.GetComponent<AvatarSetup>().enabled = true;
+            myAvatar.GetComponent<V2PlayerMovement>().enabled = true;
+            myAvatar.GetComponent<AvatarCombat>().enabled = true;
+
             Debug.Log("Player Avatar instantiated");
         }
     }

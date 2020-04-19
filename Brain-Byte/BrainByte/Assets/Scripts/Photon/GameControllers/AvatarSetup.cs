@@ -43,21 +43,37 @@ public class AvatarSetup : MonoBehaviour
         Debug.Log("Created player");
 
         myCharacter.transform.parent = transform;
-        animator = myCharacter.GetComponent<Animator>();
 
-        foreach(Transform t in myCharacter.transform)
+        // Get Camera and enable it
+
+        foreach (Transform t in myCharacter.transform)
         {
             if (t.tag == "AvatarCamera")
             {
-                myCamera = t.gameObject.GetComponent<Camera>();
-                myAL = t.gameObject.GetComponent<AudioListener>();
-
-                Debug.Log("Found camera");
-                break;
+                t.gameObject.SetActive(true);
             }
-            else
-                Debug.Log("Did not find Camera");
         }
+        
+        animator = myCharacter.GetComponent<Animator>();
 
+
+
+            // Removed cause seemed useless
+            /*
+            foreach(Transform t in myCharacter.transform)
+            {
+                if (t.tag == "AvatarCamera")
+                {
+                    myCamera = t.gameObject.GetComponent<Camera>();
+                    myAL = t.gameObject.GetComponent<AudioListener>();
+
+                    Debug.Log("Found camera");
+                    break;
+                }
+                else
+                    Debug.Log("Did not find Camera");
+            }
+            */
+        
     }
 }
