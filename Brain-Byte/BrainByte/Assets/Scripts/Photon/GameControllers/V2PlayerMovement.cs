@@ -65,7 +65,8 @@ public class V2PlayerMovement : MonoBehaviour
             // Continuously set avatar's transform to the one of character
             // (which is controlled by animator)
 
-            transform.position = myCharacterTransform.position;
+            // Recent change
+            //transform.position = myCharacterTransform.position;
         }
     }
 }
