@@ -2823,16 +2823,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1476689234295323999}
   - component: {fileID: 1476689234286219961}
-  - component: {fileID: 7937946042234433505}
-  - component: {fileID: 7937252672466124295}
   - component: {fileID: 7948118893647019761}
   - component: {fileID: 7856189280745056771}
   - component: {fileID: 8030045913839055289}
   - component: {fileID: 7950479270678836097}
-  - component: {fileID: 8048298184542517107}
   - component: {fileID: 8048298184542517109}
   m_Layer: 0
-  m_Name: PlayerAvatarOld 1
+  m_Name: SinglePlayerAvatar
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2845,7 +2842,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1476689234295742847}
-  m_LocalRotation: {x: 0, y: -0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 25, y: 0, z: 274}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2877,47 +2874,17 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
-  m_WarningMessage: 
+  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
+    are already bound by a Humanoid avatar. These transforms can only be changed by
+    Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:LeftFoot'\n\tTransform
+    'mixamorig:LeftHandThumb2'\n\tTransform 'mixamorig:LeftHandIndex1'\n\tTransform
+    'mixamorig:LeftHandPinky2'\n\tTransform 'mixamorig:RightHandRing2'\n\tTransform
+    'mixamorig:Spine1'\n\tTransform 'mixamorig:LeftToeBase'\n\tTransform 'mixamorig:LeftHandThumb3'\n\tTransform
+    'mixamorig:RightArm'\n\tand more ...\n\tFrom animation clip 'mixamo.com'\n\tFrom
+    animation clip 'mixamo.com'\n\tFrom animation clip 'mixamo.com'"
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7937946042234433505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1476689234295742847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 3463311607346980856, guid: f58d563baa7b18240bf70115cb3b7d42, type: 3}
-  viewIdField: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
---- !u!114 &7937252672466124295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1476689234295742847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
 --- !u!143 &7948118893647019761
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2972,7 +2939,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!136 &7950479270678836097
 CapsuleCollider:
@@ -2988,7 +2955,7 @@ CapsuleCollider:
   m_Height: 1.7645172
   m_Direction: 1
   m_Center: {x: 0, y: 0.85960275, z: 0}
---- !u!114 &8048298184542517107
+--- !u!114 &8048298184542517109
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2997,29 +2964,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1476689234295742847}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79216a2d48ad8644190b59d5fedaf60b, type: 3}
+  m_Script: {fileID: 11500000, guid: 78079ad98c0ba99479f913786fd1d631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   groundDistance: 0
   JumpForce: 500
-  rotationSpeed: 200
   whatIsGround:
     serializedVersion: 2
     m_Bits: 4096
---- !u!114 &8048298184542517109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1476689234295742847}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78079ad98c0ba99479f913786fd1d631, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 10
-  rotationSpeed: 200
 --- !u!1 &2130014393561738561
 GameObject:
   m_ObjectHideFlags: 0

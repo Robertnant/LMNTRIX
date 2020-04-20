@@ -10,7 +10,9 @@ public class AvatarSetup : MonoBehaviour
     public GameObject myCharacter;
     public int characterValue;
     public int playerHealth;
+    public int maxHealth = 100;
     public int playerDamage;
+    public HealthBar healthBar;     // New
 
     public Camera myCamera;
     private AudioListener myAL;
@@ -56,24 +58,28 @@ public class AvatarSetup : MonoBehaviour
         
         animator = myCharacter.GetComponent<Animator>();
 
+        // Set canvas as active and get HealthBar
 
-
-            // Removed cause seemed useless
-            /*
-            foreach(Transform t in myCharacter.transform)
+        foreach (GameObject gameObj in gameObject.scene.GetRootGameObjects())
+        {
+            if(gameObj.name == "Canvas")
             {
-                if (t.tag == "AvatarCamera")
-                {
-                    myCamera = t.gameObject.GetComponent<Camera>();
-                    myAL = t.gameObject.GetComponent<AudioListener>();
+                gameObj.SetActive(true);
 
-                    Debug.Log("Found camera");
-                    break;
+                foreach (Transform t in gameObj.transform)
+                {
+                    if(t.tag == "HealthBar")
+                    {
+                        healthBar = t.gameObject.GetComponent<HealthBar>();
+                        healthBar.SetMaxHealth(maxHealth);
+                        break;
+                    }
                 }
-                else
-                    Debug.Log("Did not find Camera");
+
+                break;
             }
-            */
-        
+        }
+
+
     }
 }

@@ -7,7 +7,7 @@ public class MovementAnimation : MonoBehaviour
 
     private Animator animator;
     private Rigidbody rigid;
-    public float groundDistance = 0.3f;
+    public float groundDistance = 0.0f;
     public float JumpForce = 500;
     public LayerMask whatIsGround;
 

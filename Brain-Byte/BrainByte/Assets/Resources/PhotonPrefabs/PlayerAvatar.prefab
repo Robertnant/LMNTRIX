@@ -87,7 +87,9 @@ MonoBehaviour:
   myCharacter: {fileID: 0}
   characterValue: 0
   playerHealth: 100
+  maxHealth: 100
   playerDamage: 25
+  healthBar: {fileID: 0}
   myCamera: {fileID: 0}
   animator: {fileID: 0}
 --- !u!114 &114326672079688568
@@ -119,3 +121,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bf0f9041f70ca94abfcecdda7abf323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rayOrigin: {fileID: 0}

@@ -99,4 +99,11 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
          * 3rd parameter of PhotonNetwork.Instantiate must be a rotation)*/
     }
 
+    public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
+    {
+        base.OnPlayerLeftRoom(otherPlayer);
+        Debug.Log(otherPlayer.NickName + "has left the game");
+        // Check video Info Gamer Part 11 for missing elements
+    }
+
 }

@@ -66,7 +66,7 @@ public class V2PlayerMovement : MonoBehaviour
             // (which is controlled by animator)
 
             // Recent change
-            //transform.position = myCharacterTransform.position;
+            transform.position = myCharacterTransform.position;
         }
     }
 }
