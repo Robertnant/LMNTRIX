@@ -95,6 +95,9 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
         PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PhotonNetworkPlayer"),
             transform.position, Quaternion.identity, 0);
 
+        // Recent change 21/04/20: "PhotonNetwork.Instantiate -> PhotonNetwork.InstantiateSceneObject
+        // Tuto Info Gamer 11
+
         /*Quaternion: is used to represent rotations (it is used because the
          * 3rd parameter of PhotonNetwork.Instantiate must be a rotation)*/
     }

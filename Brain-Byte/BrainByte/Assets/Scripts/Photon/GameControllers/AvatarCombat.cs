@@ -15,7 +15,7 @@ public class AvatarCombat : MonoBehaviour
         PV = GetComponent<PhotonView>();
         avatarSetup = GetComponent<AvatarSetup>();
 
-        rayOrigin = transform;
+        rayOrigin = avatarSetup.myCharacter.transform;
 
     }
 
@@ -43,9 +43,7 @@ public class AvatarCombat : MonoBehaviour
 
         if (Physics.Raycast(rayOrigin.position, rayOrigin.TransformDirection(Vector3.forward), out hit, 1000))
         {
-            Debug.Log("Hit someone");
-            if(hit.transform == null)
-                Debug.Log("Yet hit is still null?");
+            Debug.Log($"Player { PV.ViewID} Hit someone");
             Debug.DrawRay(rayOrigin.position, rayOrigin.TransformDirection(Vector3.forward) * hit.distance, Color.red);
 
             if (hit.transform.tag == "Player")
