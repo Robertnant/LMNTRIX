@@ -77,5 +77,10 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
         //battleButton.SetActive(true);
         
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
    
 }

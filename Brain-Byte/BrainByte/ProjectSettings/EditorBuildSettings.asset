@@ -7,16 +7,19 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 0
     path: 
-    guid: 56e3faabc5bb30f49a68bb8f1292f988
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: 
-    guid: 037d06fbede2b4041a843d9ee6fe750c
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: 
-    guid: 72e5c65a45893714484002914e3fd521
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: 
-    guid: d794a2ef8ba31d847ad3c19d03e2ddb9
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/SplashScreen.unity
+    guid: c813da05ac9f97246b900bf13bf1657e
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: fbb89db9b1cbaed4fb8b7e2b2839b5ca

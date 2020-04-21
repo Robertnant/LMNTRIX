@@ -43,15 +43,24 @@ public class AvatarCombat : MonoBehaviour
 
         if (Physics.Raycast(rayOrigin.position, rayOrigin.TransformDirection(Vector3.forward), out hit, 1000))
         {
-            Debug.Log($"Player { PV.ViewID} Hit someone");
             Debug.DrawRay(rayOrigin.position, rayOrigin.TransformDirection(Vector3.forward) * hit.distance, Color.red);
 
             if (hit.transform.tag == "Player")
             {
+                // Test with new always active function in charge of decreasing player health
+
                 Debug.Log($"Player {PV.ViewID} shot {hit.transform.gameObject.GetComponent<PhotonView>().ViewID}");
-                hit.transform.gameObject.GetComponent<AvatarSetup>().playerHealth -= avatarSetup.playerDamage;
-                hit.transform.gameObject.GetComponent<AvatarSetup>().healthBar.SetHealth(
-                    hit.transform.gameObject.GetComponent<AvatarSetup>().playerHealth);
+                hit.transform.parent.gameObject.GetComponent<HealthController>().WasHit(25);
+                Debug.Log("Changed player's health");
+
+                /*
+                Debug.Log($"Player {PV.ViewID} shot {hit.transform.gameObject.GetComponent<PhotonView>().ViewID}");
+                hit.transform.parent.gameObject.GetComponent<AvatarSetup>().playerHealth -= avatarSetup.playerDamage;
+                Debug.Log("Set new health");
+                hit.transform.parent.gameObject.GetComponent<AvatarSetup>().healthBar.SetHealth(
+                    hit.transform.parent.gameObject.GetComponent<AvatarSetup>().playerHealth);
+                Debug.Log($"Player's health is now: {hit.transform.parent.gameObject.GetComponent<AvatarSetup>().playerHealth}");
+                */
             }
             else
             {

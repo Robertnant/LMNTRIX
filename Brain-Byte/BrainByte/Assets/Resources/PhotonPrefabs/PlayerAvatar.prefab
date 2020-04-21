@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 114041472724925748}
   - component: {fileID: 114326672079688568}
   - component: {fileID: 114954804574709452}
+  - component: {fileID: 4379930401857687193}
   m_Layer: 0
   m_Name: PlayerAvatar
   m_TagString: Player
@@ -122,3 +123,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rayOrigin: {fileID: 0}
+--- !u!114 &4379930401857687193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4559203031356236837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf67eac495aec5f429f6089bf8b71492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: 0

@@ -8,6 +8,7 @@ using Photon.Pun;
 public class GameSetup : MonoBehaviour
 {
     public static GameSetup GS;
+    public int menuScene;
 
     public Transform[] spawnPoints;
 
@@ -28,6 +29,6 @@ public class GameSetup : MonoBehaviour
 
         while (PhotonNetwork.InRoom)
             yield return null;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(menuScene);
     }
 }

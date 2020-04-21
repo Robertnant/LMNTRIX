@@ -546,6 +546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   avatar: {fileID: 0}
+  singlePlayerScene: 
 --- !u!1 &88484378
 GameObject:
   m_ObjectHideFlags: 0
@@ -1044,7 +1045,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1783877272}
-        m_MethodName: OnClick
+        m_MethodName: LoadSinglePlayer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4245,7 +4246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentScene: 0
-  multiplayerScene: 1
+  multiplayerScene: 2
 --- !u!4 &1188501395
 Transform:
   m_ObjectHideFlags: 0
@@ -5379,7 +5380,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1510183393}
-        m_MethodName: OnBattleButtonClicked
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6343,6 +6344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   avatar: {fileID: 0}
+  singlePlayerScene: Singleplayer
 --- !u!1 &1851136670
 GameObject:
   m_ObjectHideFlags: 0

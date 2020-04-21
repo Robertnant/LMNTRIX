@@ -6,11 +6,11 @@ using UnityEngine.SceneManagement;
 public class NextScene : MonoBehaviour
 {
     public GameObject avatar;
-    public void OnClick()
+    public string singlePlayerScene;
+    
+    public void LoadSinglePlayer()
     {
-        SceneManager.LoadScene(2);  //In the future, create variable for nextSceneIndex and use it here
-        /*Instantiate(avatar, avatar.transform.position, avatar.transform.rotation,
-            avatar.transform);*/
+        SceneManager.LoadScene(singlePlayerScene);
     }
 
 }
