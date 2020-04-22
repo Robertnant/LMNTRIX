@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 5036414920683168956}
-  offset: {x: 0, y: 1.5, z: -3}
+  offset: {x: 0, y: 2.5, z: -5}
   smoothSpeed: 0.125
 --- !u!1 &5036414920683141248
 GameObject:
@@ -926,7 +926,7 @@ Transform:
   m_GameObject: {fileID: 5036414920683141276}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1.8}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4541780590173889142}
   - {fileID: 5036414920683168944}
@@ -952,7 +952,7 @@ Animator:
   m_GameObject: {fileID: 5036414920683141276}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: f22d03d31dfe60648b6b07b1e37f79fd, type: 3}
-  m_Controller: {fileID: 9100000, guid: 33a16b81c3bc32d44839ef13ab9fb35e, type: 2}
+  m_Controller: {fileID: 9100000, guid: b6dae3c95542dc14ca7f2b11fa871b67, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
