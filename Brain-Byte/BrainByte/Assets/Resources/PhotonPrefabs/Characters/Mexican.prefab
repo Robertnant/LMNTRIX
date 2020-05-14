@@ -1468,9 +1468,10 @@ GameObject:
   - component: {fileID: 114500334475673828}
   - component: {fileID: 114937246356848714}
   - component: {fileID: 114546325980086882}
+  - component: {fileID: 114725974693781926}
   m_Layer: 0
   m_Name: Mexican
-  m_TagString: Player
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1657,6 +1658,22 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
+--- !u!114 &114725974693781926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631100102223604649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d12243d976ccab444a358c57be4b9c35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: 0
+  maxHealth: 0
+  playerDamage: 0
+  healthBar: {fileID: 0}
 --- !u!1 &631100102223604651
 GameObject:
   m_ObjectHideFlags: 0

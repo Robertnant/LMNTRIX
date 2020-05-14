@@ -12,7 +12,7 @@ public class AvatarSetup : MonoBehaviour
     public int playerHealth;
     public int maxHealth = 100;
     public int playerDamage;
-    public HealthBar healthBar;     // New
+    public HealthBar healthBar;
 
     public Camera myCamera;
     private AudioListener myAL;
@@ -79,6 +79,13 @@ public class AvatarSetup : MonoBehaviour
                 break;
             }
         }
+
+        // Assign health bar and all health info in HeadsUpDisplay script of avatar's character:
+
+        myCharacter.GetComponent<HeadsUpDisplay>().healthBar = healthBar;
+        myCharacter.GetComponent<HeadsUpDisplay>().maxHealth = maxHealth;
+        myCharacter.GetComponent<HeadsUpDisplay>().playerDamage = playerDamage;
+        myCharacter.GetComponent<HeadsUpDisplay>().playerHealth = playerHealth;
 
 
     }

@@ -27,7 +27,7 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
 
     public override void OnConnectedToMaster()
     {
-        Debug.Log("Player has connected to the Photon Master server");
+        Debug.Log("Player has connected to the " + PhotonNetwork.CloudRegion + " server");
         PhotonNetwork.AutomaticallySyncScene = true;
 
         //Recently added lines (below) 26/02/20
@@ -59,7 +59,7 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
     {
         Debug.Log("Trying to create a new Room");
         int randomRoomName = Random.Range(0, 10000);
-        RoomOptions roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = 10 };
+        RoomOptions roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = (byte) MultiplayerSettings.multiplayerSettings.maxPlayers };
         PhotonNetwork.CreateRoom("Room" + randomRoomName, roomOps);
     }
 

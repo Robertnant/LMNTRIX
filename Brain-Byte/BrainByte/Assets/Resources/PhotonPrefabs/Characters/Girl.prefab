@@ -1107,9 +1107,10 @@ GameObject:
   - component: {fileID: 114961479244093038}
   - component: {fileID: 114233608003396870}
   - component: {fileID: 114885620074661452}
+  - component: {fileID: 114321177762293816}
   m_Layer: 0
   m_Name: Girl
-  m_TagString: Player
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1295,6 +1296,22 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
+--- !u!114 &114321177762293816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4915287742733223843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d12243d976ccab444a358c57be4b9c35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: 0
+  maxHealth: 0
+  playerDamage: 0
+  healthBar: {fileID: 0}
 --- !u!1 &4915287742733223845
 GameObject:
   m_ObjectHideFlags: 0

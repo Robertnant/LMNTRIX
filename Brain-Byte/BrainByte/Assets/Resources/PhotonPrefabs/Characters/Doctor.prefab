@@ -910,9 +910,10 @@ GameObject:
   - component: {fileID: 114805702699368308}
   - component: {fileID: 114176789572351302}
   - component: {fileID: 114241878196095094}
+  - component: {fileID: 114742261101061168}
   m_Layer: 0
   m_Name: Doctor
-  m_TagString: Player
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1099,6 +1100,22 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
+--- !u!114 &114742261101061168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5036414920683141276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d12243d976ccab444a358c57be4b9c35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: 0
+  maxHealth: 0
+  playerDamage: 0
+  healthBar: {fileID: 0}
 --- !u!1 &5036414920683141278
 GameObject:
   m_ObjectHideFlags: 0

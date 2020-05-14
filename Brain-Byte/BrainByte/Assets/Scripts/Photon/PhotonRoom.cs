@@ -11,12 +11,22 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
     public static PhotonRoom room;
     private PhotonView PV;
 
-    //public bool isGameLoaded; //For delay start mechanics
+    public bool isGameLoaded; //For delay start mechanics
     public int currentScene;
-    public int multiplayerScene;
 
-    //Player attributes
-    Player[] photonPlayers;
+    //Player attributes: recently changed 07/05/20
+    private Photon.Realtime.Player[] photonPlayers;
+    public int playersInRoom;
+    public int myNumberInRoom;
+    public int playerInGame;
+
+    // Deals with time before start of game
+    private bool readyToCount;
+    private bool readyToStart;
+    public float startingTime;
+    private float lessThanMaxPlayers;
+    private float atMaxPlayers;
+    private float timeToStart;
 
     private void Awake()
     {
@@ -40,14 +50,45 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
     void Start()
     {
         PV = GetComponent<PhotonView>();
-        //Can also be put directly in Awake() function at very end
+        readyToCount = false;
+        readyToStart = false;
+        lessThanMaxPlayers = startingTime;
+        atMaxPlayers = 6;
+        timeToStart = startingTime;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        if (MultiplayerSettings.multiplayerSettings.delayStart)
+        {
+            if(playersInRoom == 1)
+            {
+                RestartTimer();
+            }
+            if (!isGameLoaded)
+            {
+                if (readyToStart)
+                {
+                    atMaxPlayers -= Time.deltaTime;
+                    lessThanMaxPlayers = atMaxPlayers;
+                    timeToStart = atMaxPlayers;
+                }
+                else if (readyToCount)
+                {
+                    lessThanMaxPlayers -= Time.deltaTime;
+                    timeToStart = lessThanMaxPlayers;
+                }
 
+                Debug.Log("Display time to start to the players " + timeToStart);
+
+                if (timeToStart <= 0)
+                {
+                    StartGame();
+                }
+            }
+        }
     }
+
     public override void OnEnable()
     {
         base.OnEnable();
@@ -69,37 +110,139 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
         base.OnJoinedRoom();
         Debug.Log("We are now in a room");
 
-        StartGame();
+        // New: 07/05/20
+
+        photonPlayers = PhotonNetwork.PlayerList;
+        playersInRoom = photonPlayers.Length;
+        myNumberInRoom = playersInRoom;
+        PhotonNetwork.NickName = myNumberInRoom.ToString();
+
+        if (MultiplayerSettings.multiplayerSettings.delayStart)
+        {
+            Debug.Log("Max in-room players exceeded (" + playersInRoom + ":" + MultiplayerSettings.multiplayerSettings.maxPlayers + ")");
+
+            if (playersInRoom > 1)
+            {
+                readyToCount = true;
+            }
+            if (playersInRoom == MultiplayerSettings.multiplayerSettings.maxPlayers)
+            {
+                readyToStart = true;
+                
+                if (!PhotonNetwork.IsMasterClient)
+                    return;
+                PhotonNetwork.CurrentRoom.IsOpen = false;
+            }
+        }
+        else
+            StartGame();
+
+         // End of New
+
+    }
+
+    public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
+    {
+        base.OnPlayerEnteredRoom(newPlayer);
+        Debug.Log("A new player has joined the room");
+        photonPlayers = PhotonNetwork.PlayerList;
+        playersInRoom++;
+
+        if (MultiplayerSettings.multiplayerSettings.delayStart)
+        {
+            Debug.Log("Max in-room players exceeded (" + playersInRoom + ":" + MultiplayerSettings.multiplayerSettings.maxPlayers + ")");
+
+            if (playersInRoom > 1)
+            {
+                readyToCount = true;
+            }
+            if (playersInRoom == MultiplayerSettings.multiplayerSettings.maxPlayers)
+            {
+                readyToStart = true;
+                if (!PhotonNetwork.IsMasterClient)
+                    return;
+                PhotonNetwork.CurrentRoom.IsOpen = false;
+            }
+        }
     }
 
     void StartGame()
     {
+        isGameLoaded = true;
+
         if (!PhotonNetwork.IsMasterClient)
             return;
 
+        if (MultiplayerSettings.multiplayerSettings.delayStart)
+        {
+            PhotonNetwork.CurrentRoom.IsOpen = false;
+        }
+        PhotonNetwork.LoadLevel(MultiplayerSettings.multiplayerSettings.multiPlayerScene);
+
         Debug.Log("Starting game (Loading level)");
-        PhotonNetwork.LoadLevel(multiplayerScene);
+    }
+
+    void RestartTimer()
+    {
+        lessThanMaxPlayers = startingTime;
+        timeToStart = startingTime;
+        atMaxPlayers = 6;
+        readyToCount = false;
+        readyToStart = false;
     }
 
     void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
     {
         currentScene = scene.buildIndex;   //index of scene in Build settings
 
-        if(currentScene == multiplayerScene)
-            CreatePlayer();
+        if(currentScene == MultiplayerSettings.multiplayerSettings.multiPlayerScene)
+        {
+            isGameLoaded = true;
+
+            if (MultiplayerSettings.multiplayerSettings.delayStart)
+            {
+                PV.RPC("RPC_LoadedGameScene", RpcTarget.MasterClient);
+            }
+            else
+            {
+                RPC_CreatePlayer();
+                /* this stopped working when PhotonNetwork.Instantiate in RPC_CreatePlayer() was
+                 * replaced by PhotonNetwork.InstantiateSceneObject. Might need to call the rpc 
+                 * on all targets like in the RPC_LoadedGameScene() method.
+                 */
+            }
+        }
     }
 
-    private void CreatePlayer()
+    [PunRPC]
+    private void RPC_CreatePlayer()
     {
         //creates player network controller and not player character
+        /*PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PhotonNetworkPlayer"),
+            transform.position, Quaternion.identity, 0);*/
+        
         PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PhotonNetworkPlayer"),
             transform.position, Quaternion.identity, 0);
+        
+        // Uncomment previous line to try to fix null reference exception bug
 
         // Recent change 21/04/20: "PhotonNetwork.Instantiate -> PhotonNetwork.InstantiateSceneObject
         // Tuto Info Gamer 11
 
         /*Quaternion: is used to represent rotations (it is used because the
          * 3rd parameter of PhotonNetwork.Instantiate must be a rotation)*/
+    }
+
+    [PunRPC]
+
+    private void RPC_LoadedGameScene()
+    {
+        playerInGame++;
+
+        if (playerInGame == PhotonNetwork.PlayerList.Length)
+        {
+            PV.RPC("RPC_CreatePlayer", RpcTarget.All);
+        }
     }
 
     public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
