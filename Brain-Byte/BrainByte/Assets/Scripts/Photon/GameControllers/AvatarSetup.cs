@@ -58,6 +58,7 @@ public class AvatarSetup : MonoBehaviour
         
         animator = myCharacter.GetComponent<Animator>();
 
+        /*
         // Set canvas as active and get HealthBar
 
         foreach (GameObject gameObj in gameObject.scene.GetRootGameObjects())
@@ -78,15 +79,56 @@ public class AvatarSetup : MonoBehaviour
 
                 break;
             }
+            
         }
 
         // Assign health bar and all health info in HeadsUpDisplay script of avatar's character:
 
-        myCharacter.GetComponent<HeadsUpDisplay>().healthBar = healthBar;
+        myCharacter.GetComponent<HeadsUpDisplay>().healthBar = healthBar;*/     // old way of getting health bar before assigning a canvas to each player
         myCharacter.GetComponent<HeadsUpDisplay>().maxHealth = maxHealth;
         myCharacter.GetComponent<HeadsUpDisplay>().playerDamage = playerDamage;
         myCharacter.GetComponent<HeadsUpDisplay>().playerHealth = playerHealth;
 
+        // check if HeadsUpDisplay values were set
+        if (myCharacter.GetComponent<HeadsUpDisplay>().maxHealth == maxHealth && 
+            myCharacter.GetComponent<HeadsUpDisplay>().playerDamage == playerDamage &&
+            myCharacter.GetComponent<HeadsUpDisplay>().playerHealth == playerHealth)
+        {
+            myCharacter.GetComponent<HeadsUpDisplay>().valsSet = true;
+        }
 
+    }
+
+    void Update()
+    {
+        // if HeadsUpDisplay values were not set
+        if (!myCharacter.GetComponent<HeadsUpDisplay>().valsSet)
+        {
+            Debug.Log("Trying to set HeadsUpDisplay values again");
+            myCharacter.GetComponent<HeadsUpDisplay>().maxHealth = maxHealth;
+            myCharacter.GetComponent<HeadsUpDisplay>().playerDamage = playerDamage;
+            myCharacter.GetComponent<HeadsUpDisplay>().playerHealth = playerHealth;
+            
+            myCharacter.GetComponent<HeadsUpDisplay>().valsSet = true;
+        }
+
+        /*if (myCharacter.GetComponent<HeadsUpDisplay>().maxHealth != maxHealth)
+        {
+            Debug.Log("Trying to set player max health");
+            myCharacter.GetComponent<HeadsUpDisplay>().maxHealth = maxHealth;
+        }
+
+        if (myCharacter.GetComponent<HeadsUpDisplay>().playerDamage != playerDamage)
+        {
+            Debug.Log("Trying to set player damage");
+            myCharacter.GetComponent<HeadsUpDisplay>().playerDamage = playerDamage;
+        }
+
+        if (myCharacter.GetComponent<HeadsUpDisplay>().playerHealth != playerHealth)
+        {
+            Debug.Log("Trying to set player health");
+            myCharacter.GetComponent<HeadsUpDisplay>().playerHealth = playerHealth;
+        }
+        */
     }
 }

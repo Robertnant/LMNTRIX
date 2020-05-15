@@ -8,6 +8,7 @@ public class HeadsUpDisplay : MonoBehaviour
     public int maxHealth;
     public int playerDamage;
     public HealthBar healthBar;
+    public bool valsSet = false;
 
     // Start is called before the first frame update
     void Start()
