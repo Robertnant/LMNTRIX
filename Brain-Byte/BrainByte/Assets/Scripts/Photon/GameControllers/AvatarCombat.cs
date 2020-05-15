@@ -59,10 +59,12 @@ public class AvatarCombat : MonoBehaviour
 
                 if (enemyHUD != null)
                 {
-                    enemyHUD.playerHealth -= avatarSetup.playerDamage;
+                    /*enemyHUD.shot = true;
+                    enemyHUD.playerHealth -= avatarSetup.playerDamage;*/
+                    enemyHUD.WasHit();
                     Debug.Log("Set new health");
-                    enemyHUD.healthBar.SetHealth(enemyHUD.playerHealth);
-                    Debug.Log($"Player's health is now: {enemyHUD.playerHealth}");
+                    //enemyHUD.healthBar.SetHealth(enemyHUD.playerHealth);
+                    Debug.Log($"Enemy's local health is now: {enemyHUD.playerHealth}");
                 }
                 else
                 {

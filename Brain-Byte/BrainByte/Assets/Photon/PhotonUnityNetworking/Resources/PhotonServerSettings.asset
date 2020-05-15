@@ -38,5 +38,7 @@ MonoBehaviour:
   - RPC_Shooting
   - RPC_CreatePlayer
   - RPC_LoadedGameScene
+  - TakeDamage
+  - SetRemoteVals
   DisableAutoOpenWizard: 1
   ShowSettings: 1
