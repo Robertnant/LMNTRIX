@@ -915,6 +915,7 @@ MonoBehaviour:
   maxHealth: 0
   playerDamage: 0
   healthBar: {fileID: 642524512475541226}
+  valsSet: 0
 --- !u!1 &5088223265345895951
 GameObject:
   m_ObjectHideFlags: 0

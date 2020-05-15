@@ -1261,6 +1261,7 @@ MonoBehaviour:
   maxHealth: 0
   playerDamage: 0
   healthBar: {fileID: 4659576202093465547}
+  valsSet: 0
 --- !u!1 &5036414920683141278
 GameObject:
   m_ObjectHideFlags: 0
