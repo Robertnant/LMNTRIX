@@ -66,6 +66,7 @@ public class HeadsUpDisplay : MonoBehaviourPunCallbacks, IPunObservable
         else
             animator.SetTrigger("Dead2");
 
+        dead = true;                // can be useful when checking if player is dead by other components
         movement.enabled = false;
         combat.enabled = false;
 
@@ -77,13 +78,11 @@ public class HeadsUpDisplay : MonoBehaviourPunCallbacks, IPunObservable
         if (stream.IsWriting)
         {
             stream.SendNext(playerHealth);
-            stream.SendNext(dead);
             Debug.Log("I am the local client: " + GetComponent<PhotonView>().ViewID);
         }
         else
         {
             playerHealth = (int)stream.ReceiveNext();
-            dead = (bool)stream.ReceiveNext();
             Debug.Log("I am the remote client: " + GetComponent<PhotonView>().ViewID);
         }
     }
