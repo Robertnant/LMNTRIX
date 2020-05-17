@@ -9,10 +9,15 @@
     public float groundDistance = 0.3f;
     public float JumpForce = 500;
     public LayerMask whatIsGround;
+    public float jumpRate = 1.25f;
+    private float nextJumpTime = 0;
 
     public Transform attackPoint;
     public float attackRange = 0.6f;
     public LayerMask enemyLayers;
+
+    public float attackRate = 1.25f;
+    private float nextAttackTime = 0;
 
     // Use this for initialization
     void Start()
@@ -27,26 +32,36 @@
         animator.SetFloat("Speed", Input.GetAxis("Horizontal"));
         animator.SetFloat("TurningSpeed", Input.GetAxis("Vertical"));
 
-        if (Input.GetButtonDown("Jump"))
+        if (Time.time >= nextJumpTime)
         {
-            rigid.AddForce(Vector3.up * JumpForce);
-            animator.SetTrigger("Jump");
+            if (Input.GetButtonDown("Jump"))
+            {
+                rigid.AddForce(Vector3.up * JumpForce);
+                animator.SetTrigger("Jump");
+                nextJumpTime = Time.time + 1f / jumpRate;
+            }
+            if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, groundDistance, whatIsGround))
+            {
+                animator.SetBool("Grounded", false);
+                animator.applyRootMotion = true;
+            }
+            else
+            {
+                animator.SetBool("Grounded", true);
+            }
         }
-        if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, groundDistance, whatIsGround))
-        {
-            animator.SetBool("Grounded", false);
-            animator.applyRootMotion = true;
-        }
-        else
-        {
-            animator.SetBool("Grounded", true);
-        }
+            
 
         // temporary till creation of single player combat script
-        if (Input.GetMouseButtonDown(1))
+        if (Time.time >= nextAttackTime)
         {
-            Attack();
+            if (Input.GetMouseButtonDown(1))
+            {
+                Attack();
+                nextAttackTime = Time.time + 1f / attackRate;
+            }
         }
+
     }
 
     void Attack()

@@ -15,6 +15,8 @@ public class V2PlayerMovement : MonoBehaviour
     public float groundDistance = 0.3f;
     public float JumpForce = 500;
     public LayerMask whatIsGround;
+    public float jumpRate = 1.25f;
+    private float nextJumpTime = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -46,22 +48,25 @@ public class V2PlayerMovement : MonoBehaviour
             animator.SetFloat("Speed", Input.GetAxis("Horizontal"));
             animator.SetFloat("TurningSpeed", Input.GetAxis("Vertical"));
 
-            if (Input.GetButtonDown("Jump"))
+            if (Time.time >= nextJumpTime)
             {
-                rigid.AddForce(Vector3.up * JumpForce);
-                animator.SetTrigger("Jump");
-                Debug.Log($"Player {GetComponent<AvatarSetup>().myCharacter.name} jumped");
+                if (Input.GetButtonDown("Jump"))
+                {
+                    rigid.AddForce(Vector3.up * JumpForce);
+                    animator.SetTrigger("Jump");
+                    nextJumpTime = Time.time + 1f / jumpRate;
+                    Debug.Log($"Player {GetComponent<AvatarSetup>().myCharacter.name} jumped");
+                }
+                if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, groundDistance, whatIsGround))
+                {
+                    animator.SetBool("Grounded", false);
+                    animator.applyRootMotion = true;
+                }
+                else
+                {
+                    animator.SetBool("Grounded", true);
+                }
             }
-            if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, groundDistance, whatIsGround))
-            {
-                animator.SetBool("Grounded", false);
-                animator.applyRootMotion = true;
-            }
-            else
-            {
-                animator.SetBool("Grounded", true);
-            }
-
             // Continuously set avatar's transform to the one of character
             // (which is controlled by animator)
 

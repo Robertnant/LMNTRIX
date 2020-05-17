@@ -13,6 +13,8 @@ public class AvatarCombat : MonoBehaviour
     // for attack
     public Transform attackPoint;
     public float attackRange = 0.6f;
+    public float attackRate = 1.25f;
+    private float nextAttackTime = 0;
     public LayerMask enemyLayers;
 
     void Start()
@@ -43,14 +45,21 @@ public class AvatarCombat : MonoBehaviour
         if (animator == null)
             animator = avatarSetup.animator;
 
-        if (Input.GetMouseButtonDown(0))
+        if (Time.time >= nextAttackTime)
         {
-            PV.RPC("RPC_Shooting", RpcTarget.All);
+            if (Input.GetMouseButtonDown(0))
+            {
+                PV.RPC("RPC_Shooting", RpcTarget.All);
+                nextAttackTime = Time.time + 1f / attackRate;
+            }
+            if (Input.GetMouseButtonDown(1))
+            {
+                PV.RPC("RPC_Hit", RpcTarget.All);
+                nextAttackTime = Time.time + 1f / attackRate;
+            }
+            
         }
-        if (Input.GetMouseButtonDown(1))
-        {
-            PV.RPC("RPC_Hit", RpcTarget.All);
-        }
+        
     }
 
     [PunRPC]
