@@ -10,6 +10,10 @@
     public float JumpForce = 500;
     public LayerMask whatIsGround;
 
+    public Transform attackPoint;
+    public float attackRange = 0.6f;
+    public LayerMask enemyLayers;
+
     // Use this for initialization
     void Start()
     {
@@ -38,5 +42,34 @@
             animator.SetBool("Grounded", true);
         }
 
+        // temporary till creation of single player combat script
+        if (Input.GetMouseButtonDown(1))
+        {
+            Attack();
+        }
+    }
+
+    void Attack()
+    {
+        // Play attack animation
+        animator.SetTrigger("Punch");
+
+        // Detect enemy
+        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
+
+        // Damage enemy
+        foreach(Collider enemy in hitEnemies)
+        {
+            Debug.Log("We hit " + enemy.name);
+        }
+
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+            return;
+
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 }

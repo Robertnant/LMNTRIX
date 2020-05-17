@@ -9,6 +9,7 @@ TagManager:
   - Bullet
   - HealthBar
   - Character
+  - AttackPoint
   layers:
   - Default
   - TransparentFX
@@ -23,8 +24,8 @@ TagManager:
   - FirstPersonWeapon
   - Maze
   - Ground
-  - 
-  - 
+  - Enemy
+  - Player
   - 
   - 
   - 

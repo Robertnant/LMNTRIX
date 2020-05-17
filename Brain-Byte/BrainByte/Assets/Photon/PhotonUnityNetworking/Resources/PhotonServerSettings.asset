@@ -40,5 +40,6 @@ MonoBehaviour:
   - RPC_LoadedGameScene
   - TakeDamage
   - SetRemoteVals
+  - RPC_Hit
   DisableAutoOpenWizard: 1
   ShowSettings: 1
