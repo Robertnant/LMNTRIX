@@ -2860,7 +2860,7 @@ GameObject:
   - component: {fileID: 8048298184542517109}
   m_Layer: 0
   m_Name: SinglePlayerAvatar
-  m_TagString: Player
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2996,6 +2996,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 4096
+  jumpRate: 1.25
   attackPoint: {fileID: 643546314}
   attackRange: 0.6
   enemyLayers:

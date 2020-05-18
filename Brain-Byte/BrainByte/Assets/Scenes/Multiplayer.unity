@@ -2978,7 +2978,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 582318589}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 262, y: 0, z: 239}
+  m_LocalPosition: {x: 260, y: 0, z: 243}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6148,6 +6148,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 100000, guid: 14baebc5887629b44bc2befdb1a4815b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 14baebc5887629b44bc2befdb1a4815b, type: 3}
       propertyPath: m_Name
       value: MAZE2
@@ -6837,7 +6841,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1407643149}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 195.87643, y: 0, z: 185.56111}
+  m_LocalPosition: {x: 236.0494, y: 0, z: 183.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -8104,37 +8108,37 @@ PrefabInstance:
     - target: {fileID: 838201530585316838, guid: d878f9b20e5edad48bf54b1874d6541b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 236.0494
+      value: 239.9
       objectReference: {fileID: 0}
     - target: {fileID: 838201530585316838, guid: d878f9b20e5edad48bf54b1874d6541b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.11
+      value: 0.66177976
       objectReference: {fileID: 0}
     - target: {fileID: 838201530585316838, guid: d878f9b20e5edad48bf54b1874d6541b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 166.72
+      value: 130.9
       objectReference: {fileID: 0}
     - target: {fileID: 838201530585316838, guid: d878f9b20e5edad48bf54b1874d6541b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.011891422
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 838201530585316838, guid: d878f9b20e5edad48bf54b1874d6541b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.9799864
+      value: -0.7833199
       objectReference: {fileID: 0}
     - target: {fileID: 838201530585316838, guid: d878f9b20e5edad48bf54b1874d6541b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.12300384
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 838201530585316838, guid: d878f9b20e5edad48bf54b1874d6541b,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.15606229
+      value: -0.62161887
       objectReference: {fileID: 0}
     - target: {fileID: 838201530585316838, guid: d878f9b20e5edad48bf54b1874d6541b,
         type: 3}
@@ -8160,11 +8164,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 1124916419267557228, guid: d878f9b20e5edad48bf54b1874d6541b,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 122
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d878f9b20e5edad48bf54b1874d6541b, type: 3}
@@ -8282,7 +8281,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1758796463}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 236.0494, y: 0, z: 178.4933}
+  m_LocalPosition: {x: 195.87643, y: 0, z: 190.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

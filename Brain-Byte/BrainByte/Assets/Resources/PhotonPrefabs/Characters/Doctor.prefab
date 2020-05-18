@@ -1294,7 +1294,7 @@ MonoBehaviour:
   playerDamage: 0
   healthBar: {fileID: 3591188158489055520}
   valsSet: 0
-  dead: 0
+  isDead: 0
 --- !u!1 &5036414920683141278
 GameObject:
   m_ObjectHideFlags: 0

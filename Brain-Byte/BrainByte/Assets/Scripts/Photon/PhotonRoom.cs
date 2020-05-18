@@ -13,6 +13,7 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
 
     public bool isGameLoaded; //For delay start mechanics
     public int currentScene;
+    private LevelLoader levelLoader;
 
     //Player attributes: recently changed 07/05/20
     private Photon.Realtime.Player[] photonPlayers;
@@ -50,6 +51,7 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
     void Start()
     {
         PV = GetComponent<PhotonView>();
+        levelLoader = GetComponent<LevelLoader>();
         readyToCount = false;
         readyToStart = false;
         lessThanMaxPlayers = startingTime;
@@ -177,7 +179,9 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
         {
             PhotonNetwork.CurrentRoom.IsOpen = false;
         }
-        PhotonNetwork.LoadLevel(MultiplayerSettings.multiplayerSettings.multiPlayerScene);
+        //PhotonNetwork.LoadLevel(MultiplayerSettings.multiplayerSettings.multiPlayerScene);
+        levelLoader.isMultiplayer = true;
+        levelLoader.LoadLevel(MultiplayerSettings.multiplayerSettings.multiPlayerScene);
 
         Debug.Log("Starting game (Loading level)");
     }

@@ -13,24 +13,13 @@ public class EnemyFollow : MonoBehaviour
 
     void Start()
     {
-        trackableObjs = GameObject.FindGameObjectsWithTag("Player");
-
-        if (trackableObjs.Length != 0)
-        {
-            objToFollow = trackableObjs[0];
-        }
-
-        // New
         animator = GetComponent<Animator>();
     }
     // Update is called once per frame
     void Update()
     {
-        if (objToFollow == null)
-        {
-            trackableObjs = GameObject.FindGameObjectsWithTag("Player");
-            objToFollow = trackableObjs[0];
-        }
+        trackableObjs = GameObject.FindGameObjectsWithTag("Character");
+        objToFollow = FindClosestEnemy(trackableObjs);
 
         Vector3 objPos = objToFollow.GetComponent<Transform>().position;
 
@@ -53,5 +42,27 @@ public class EnemyFollow : MonoBehaviour
             // Do something
         }
         */
+    }
+    private GameObject FindClosestEnemy(GameObject[] playersList)
+    {
+        GameObject minDistPlayer = null;
+
+        foreach (GameObject player in playersList)
+        {
+            if (minDistPlayer == null && !player.GetComponent<HeadsUpDisplay>().isDead)
+                minDistPlayer = player;
+            else
+            {
+                float curDist = Vector3.Distance(transform.position, player.transform.position);
+
+                if (!player.GetComponent<HeadsUpDisplay>().isDead)
+                {
+                    if (curDist < Vector3.Distance(transform.position, minDistPlayer.transform.position))
+                        minDistPlayer = player;
+                }
+            }
+        }
+
+        return minDistPlayer;
     }
 }

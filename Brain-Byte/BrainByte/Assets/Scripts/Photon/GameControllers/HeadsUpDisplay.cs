@@ -16,7 +16,7 @@ public class HeadsUpDisplay : MonoBehaviourPunCallbacks, IPunObservable
     private V2PlayerMovement movement;
     private AvatarCombat combat;
     public bool valsSet = false;
-    public bool dead = false;
+    public bool isDead = false;
 
     void Start()
     {
@@ -66,7 +66,7 @@ public class HeadsUpDisplay : MonoBehaviourPunCallbacks, IPunObservable
         else
             animator.SetTrigger("Dead2");
 
-        dead = true;                // can be useful when checking if player is dead by other components
+        isDead = true;                // can be useful when checking if player is dead by other components
         movement.enabled = false;
         combat.enabled = false;
 
