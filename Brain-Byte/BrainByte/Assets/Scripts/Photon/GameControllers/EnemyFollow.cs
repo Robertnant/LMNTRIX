@@ -10,6 +10,7 @@ public class EnemyFollow : MonoBehaviour
     public static GameObject objToFollow;
     private Animator animator;
     public double minDist = 0.2;
+    public bool isMultiplayer = true;
 
     void Start()
     {
@@ -45,24 +46,30 @@ public class EnemyFollow : MonoBehaviour
     }
     private GameObject FindClosestEnemy(GameObject[] playersList)
     {
-        GameObject minDistPlayer = null;
-
-        foreach (GameObject player in playersList)
+        if (isMultiplayer)
         {
-            if (minDistPlayer == null && !player.GetComponent<HeadsUpDisplay>().isDead)
-                minDistPlayer = player;
-            else
-            {
-                float curDist = Vector3.Distance(transform.position, player.transform.position);
+            GameObject minDistPlayer = null;
 
-                if (!player.GetComponent<HeadsUpDisplay>().isDead)
+            foreach (GameObject player in playersList)
+            {
+                if (minDistPlayer == null && !player.GetComponent<HeadsUpDisplay>().isDead)
+                    minDistPlayer = player;
+                else
                 {
-                    if (curDist < Vector3.Distance(transform.position, minDistPlayer.transform.position))
-                        minDistPlayer = player;
+                    float curDist = Vector3.Distance(transform.position, player.transform.position);
+
+                    if (!player.GetComponent<HeadsUpDisplay>().isDead)
+                    {
+                        if (curDist < Vector3.Distance(transform.position, minDistPlayer.transform.position))
+                            minDistPlayer = player;
+                    }
                 }
             }
+
+            return minDistPlayer;
         }
 
-        return minDistPlayer;
+        // Else
+        return playersList[0];
     }
 }

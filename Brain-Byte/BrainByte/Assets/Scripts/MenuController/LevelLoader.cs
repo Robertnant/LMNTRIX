@@ -18,14 +18,13 @@ public class LevelLoader : MonoBehaviour
         {
             PhotonNetwork.LoadLevel(MultiplayerSettings.multiplayerSettings.multiPlayerScene);
 
-            while (PhotonNetwork.LevelLoadingProgress != 100)
+            while (PhotonNetwork.LevelLoadingProgress != 1)
             {
-                Debug.Log($"Loading scene: {PhotonNetwork.LevelLoadingProgress * 100}%");
+                float progress = Mathf.Clamp01(PhotonNetwork.LevelLoadingProgress / .9f);
+                Debug.Log($"Loading Multiplayer scene: {(int) (progress * 100)}%");
 
                 yield return null;
             }
-
-            Debug.Log($"Loading scene: 100%");
         }
         else
         {
@@ -33,7 +32,8 @@ public class LevelLoader : MonoBehaviour
 
             while (!operation.isDone)
             {
-                Debug.Log($"Loading scene: {operation.progress * 100}%");
+                float progress = Mathf.Clamp01(operation.progress / .9f);
+                Debug.Log($"Loading Singleplayer scene: {(int) (progress * 100)}%");
 
                 yield return null;
             }

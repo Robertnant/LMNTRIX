@@ -11329,6 +11329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 705235309}
   minDist: 0.2
+  isMultiplayer: 1
 --- !u!195 &705235309
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -12930,6 +12931,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 780155344}
   minDist: 0.2
+  isMultiplayer: 1
 --- !u!114 &780155343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14246,6 +14248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 850401427}
   minDist: 0.2
+  isMultiplayer: 1
 --- !u!114 &850401426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18707,6 +18710,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 1143265017}
   minDist: 0.2
+  isMultiplayer: 1
 --- !u!114 &1143265016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20558,6 +20562,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 1065773950631588208, guid: d878f9b20e5edad48bf54b1874d6541b,
+        type: 3}
+      propertyPath: isMultiplayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d878f9b20e5edad48bf54b1874d6541b, type: 3}
 --- !u!1 &1271470517
@@ -21925,6 +21934,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 1357598685}
   minDist: 0.2
+  isMultiplayer: 1
 --- !u!114 &1357598684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23145,6 +23155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 1449016272}
   minDist: 0.2
+  isMultiplayer: 1
 --- !u!114 &1449016271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25436,6 +25447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 1596802576}
   minDist: 0.2
+  isMultiplayer: 1
 --- !u!114 &1596802575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28600,6 +28612,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 1794391713}
   minDist: 0.2
+  isMultiplayer: 1
 --- !u!114 &1794391712
 MonoBehaviour:
   m_ObjectHideFlags: 0
