@@ -16,7 +16,12 @@ public class AvatarCombat : MonoBehaviour
     public float attackRate = 1.25f;
     private float nextAttackTime = 0;
     public LayerMask enemyLayers;
-    public string attackMode = "Punch";     // default
+    
+    // for attack modes
+    public float attackSelectionRate = 2f;
+    private float nextSelectionTime = 0;
+    public string[] attackModes;
+    public int attackMode;
 
     void Start()
     {
@@ -25,6 +30,10 @@ public class AvatarCombat : MonoBehaviour
 
         rayOrigin = avatarSetup.myCharacter.transform;
         animator = avatarSetup.animator;
+
+        // Set up attack mode
+        attackModes = new string[] { "Punch", "Pistol", "Semi-auto", "Knife"};
+        attackMode = 0;     // default
 
         // Get attack point
         foreach (Transform t in avatarSetup.myCharacter.transform)
@@ -47,7 +56,10 @@ public class AvatarCombat : MonoBehaviour
             animator = avatarSetup.animator;
 
         // Change weapon or attack mode
-        PV.RPC("RPC_Shooting", RpcTarget.All);
+        if (Time.time >= nextSelectionTime)
+        {
+            PV.RPC("RPC_ChangeAttackMode", RpcTarget.All);
+        }
 
         if (Time.time >= nextAttackTime)
         {
@@ -70,18 +82,32 @@ public class AvatarCombat : MonoBehaviour
     void RPC_ChangeAttackMode()
     {
         // with num keys
-        if(Input.anyKeyDown)
+        if (Input.anyKeyDown)
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 1; i <= attackModes.Length; i++)
             {
                 if (Input.inputString == i.ToString())
                 {
-                    Debug.Log("Selected attack mode/weapon " + i);
+                    attackMode = i - 1;
+                    nextSelectionTime = Time.time + 1f / attackSelectionRate;
+                    Debug.Log("Selected attack mode/weapon: " + attackModes[attackMode]);
                 }
             }
         }
 
-        // with mouse 
+        // with mouse scroll wheel
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f) // up
+        {
+            attackMode = attackMode + 1 < attackModes.Length ? attackMode + 1 : 0;
+            nextSelectionTime = Time.time + 1f / attackSelectionRate;
+            Debug.Log("Selected attack mode/weapon: " + attackModes[attackMode]);
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0f) // down
+        {
+            attackMode = attackMode - 1 >= 0 ? attackMode - 1 : attackModes.Length - 1;
+            nextSelectionTime = Time.time + 1f / attackSelectionRate;
+            Debug.Log("Selected attack mode/weapon: " + attackModes[attackMode]);
+        }
 
 
     }

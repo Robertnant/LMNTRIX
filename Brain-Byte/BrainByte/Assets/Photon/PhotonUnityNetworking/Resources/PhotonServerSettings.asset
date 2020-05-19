@@ -41,5 +41,6 @@ MonoBehaviour:
   - TakeDamage
   - SetRemoteVals
   - RPC_Hit
+  - RPC_ChangeAttackMode
   DisableAutoOpenWizard: 1
   ShowSettings: 1
