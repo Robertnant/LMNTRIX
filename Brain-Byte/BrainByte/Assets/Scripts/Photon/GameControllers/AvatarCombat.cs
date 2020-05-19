@@ -16,6 +16,7 @@ public class AvatarCombat : MonoBehaviour
     public float attackRate = 1.25f;
     private float nextAttackTime = 0;
     public LayerMask enemyLayers;
+    public string attackMode = "Punch";     // default
 
     void Start()
     {
@@ -45,6 +46,9 @@ public class AvatarCombat : MonoBehaviour
         if (animator == null)
             animator = avatarSetup.animator;
 
+        // Change weapon or attack mode
+        PV.RPC("RPC_Shooting", RpcTarget.All);
+
         if (Time.time >= nextAttackTime)
         {
             if (Input.GetMouseButtonDown(0))
@@ -63,10 +67,30 @@ public class AvatarCombat : MonoBehaviour
     }
 
     [PunRPC]
+    void RPC_ChangeAttackMode()
+    {
+        // with num keys
+        if(Input.anyKeyDown)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                if (Input.inputString == i.ToString())
+                {
+                    Debug.Log("Selected attack mode/weapon " + i);
+                }
+            }
+        }
+
+        // with mouse 
+
+
+    }
+
+    [PunRPC]
     void RPC_Hit()
     {
         // Play attack animation
-        animator.SetTrigger("Punch");
+        animator.SetTrigger(attackMode);
 
         // Detect enemy
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
