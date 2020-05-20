@@ -25618,17 +25618,32 @@ PrefabInstance:
     - target: {fileID: 8048298184542517109, guid: ffa092cbcd6d5bd4082f5fdbbdf2e9ce,
         type: 3}
       propertyPath: mouseSensitivityX
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8048298184542517109, guid: ffa092cbcd6d5bd4082f5fdbbdf2e9ce,
         type: 3}
       propertyPath: mouseSensitivityY
-      value: 0.15
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8048298184542517109, guid: ffa092cbcd6d5bd4082f5fdbbdf2e9ce,
         type: 3}
       propertyPath: maxTopRotation
       value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048298184542517109, guid: ffa092cbcd6d5bd4082f5fdbbdf2e9ce,
+        type: 3}
+      propertyPath: defaultMouseSensitivity
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048298184542517109, guid: ffa092cbcd6d5bd4082f5fdbbdf2e9ce,
+        type: 3}
+      propertyPath: clamp
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048298184542517109, guid: ffa092cbcd6d5bd4082f5fdbbdf2e9ce,
+        type: 3}
+      propertyPath: minBottomRotation
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffa092cbcd6d5bd4082f5fdbbdf2e9ce, type: 3}

@@ -105,6 +105,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af4ed913e7341a4dbb565e175cd2d1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultMouseSensitivity: 50
+  mouseSensitivityX: 50
+  mouseSensitivityY: 1.5
+  clamp: 0.01
+  playerCamera: {fileID: 0}
+  maxTopRotation: -20
+  minBottomRotation: 10
   groundDistance: 0
   JumpForce: 500
   whatIsGround:
@@ -131,6 +138,9 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 24576
+  attackSelectionRate: 2
+  attackModes: []
+  attackMode: 0
 --- !u!114 &4379930401857687193
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -53,6 +53,7 @@ public class AvatarSetup : MonoBehaviour
             if (t.tag == "AvatarCamera")
             {
                 t.gameObject.SetActive(true);
+                myCamera = t.gameObject.GetComponent<Camera>();
             }
         }
         

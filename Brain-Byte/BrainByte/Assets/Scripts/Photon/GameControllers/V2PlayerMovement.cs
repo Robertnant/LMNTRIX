@@ -6,8 +6,13 @@ using UnityEngine;
 public class V2PlayerMovement : MonoBehaviour
 {
     // for rotation with mouse
-    public float mouseSensitivity = 100f;
-    private float xRotation = 0f;
+    public float defaultMouseSensitivity = 50f;
+    public float mouseSensitivityX;
+    public float mouseSensitivityY = 1.5f;
+    public float clamp = 0.01f;
+    public Transform playerCamera;
+    public float maxTopRotation = -20f;
+    public float minBottomRotation = 10f;
 
     private PhotonView PV;
     private Animator animator;
@@ -27,9 +32,13 @@ public class V2PlayerMovement : MonoBehaviour
     {
         avatarSetup = GetComponent<AvatarSetup>();
 
+        playerCamera = avatarSetup.myCamera.transform;
+
         PV = GetComponent<PhotonView>();
         transform = GetComponent<Transform>();    // Player avatar's transform
 
+        // lock cursor
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -53,14 +62,26 @@ public class V2PlayerMovement : MonoBehaviour
             animator.SetFloat("TurningSpeed", Input.GetAxis("Vertical"));
 
             // rotation with mouse
-            float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-            float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+            float mouseX = Input.GetAxis("Mouse X") * defaultMouseSensitivity * Time.deltaTime;
+            float mouseY = Input.GetAxis("Mouse Y") * defaultMouseSensitivity * Time.deltaTime;
 
-            xRotation += mouseY;
-            xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+            float negPosAngle = playerCamera.eulerAngles.x;     // logical: cause by rotating up and down, the camera rotates around x axis (Physics)
+            negPosAngle = negPosAngle > 180 ? negPosAngle - 360 : negPosAngle;
 
-            transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+            Debug.Log(negPosAngle);
+
+            if (negPosAngle >= minBottomRotation)
+                playerCamera.eulerAngles = new Vector3(minBottomRotation - clamp + 360, playerCamera.eulerAngles.y, playerCamera.eulerAngles.z);
+            else if (negPosAngle <= maxTopRotation)
+                playerCamera.eulerAngles = new Vector3(maxTopRotation + clamp, playerCamera.eulerAngles.y, playerCamera.eulerAngles.z);
+            else
+                playerCamera.Rotate(Mathf.Clamp(mouseY, -mouseSensitivityY, mouseSensitivityY), 0, 0, Space.Self);
+                
+            // For X axis
+
             myCharacterTransform.Rotate(Vector3.up * mouseX);
+
+
 
             if (Time.time >= nextJumpTime)
             {
@@ -86,7 +107,7 @@ public class V2PlayerMovement : MonoBehaviour
 
             // Recent change
             transform.position = myCharacterTransform.position;
-            transform.rotation = myCharacterTransform.rotation;
+            //transform.rotation = myCharacterTransform.rotation;
         }
     }
 }

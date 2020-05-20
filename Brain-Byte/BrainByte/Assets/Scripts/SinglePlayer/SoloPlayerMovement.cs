@@ -8,7 +8,7 @@ public class SoloPlayerMovement : MonoBehaviour
     public float defaultMouseSensitivity = 50f;
     public float mouseSensitivityX;
     public float mouseSensitivityY = 1.5f;
-    public float clamp = 0.01f;
+    public float clamp = 0.001f;
     public Transform playerCamera;
     public float maxTopRotation = -20f;
     public float minBottomRotation = 10f;
@@ -58,44 +58,28 @@ public class SoloPlayerMovement : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X") * defaultMouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * defaultMouseSensitivity * Time.deltaTime;
 
-        /*xRotation += mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);*/
-
-        
-
-
         /* push the camera back into range of rotation if max or min range reached
          * Basically prevent user from doing 360° camera rotation*/
         
-        float negPosAngle = playerCamera.eulerAngles.x;
+        float negPosAngle = playerCamera.eulerAngles.x;     // logical: cause by rotating up and down, the camera rotates around x axis (Physics)
         negPosAngle = negPosAngle > 180 ? negPosAngle - 360 : negPosAngle;
 
-        Debug.Log(negPosAngle); // logical: cause by rotating up and down, the camera rotates around x axis (Physics)
+        Debug.Log(negPosAngle); 
         
         if (negPosAngle >= minBottomRotation)
-            playerCamera.eulerAngles = new Vector3(minBottomRotation -clamp + 360, playerCamera.eulerAngles.y, playerCamera.eulerAngles.z);
+            playerCamera.eulerAngles = new Vector3(minBottomRotation - clamp + 360, playerCamera.eulerAngles.y, playerCamera.eulerAngles.z);
         else if (negPosAngle <= maxTopRotation)
             playerCamera.eulerAngles = new Vector3(maxTopRotation + clamp, playerCamera.eulerAngles.y, playerCamera.eulerAngles.z);
         else
             playerCamera.Rotate(Mathf.Clamp(mouseY, -mouseSensitivityY, mouseSensitivityY), 0, 0, Space.Self);
 
-        /*if (playerCamera.eulerAngles.x >= 0 && playerCamera.eulerAngles.x < minBottomRotation ||
-        playerCamera.eulerAngles.x <= 360 && playerCamera.eulerAngles.x > maxTopRotation)
-            playerCamera.Rotate(mouseY, 0, 0, Space.Self);
-        else if (playerCamera.eulerAngles.x >= maxTopRotation)
-            playerCamera.Rotate(1, 0, 0, Space.Self);
-        else if (playerCamera.eulerAngles.x <= minBottomRotation)
-            playerCamera.Rotate(-1, 0, 0, Space.Self);*/
+        // For X axis
 
-
-
-        //playerCamera.eulerAngles = new Vector3(mouseY, playerCamera.eulerAngles.y, playerCamera.eulerAngles.z);
-
-        //playerCamera.Rotate(mouseY, 0, 0);
-        //playerCamera.rotation = Quaternion.Euler(xRotation, 0f, 0f);
         transform.Rotate((Vector3.up * mouseX));
 
-        // Change weapon or attack mode
+        
+        /* Change weapon or attack mode*/
+        
         if (Time.time >= nextSelectionTime)
         {
             ChangeAttackMode();
