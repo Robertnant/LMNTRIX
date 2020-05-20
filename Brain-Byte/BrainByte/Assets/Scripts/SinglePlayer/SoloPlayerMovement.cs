@@ -7,7 +7,7 @@ public class SoloPlayerMovement : MonoBehaviour
     // for rotation with mouse
     public float defaultMouseSensitivity = 50f;
     public float mouseSensitivityX;
-    public float mouseSensitivityY = 0.15f;
+    public float mouseSensitivityY = 1.5f;
     public float clamp = 0.01f;
     public Transform playerCamera;
     public float maxTopRotation = -20f;
