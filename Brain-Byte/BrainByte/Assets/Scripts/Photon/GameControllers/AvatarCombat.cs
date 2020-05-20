@@ -14,12 +14,12 @@ public class AvatarCombat : MonoBehaviour
     public Transform attackPoint;
     public float attackRange = 0.6f;
     public float attackRate = 1.25f;
-    private float nextAttackTime = 0;
+    private float nextAttackTime = 0f;
     public LayerMask enemyLayers;
     
     // for attack modes
     public float attackSelectionRate = 2f;
-    private float nextSelectionTime = 0;
+    private float nextSelectionTime = 0f;
     public string[] attackModes;
     public int attackMode;
 

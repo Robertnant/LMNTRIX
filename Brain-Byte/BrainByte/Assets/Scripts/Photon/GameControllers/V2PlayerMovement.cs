@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class V2PlayerMovement : MonoBehaviour
 {
+    // for rotation with mouse
+    public float mouseSensitivity = 100f;
+    private float xRotation = 0f;
+
     private PhotonView PV;
     private Animator animator;
     private Rigidbody rigid;
@@ -16,7 +20,7 @@ public class V2PlayerMovement : MonoBehaviour
     public float JumpForce = 500;
     public LayerMask whatIsGround;
     public float jumpRate = 1.25f;
-    private float nextJumpTime = 0;
+    private float nextJumpTime = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +52,16 @@ public class V2PlayerMovement : MonoBehaviour
             animator.SetFloat("Speed", Input.GetAxis("Horizontal"));
             animator.SetFloat("TurningSpeed", Input.GetAxis("Vertical"));
 
+            // rotation with mouse
+            float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+            float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+
+            xRotation += mouseY;
+            xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+
+            transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+            myCharacterTransform.Rotate(Vector3.up * mouseX);
+
             if (Time.time >= nextJumpTime)
             {
                 if (Input.GetButtonDown("Jump"))
@@ -72,6 +86,7 @@ public class V2PlayerMovement : MonoBehaviour
 
             // Recent change
             transform.position = myCharacterTransform.position;
+            transform.rotation = myCharacterTransform.rotation;
         }
     }
 }

@@ -17983,6 +17983,12 @@ Transform:
   m_Father: {fileID: 324562196}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1100873634 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1476689234295323999, guid: ffa092cbcd6d5bd4082f5fdbbdf2e9ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 1600605610}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1103291150
 GameObject:
   m_ObjectHideFlags: 0
@@ -25575,6 +25581,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: SinglePlayerAvatar
       objectReference: {fileID: 0}
+    - target: {fileID: 1944007182176074152, guid: ffa092cbcd6d5bd4082f5fdbbdf2e9ce,
+        type: 3}
+      propertyPath: offset.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048298184542517109, guid: ffa092cbcd6d5bd4082f5fdbbdf2e9ce,
+        type: 3}
+      propertyPath: playerBody
+      value: 
+      objectReference: {fileID: 1100873634}
+    - target: {fileID: 8048298184542517109, guid: ffa092cbcd6d5bd4082f5fdbbdf2e9ce,
+        type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 1928044298}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffa092cbcd6d5bd4082f5fdbbdf2e9ce, type: 3}
 --- !u!1 &1609696704
@@ -31027,6 +31048,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1925286005}
   m_CullTransparentMesh: 0
+--- !u!4 &1928044298 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7589777592880339741, guid: ffa092cbcd6d5bd4082f5fdbbdf2e9ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 1600605610}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1928935093
 GameObject:
   m_ObjectHideFlags: 0

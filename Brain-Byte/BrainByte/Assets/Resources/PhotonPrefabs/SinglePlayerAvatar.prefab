@@ -2991,6 +2991,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78079ad98c0ba99479f913786fd1d631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouseSensitivity: 100
+  playerCamera: {fileID: 7589777592880339741}
+  clamMin: -1
+  clamMax: 1
+  maxTopRotation: -50
+  minBottomRotation: 10
   groundDistance: 0
   JumpForce: 500
   whatIsGround:
