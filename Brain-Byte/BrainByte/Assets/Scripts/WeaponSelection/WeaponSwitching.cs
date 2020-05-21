@@ -45,7 +45,7 @@ public class WeaponSwitching : MonoBehaviour
             {
                 for (int i = 1; i <= transform.childCount; i++)
                 {
-                    if (Input.inputString == i.ToString())
+                    if (Input.inputString == (i + 48).ToString())   //(i+48) gets the alpha key code (for top keyboard numkeys)
                     {
                         selectedWeapon = i - 2;     // i - 2 since character has no weapon mode
                     }
