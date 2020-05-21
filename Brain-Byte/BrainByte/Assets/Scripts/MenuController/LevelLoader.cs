@@ -1,11 +1,14 @@
 ﻿using Photon.Pun;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
 {
     public bool isMultiplayer = false;
+    public GameObject loadingScreen;
+    public Slider slider;
     public void LoadLevel(int sceneIndex)
     {
         StartCoroutine(LoadAsynchronously(sceneIndex));
@@ -18,10 +21,12 @@ public class LevelLoader : MonoBehaviour
         {
             PhotonNetwork.LoadLevel(MultiplayerSettings.multiplayerSettings.multiPlayerScene);
 
+            loadingScreen.SetActive(true);
+
             while (PhotonNetwork.LevelLoadingProgress != 1)
             {
                 float progress = Mathf.Clamp01(PhotonNetwork.LevelLoadingProgress / .9f);
-                Debug.Log($"Loading Multiplayer scene: {(int) (progress * 100)}%");
+                slider.value = progress;
 
                 yield return null;
             }
@@ -30,10 +35,12 @@ public class LevelLoader : MonoBehaviour
         {
             AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
 
+            loadingScreen.SetActive(true);
+
             while (!operation.isDone)
             {
                 float progress = Mathf.Clamp01(operation.progress / .9f);
-                Debug.Log($"Loading Singleplayer scene: {(int) (progress * 100)}%");
+                slider.value = progress;
 
                 yield return null;
             }
