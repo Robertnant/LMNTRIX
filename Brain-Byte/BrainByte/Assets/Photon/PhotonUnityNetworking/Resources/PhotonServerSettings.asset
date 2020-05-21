@@ -42,5 +42,7 @@ MonoBehaviour:
   - SetRemoteVals
   - RPC_Hit
   - RPC_ChangeAttackMode
+  - SelectWeapon
+  - RPC_SelectWeapon
   DisableAutoOpenWizard: 1
   ShowSettings: 1

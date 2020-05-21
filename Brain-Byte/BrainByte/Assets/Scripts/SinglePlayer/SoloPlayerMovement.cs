@@ -11,7 +11,7 @@ public class SoloPlayerMovement : MonoBehaviour
     public float clamp = 0.001f;
     public Transform playerCamera;
     public float maxTopRotation = -20f;
-    public float minBottomRotation = 10f;
+    public float minBottomRotation = 15f;
 
     private Animator animator;
     private Rigidbody rigid;

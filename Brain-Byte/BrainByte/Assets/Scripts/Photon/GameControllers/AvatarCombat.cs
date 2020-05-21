@@ -16,12 +16,8 @@ public class AvatarCombat : MonoBehaviour
     public float attackRate = 1.25f;
     private float nextAttackTime = 0f;
     public LayerMask enemyLayers;
-    
-    // for attack modes
-    public float attackSelectionRate = 2f;
-    private float nextSelectionTime = 0f;
-    public string[] attackModes;
-    public int attackMode;
+
+    private WeaponSwitching weaponSwitching;
 
     void Start()
     {
@@ -31,9 +27,7 @@ public class AvatarCombat : MonoBehaviour
         rayOrigin = avatarSetup.myCharacter.transform;
         animator = avatarSetup.animator;
 
-        // Set up attack mode
-        attackModes = new string[] { "Punch", "Pistol", "Semi-auto", "Knife"};
-        attackMode = 0;     // default
+        weaponSwitching = GetComponentInChildren<WeaponSwitching>();
 
         // Get attack point
         foreach (Transform t in avatarSetup.myCharacter.transform)
@@ -55,12 +49,6 @@ public class AvatarCombat : MonoBehaviour
         if (animator == null)
             animator = avatarSetup.animator;
 
-        // Change weapon or attack mode
-        if (Time.time >= nextSelectionTime)
-        {
-            PV.RPC("RPC_ChangeAttackMode", RpcTarget.All);
-        }
-
         if (Time.time >= nextAttackTime)
         {
             if (Input.GetMouseButtonDown(0))
@@ -79,44 +67,10 @@ public class AvatarCombat : MonoBehaviour
     }
 
     [PunRPC]
-    void RPC_ChangeAttackMode()
-    {
-        // with num keys
-        if (Input.anyKeyDown)
-        {
-            for (int i = 1; i <= attackModes.Length; i++)
-            {
-                if (Input.inputString == i.ToString())
-                {
-                    attackMode = i - 1;
-                    nextSelectionTime = Time.time + 1f / attackSelectionRate;
-                    Debug.Log("Selected attack mode/weapon: " + attackModes[attackMode]);
-                }
-            }
-        }
-
-        // with mouse scroll wheel
-        if (Input.GetAxis("Mouse ScrollWheel") > 0f) // up
-        {
-            attackMode = attackMode + 1 < attackModes.Length ? attackMode + 1 : 0;
-            nextSelectionTime = Time.time + 1f / attackSelectionRate;
-            Debug.Log("Selected attack mode/weapon: " + attackModes[attackMode]);
-        }
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0f) // down
-        {
-            attackMode = attackMode - 1 >= 0 ? attackMode - 1 : attackModes.Length - 1;
-            nextSelectionTime = Time.time + 1f / attackSelectionRate;
-            Debug.Log("Selected attack mode/weapon: " + attackModes[attackMode]);
-        }
-
-
-    }
-
-    [PunRPC]
     void RPC_Hit()
     {
         // Play attack animation
-        animator.SetTrigger(attackMode);
+        animator.SetTrigger(weaponSwitching.CurrentWeapon);
 
         // Detect enemy
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
