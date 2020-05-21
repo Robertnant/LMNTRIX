@@ -48,7 +48,6 @@ public class WeaponSwitching : MonoBehaviour
                     if (Input.inputString == i.ToString())
                     {
                         selectedWeapon = i - 2;     // i - 2 since character has no weapon mode
-                        nextSelectionTime = Time.time + 1f / attackSelectionRate;
                     }
                 }
             }
@@ -56,6 +55,7 @@ public class WeaponSwitching : MonoBehaviour
             if (previousSelectedWeapon != selectedWeapon)
             {
                 SelectWeapon();
+                nextSelectionTime = Time.time + 1f / attackSelectionRate;
             }
         }
     }

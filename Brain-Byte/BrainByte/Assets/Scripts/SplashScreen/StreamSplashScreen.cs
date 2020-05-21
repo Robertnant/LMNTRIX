@@ -7,14 +7,14 @@ using UnityEngine.SceneManagement;
 
 public class StreamSplashScreen : MonoBehaviour
 {
-    public RawImage rawImage;
     public VideoPlayer videoPlayer;
-    public string menuScene;
+    public int menuScene;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(StartVideo());
+        //StartCoroutine(StartVideo());
+        videoPlayer.Play();
         videoPlayer.loopPointReached += LoadScene;
     }
 
@@ -23,6 +23,7 @@ public class StreamSplashScreen : MonoBehaviour
         SceneManager.LoadScene(menuScene);
     }
 
+    /*
     IEnumerator StartVideo()
     {
         videoPlayer.Prepare();
@@ -37,4 +38,5 @@ public class StreamSplashScreen : MonoBehaviour
         rawImage.texture = videoPlayer.texture;
         videoPlayer.Play();
     }
+    */
 }

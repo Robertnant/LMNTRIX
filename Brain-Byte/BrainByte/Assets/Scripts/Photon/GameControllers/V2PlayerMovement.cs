@@ -37,8 +37,9 @@ public class V2PlayerMovement : MonoBehaviour
         PV = GetComponent<PhotonView>();
         transform = GetComponent<Transform>();    // Player avatar's transform
 
-        // lock cursor
+        // lock and hide cursor
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame

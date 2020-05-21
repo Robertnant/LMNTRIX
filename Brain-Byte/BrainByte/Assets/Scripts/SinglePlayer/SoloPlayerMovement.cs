@@ -40,8 +40,9 @@ public class SoloPlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody>();
 
-        // lock cursor
+        // lock and hide cursor
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
         // set up attack modes
         attackModes = new string[] { "Punch", "Pistol", "Semi-auto", "Knife" };

@@ -94,7 +94,6 @@ public class AvatarCombat : MonoBehaviour
                     if (Input.inputString == i.ToString())
                     {
                         selectedWeapon = i - 2;     // i - 2 since character has no weapon mode
-                        nextSelectionTime = Time.time + 1f / attackSelectionRate;
                     }
                 }
             }
@@ -102,6 +101,7 @@ public class AvatarCombat : MonoBehaviour
             if (previousSelectedWeapon != selectedWeapon)
             {
                 PV.RPC("RPC_SelectWeapon", RpcTarget.All);
+                nextSelectionTime = Time.time + 1f / attackSelectionRate;
             }
         }
 
