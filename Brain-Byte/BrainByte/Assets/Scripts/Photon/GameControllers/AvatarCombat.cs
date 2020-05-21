@@ -11,13 +11,16 @@ public class AvatarCombat : MonoBehaviour
     public Animator animator;
 
     // for attack
-    public Transform attackPoint;
+    public Transform weaponHolder;
     public float attackRange = 0.6f;
     public float attackRate = 1.25f;
     private float nextAttackTime = 0f;
     public LayerMask enemyLayers;
 
-    private WeaponSwitching weaponSwitching;
+    public int selectedWeapon = -1; // -1 for no weapon
+    public float attackSelectionRate = 2f;
+    private float nextSelectionTime = 0f;
+    public string currentWeapon;
 
     void Start()
     {
@@ -27,16 +30,14 @@ public class AvatarCombat : MonoBehaviour
         rayOrigin = avatarSetup.myCharacter.transform;
         animator = avatarSetup.animator;
 
-        weaponSwitching = GetComponentInChildren<WeaponSwitching>();
+        /* Get weapon holder (also attack point)*/
 
-        // Get attack point
-        foreach (Transform t in avatarSetup.myCharacter.transform)
-        {
-            if (t.tag == "AttackPoint")
-            {
-                attackPoint = t;
-            }
-        }
+        FindAttackPoint(avatarSetup.myCharacter.transform);
+        Debug.Log("Found attack point: " + weaponHolder.name);
+
+        PV.RPC("RPC_SelectWeapon", RpcTarget.All);
+
+        
 
     }
 
@@ -49,6 +50,7 @@ public class AvatarCombat : MonoBehaviour
         if (animator == null)
             animator = avatarSetup.animator;
 
+        // attack
         if (Time.time >= nextAttackTime)
         {
             if (Input.GetMouseButtonDown(0))
@@ -63,17 +65,68 @@ public class AvatarCombat : MonoBehaviour
             }
             
         }
-        
+
+        // weapon switch
+        if (Time.time >= nextSelectionTime)
+        {
+            int previousSelectedWeapon = selectedWeapon;
+
+            if (Input.GetAxis("Mouse ScrollWheel") > 0f)
+            {
+                if (selectedWeapon >= weaponHolder.childCount - 1)
+                    selectedWeapon = -1;
+                else
+                    selectedWeapon++;
+            }
+
+            if (Input.GetAxis("Mouse ScrollWheel") < 0f)
+            {
+                if (selectedWeapon <= -1)
+                    selectedWeapon = weaponHolder.childCount - 1;
+                else
+                    selectedWeapon--;
+            }
+
+            if (Input.anyKeyDown)
+            {
+                for (int i = 1; i <= weaponHolder.childCount; i++)
+                {
+                    if (Input.inputString == i.ToString())
+                    {
+                        selectedWeapon = i - 2;     // i - 2 since character has no weapon mode
+                        nextSelectionTime = Time.time + 1f / attackSelectionRate;
+                    }
+                }
+            }
+
+            if (previousSelectedWeapon != selectedWeapon)
+            {
+                PV.RPC("RPC_SelectWeapon", RpcTarget.All);
+            }
+        }
+
+    }
+
+    void FindAttackPoint(Transform point)
+    {
+        foreach (Transform t in point)
+        {
+            if (t.tag == "AttackPoint")
+            {
+                weaponHolder = t;
+                FindAttackPoint(t);
+            }
+        }
     }
 
     [PunRPC]
     void RPC_Hit()
     {
         // Play attack animation
-        animator.SetTrigger(weaponSwitching.CurrentWeapon);
+        animator.SetTrigger(currentWeapon);
 
         // Detect enemy
-        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
+        Collider[] hitEnemies = Physics.OverlapSphere(weaponHolder.position, attackRange, enemyLayers);
 
         // Damage enemy
         foreach (Collider enemy in hitEnemies)
@@ -98,10 +151,35 @@ public class AvatarCombat : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
-        if (attackPoint == null)
+        if (weaponHolder == null)
             return;
 
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        Gizmos.DrawWireSphere(weaponHolder.position, attackRange);
+    }
+
+    [PunRPC]
+    //To activate or deactivate the weapon
+    void RPC_SelectWeapon()
+    {
+        if (selectedWeapon == -1)
+            currentWeapon = "Punch";
+
+        int i = 0;
+        foreach (Transform weapon in weaponHolder)
+        {
+            Debug.Log(weapon.name);
+
+            if (i == selectedWeapon)
+            {
+                weapon.gameObject.SetActive(true);
+                currentWeapon = weapon.gameObject.name;
+            }
+            else
+            {
+                weapon.gameObject.SetActive(false);
+            }
+            i++;
+        }
     }
 
     [PunRPC]
