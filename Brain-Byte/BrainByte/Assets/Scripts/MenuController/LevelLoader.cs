@@ -11,18 +11,15 @@ public class LevelLoader : MonoBehaviour
     public Slider slider;
     public Animator transition;
     private float transitionTime = 1f;
-
-    /* README: Normally, a prefab of the LevelLoader object (RoomController for Multiplayer)
-     * must be created and added to each scene. But since the RoomController is set to
-     * DontDestroyOnLoad, this step was skipped. If error occurs, do these steps*/ 
+    public bool isFirtOnlineLevel = true;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha9))
+        /*if (Input.GetKeyDown(KeyCode.Alpha9))
             LoadLevel(SceneManager.GetActiveScene().buildIndex + 1);    // Test to move to next scene: must be replaced
 
         if (Input.GetKeyDown(KeyCode.Alpha8))   // This is just a test: must be deleted
-            LoadLevel(4);
+            LoadLevel(4);*/
     }
 
     public void LoadLevel(int sceneIndex)
@@ -40,6 +37,9 @@ public class LevelLoader : MonoBehaviour
         {
             PhotonNetwork.LoadLevel(MultiplayerSettings.multiplayerSettings.multiPlayerScene);
 
+            if (!isFirtOnlineLevel)
+                FindObjectOfType<PhotonPlayer>().OnMovedToNextLevel();
+
             loadingScreen.SetActive(true);
 
             while (PhotonNetwork.LevelLoadingProgress != 1)
@@ -49,6 +49,8 @@ public class LevelLoader : MonoBehaviour
 
                 yield return null;
             }
+
+            isFirtOnlineLevel = false;
         }
         else
         {
