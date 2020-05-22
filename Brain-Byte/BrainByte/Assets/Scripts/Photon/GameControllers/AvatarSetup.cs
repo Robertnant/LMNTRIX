@@ -35,8 +35,6 @@ public class AvatarSetup : MonoBehaviour
             Debug.Log("Did not add character");
         }
 
-        DontDestroyOnLoad(this.gameObject);
-        // New 22.05.20: the player avatar prefab will not be destroyed on next scene load
     }
 
     void AddCharacter(int characterIndex)

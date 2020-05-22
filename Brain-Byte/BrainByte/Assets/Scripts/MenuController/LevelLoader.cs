@@ -1,10 +1,11 @@
 ﻿using Photon.Pun;
+using Photon.Realtime;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class LevelLoader : MonoBehaviour
+public class LevelLoader : MonoBehaviourPunCallbacks, IInRoomCallbacks
 {
     public bool isMultiplayer = false;
     public GameObject loadingScreen;
@@ -34,6 +35,14 @@ public class LevelLoader : MonoBehaviour
 
     IEnumerator LoadAsynchronously(int sceneIndex)
     {
+        /*if (!photonRoom.isFirtOnlineLevel)
+        {
+            PhotonPlayer[] players = FindObjectsOfType<PhotonPlayer>();
+            Debug.Log("Loading players into new scene");
+            foreach (PhotonPlayer player in players)
+                player.OnMovedToNextLevel();
+        }*/
+
         transition.SetTrigger("Start");
 
         yield return new WaitForSeconds(transitionTime);
@@ -43,6 +52,8 @@ public class LevelLoader : MonoBehaviour
             PhotonNetwork.LoadLevel(sceneIndex);
 
             loadingScreen.SetActive(true);
+
+            photonRoom.isFirtOnlineLevel = false;   // migth need to put this after StarCoroutine
 
             while (PhotonNetwork.LevelLoadingProgress != 1)
             {

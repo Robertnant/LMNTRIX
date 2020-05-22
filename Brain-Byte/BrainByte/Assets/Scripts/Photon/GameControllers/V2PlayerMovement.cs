@@ -69,8 +69,6 @@ public class V2PlayerMovement : MonoBehaviour
             float negPosAngle = playerCamera.eulerAngles.x;     // logical: cause by rotating up and down, the camera rotates around x axis (Physics)
             negPosAngle = negPosAngle > 180 ? negPosAngle - 360 : negPosAngle;
 
-            Debug.Log(negPosAngle);
-
             if (negPosAngle >= minBottomRotation)
                 playerCamera.eulerAngles = new Vector3(minBottomRotation - clamp + 360, playerCamera.eulerAngles.y, playerCamera.eulerAngles.z);
             else if (negPosAngle <= maxTopRotation)

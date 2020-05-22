@@ -39,4 +39,29 @@ public class PhotonPlayer : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
         // New 22.05.20: the player network prefab will not be destroyed on next scene load
     }
+
+    public void ChangePlayerPosition()
+    {
+        int spawnPicker = Random.Range(0, GameSetup.GS.spawnPoints.Length);
+        if (PV.IsMine)
+        {
+            // 08/05/20 modification: Used InstantiateSceneObject in Phoron room instead of Instantiate.
+            // So it seems logical to use the same here
+            myAvatar = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerAvatar"),
+                GameSetup.GS.spawnPoints[spawnPicker].position, GameSetup.GS.spawnPoints[spawnPicker].rotation, 0);
+
+
+            /*myAvatar = PhotonNetwork.InstantiateSceneObject(Path.Combine("PhotonPrefabs", "PlayerAvatar"),
+                GameSetup.GS.spawnPoints[spawnPicker].position, GameSetup.GS.spawnPoints[spawnPicker].rotation, 0);*/
+
+            // Enable scripts of character object
+            myAvatar.GetComponent<AvatarSetup>().enabled = true;
+            myAvatar.GetComponent<V2PlayerMovement>().enabled = true;
+            myAvatar.GetComponent<AvatarCombat>().enabled = true;
+
+            Debug.Log("Player Avatar instantiated");
+        }
+        else
+            Debug.Log("Failed to instantiate player");  //this else case should be deleted later
+    }
 }

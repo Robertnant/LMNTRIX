@@ -202,7 +202,9 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
     {
         currentScene = scene.buildIndex;   //index of scene in Build settings
 
-        if(currentScene == MultiplayerSettings.multiplayerSettings.multiPlayerScene)
+        //Debug.Log("Loaded new scene " + currentScene);
+
+        if(currentScene == MultiplayerSettings.multiplayerSettings.multiPlayerScene)    // basically first multiplayer scene
         {
             isGameLoaded = true;
 
@@ -218,6 +220,29 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
                  * on all targets like in the RPC_LoadedGameScene() method.
                  */
             }
+        }
+        else if (!isFirtOnlineLevel)
+        {
+            // the if check in else might be unecessary
+            // if we're now on any multiplayer scene after the first multiplayer one
+
+            foreach (PhotonPlayer player in FindObjectsOfType<PhotonPlayer>())
+            {
+                Debug.Log("Trying to spawn players in next multiplayer scene");
+                player.ChangePlayerPosition();
+            }
+        }
+        {
+
+        }
+        {
+
+        }
+        {
+
+        }
+        {
+
         }
     }
 
