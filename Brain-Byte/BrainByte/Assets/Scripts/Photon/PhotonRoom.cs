@@ -29,6 +29,9 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
     private float atMaxPlayers;
     private float timeToStart;
 
+    // New: check if player is loading into first map online
+    public bool isFirtOnlineLevel = true;
+
     private void Awake()
     {
         //initialize singleton room
@@ -51,7 +54,7 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
     void Start()
     {
         PV = GetComponent<PhotonView>();
-        levelLoader = GetComponent<LevelLoader>();
+        levelLoader = FindObjectOfType<LevelLoader>();
         readyToCount = false;
         readyToStart = false;
         lessThanMaxPlayers = startingTime;

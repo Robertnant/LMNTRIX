@@ -2988,6 +2988,11 @@ PrefabInstance:
       propertyPath: slider
       value: 
       objectReference: {fileID: 1841381128}
+    - target: {fileID: 4675043826139006898, guid: 4a0df4694185d1e47987ea9ca90553bb,
+        type: 3}
+      propertyPath: isMultiplayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4675043826139006899, guid: 4a0df4694185d1e47987ea9ca90553bb,
         type: 3}
       propertyPath: m_Name

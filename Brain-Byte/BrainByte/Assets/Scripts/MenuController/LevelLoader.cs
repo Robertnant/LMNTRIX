@@ -11,20 +11,39 @@ public class LevelLoader : MonoBehaviour
     public Slider slider;
     public Animator transition;
     private float transitionTime = 1f;
-    public bool isFirtOnlineLevel = true;
+    private PhotonRoom photonRoom;
 
+    void Start()
+    {
+        photonRoom = FindObjectOfType<PhotonRoom>();
+    }
     void Update()
     {
-        /*if (Input.GetKeyDown(KeyCode.Alpha9))
+        /* TESTS */
+        if (Input.GetKeyDown(KeyCode.Alpha9))
             LoadLevel(SceneManager.GetActiveScene().buildIndex + 1);    // Test to move to next scene: must be replaced
 
         if (Input.GetKeyDown(KeyCode.Alpha8))   // This is just a test: must be deleted
-            LoadLevel(4);*/
+            LoadLevel(4);
     }
 
     public void LoadLevel(int sceneIndex)
     {
         StartCoroutine(LoadAsynchronously(sceneIndex));
+
+        if (!photonRoom.isFirtOnlineLevel)
+        {
+            PhotonPlayer[] players = FindObjectsOfType<PhotonPlayer>();
+
+            if (players.Length == 0)
+                Debug.Log("Did not find any PhotonPlayer :(");
+            else
+                foreach (PhotonPlayer player in players)
+                    player.OnMovedToNextLevel();
+        }
+
+        photonRoom.isFirtOnlineLevel = false;
+        Debug.Log("Next level is no longer first online level");
     }
 
     IEnumerator LoadAsynchronously(int sceneIndex)
@@ -37,9 +56,6 @@ public class LevelLoader : MonoBehaviour
         {
             PhotonNetwork.LoadLevel(MultiplayerSettings.multiplayerSettings.multiPlayerScene);
 
-            if (!isFirtOnlineLevel)
-                FindObjectOfType<PhotonPlayer>().OnMovedToNextLevel();
-
             loadingScreen.SetActive(true);
 
             while (PhotonNetwork.LevelLoadingProgress != 1)
@@ -50,7 +66,6 @@ public class LevelLoader : MonoBehaviour
                 yield return null;
             }
 
-            isFirtOnlineLevel = false;
         }
         else
         {
