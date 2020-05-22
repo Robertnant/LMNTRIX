@@ -5120,6 +5120,7 @@ MonoBehaviour:
   myNumberInRoom: 0
   playerInGame: 0
   startingTime: 10
+  isFirtOnlineLevel: 1
 --- !u!4 &1188501395
 Transform:
   m_ObjectHideFlags: 0
@@ -6337,7 +6338,7 @@ MonoBehaviour:
   delayStart: 1
   maxPlayers: 4
   menuScene: 1
-  multiPlayerScene: 2
+  multiPlayerScene: 4
 --- !u!4 &1452176951
 Transform:
   m_ObjectHideFlags: 0

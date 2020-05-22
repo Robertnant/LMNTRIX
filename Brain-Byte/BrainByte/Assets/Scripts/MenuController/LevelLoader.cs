@@ -30,20 +30,6 @@ public class LevelLoader : MonoBehaviour
     public void LoadLevel(int sceneIndex)
     {
         StartCoroutine(LoadAsynchronously(sceneIndex));
-
-        if (!photonRoom.isFirtOnlineLevel)
-        {
-            PhotonPlayer[] players = FindObjectsOfType<PhotonPlayer>();
-
-            if (players.Length == 0)
-                Debug.Log("Did not find any PhotonPlayer :(");
-            else
-                foreach (PhotonPlayer player in players)
-                    player.OnMovedToNextLevel();
-        }
-
-        photonRoom.isFirtOnlineLevel = false;
-        Debug.Log("Next level is no longer first online level");
     }
 
     IEnumerator LoadAsynchronously(int sceneIndex)
@@ -54,7 +40,7 @@ public class LevelLoader : MonoBehaviour
 
         if (isMultiplayer)
         {
-            PhotonNetwork.LoadLevel(MultiplayerSettings.multiplayerSettings.multiPlayerScene);
+            PhotonNetwork.LoadLevel(sceneIndex);
 
             loadingScreen.SetActive(true);
 
@@ -66,6 +52,7 @@ public class LevelLoader : MonoBehaviour
                 yield return null;
             }
 
+            // Don't add any code after while loop, it won't run
         }
         else
         {
