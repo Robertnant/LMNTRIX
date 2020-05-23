@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.16862746}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -95,6 +95,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4675043826139006909}
   - component: {fileID: 4675043826139006898}
+  - component: {fileID: 607212399358225839}
   m_Layer: 0
   m_Name: LevelLoader
   m_TagString: Untagged
@@ -133,6 +134,29 @@ MonoBehaviour:
   loadingScreen: {fileID: 0}
   slider: {fileID: 0}
   transition: {fileID: 4675043826461602528}
+  transitionTime: 1
+--- !u!114 &607212399358225839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4675043826139006899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &4675043826461602534
 GameObject:
   m_ObjectHideFlags: 0

@@ -44,5 +44,6 @@ MonoBehaviour:
   - RPC_ChangeAttackMode
   - SelectWeapon
   - RPC_SelectWeapon
+  - LoadLevel
   DisableAutoOpenWizard: 1
   ShowSettings: 1

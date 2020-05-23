@@ -16,12 +16,12 @@ public class PauseMenu : MonoBehaviour
         {
             if (GameIsPaused)
             {
-                Cursor.visible = true;
+                Cursor.visible = false;
                 Resume();
             }
             else
             {
-                Cursor.visible = false;
+                Cursor.visible = true;
                 Pause();
             }
         }

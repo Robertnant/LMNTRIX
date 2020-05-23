@@ -11,23 +11,24 @@ public class LevelLoader : MonoBehaviourPunCallbacks, IInRoomCallbacks
     public GameObject loadingScreen;
     public Slider slider;
     public Animator transition;
-    private float transitionTime = 1f;
+    public float transitionTime = 1f;
     private PhotonRoom photonRoom;
+    private PhotonView PV;
 
     void Start()
     {
         photonRoom = FindObjectOfType<PhotonRoom>();
+        PV = GetComponent<PhotonView>();
     }
     void Update()
     {
-        /* TESTS */
+        /* TEST */
         if (Input.GetKeyDown(KeyCode.Alpha9))
-            LoadLevel(SceneManager.GetActiveScene().buildIndex + 1);    // Test to move to next scene: must be replaced
+            PV.RPC("LoadLevel", RpcTarget.All, SceneManager.GetActiveScene().buildIndex + 1);    // Test to move to next scene: must be replaced
 
-        if (Input.GetKeyDown(KeyCode.Alpha8))   // This is just a test: must be deleted
-            LoadLevel(4);
     }
 
+    [PunRPC]
     public void LoadLevel(int sceneIndex)
     {
         StartCoroutine(LoadAsynchronously(sceneIndex));
@@ -63,6 +64,7 @@ public class LevelLoader : MonoBehaviourPunCallbacks, IInRoomCallbacks
                 yield return null;
             }
 
+            Debug.Log("Trying to yield return after loop");
             // Don't add any code after while loop, it won't run
         }
         else
