@@ -23,27 +23,47 @@ public class EnemyFollow : MonoBehaviour
         objToFollow = FindClosestEnemy(trackableObjs);
 
         Vector3 objPos = objToFollow.GetComponent<Transform>().position;
+        float distance = Vector3.Distance(transform.position, objPos);
 
-        if (Vector3.Distance(transform.position, objPos) >= minDist)
+        if (Vector3.Distance(transform.position, objPos) >= minDist)    // player is far
         {
             agent.SetDestination(objPos);
             animator.SetBool("isFar", true);
         }
         else
         {
+            EnemyCombat.State currentState = GetComponent<EnemyCombat>().state;
+
+            // Distance for shooting
+            if (distance >= 5f)
+            {
+                // Switch to Correct weapon
+                currentState = EnemyCombat.State.Shooting;
+                animator.SetTrigger("Shoot");
+            }
+
+            // Distance for Punching
+            if (distance < 5f && distance > 2f)
+            {
+                // Switch to Correct weapon
+                currentState = EnemyCombat.State.Punching;
+                animator.SetTrigger("Punch");
+            }
+
+            // Distance for Scratching
+            if (distance <= 2f)
+            {
+                // Switch to Correct weapon
+                currentState = EnemyCombat.State.Scratching;
+                animator.SetTrigger("Scratch");
+            }
+
             animator.SetBool("isFar", false);
             agent.SetDestination(transform.position);
         }
 
-        /*
-         * Use when there'll be an action such as shooting to do
-         * if distance <= max
-        if (Vector3.Distance(transform.position, objPos) <= maxDist)
-        {
-            // Do something
-        }
-        */
     }
+
     private GameObject FindClosestEnemy(GameObject[] playersList)
     {
         if (isMultiplayer)
