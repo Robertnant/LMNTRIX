@@ -9,7 +9,10 @@ public class LevelLoader : MonoBehaviourPunCallbacks, IInRoomCallbacks
 {
     public bool isMultiplayer = false;
     public GameObject loadingScreen;
+    public GameObject completeLevelUI;
+    public GameObject gameOverUI;
     public Slider slider;
+
     public Animator transition;
     public float transitionTime = 1f;
     private PhotonRoom photonRoom;
@@ -26,6 +29,24 @@ public class LevelLoader : MonoBehaviourPunCallbacks, IInRoomCallbacks
         if (Input.GetKeyDown(KeyCode.Alpha9))
             PV.RPC("LoadLevel", RpcTarget.All, SceneManager.GetActiveScene().buildIndex + 1);    // Test to move to next scene: must be replaced
 
+    }
+
+    [PunRPC]
+    public void RestartLevel()
+    {
+        StartCoroutine(LoadAsynchronously(SceneManager.GetActiveScene().buildIndex));
+    }
+    
+    [PunRPC]
+    public void CompleteLevel()
+    {
+        completeLevelUI.SetActive(true);
+    }
+
+    [PunRPC]
+    public void MoveToNextLevel()
+    {
+        StartCoroutine(LoadAsynchronously(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
     [PunRPC]

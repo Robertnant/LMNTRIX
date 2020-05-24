@@ -132,6 +132,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMultiplayer: 0
   loadingScreen: {fileID: 0}
+  completeLevelUI: {fileID: 316070190214475268, guid: a683085df37c20c43b5d61d0d6175b6a,
+    type: 3}
+  gameOverUI: {fileID: 8840102731630903488, guid: d9db61a384267e246a39d2d2674fb7aa,
+    type: 3}
   slider: {fileID: 0}
   transition: {fileID: 4675043826461602528}
   transitionTime: 1

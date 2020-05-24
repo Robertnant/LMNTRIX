@@ -27,10 +27,15 @@ public class V2PlayerMovement : MonoBehaviour
     public float jumpRate = 1.25f;
     private float nextJumpTime = 0f;
 
+    private GameObject completeLevelUI;
+    private GameObject gameOverUI;
+
     // Start is called before the first frame update
     void Start()
     {
         avatarSetup = GetComponent<AvatarSetup>();
+        completeLevelUI = FindObjectOfType<LevelLoader>().completeLevelUI;
+        gameOverUI = FindObjectOfType<LevelLoader>().gameOverUI;
 
         playerCamera = avatarSetup.myCamera.transform;
 
@@ -107,6 +112,16 @@ public class V2PlayerMovement : MonoBehaviour
             // Recent change
             transform.position = myCharacterTransform.position;
             //transform.rotation = myCharacterTransform.rotation;
+        }
+
+
+        // To be ran by every player (regardless of if PV.isMine)
+        if (completeLevelUI.activeSelf || gameOverUI.activeSelf)
+        {
+            animator.enabled = false;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            this.enabled = false;
         }
     }
 }
