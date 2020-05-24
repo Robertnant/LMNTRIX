@@ -20564,7 +20564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7409e3cffdd426c4aa0c81b6e8a8aeef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  battleButton: {fileID: 1267912803}
+  battleButton: {fileID: 1606151380}
   cancelButton: {fileID: 854118036}
   offlineButton: {fileID: 670641577}
 --- !u!4 &1510183394
@@ -22251,17 +22251,39 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1606151380}
-        m_MethodName: 
+      - m_Target: {fileID: 1510183393}
+        m_MethodName: OnBattleButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+      - m_Target: {fileID: 1443370626}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2105355204}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1606151383
 MonoBehaviour:
   m_ObjectHideFlags: 0
