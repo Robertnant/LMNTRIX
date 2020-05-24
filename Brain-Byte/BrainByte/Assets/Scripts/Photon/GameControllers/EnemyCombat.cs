@@ -19,9 +19,6 @@ public class EnemyCombat : MonoBehaviour
     public LayerMask enemyLayers;
 
     public int selectedWeapon = -1; // -1 for no weapon
-    public float attackSelectionRate = 2f;
-    private float nextSelectionTime = 0f;
-    public string currentWeapon;
 
     // Enemy Health and Damage
     float enemyMaxHealth = 85f;
@@ -62,16 +59,6 @@ public class EnemyCombat : MonoBehaviour
             return;
 
         // attack
-        if (Time.time >= nextAttackTime)
-        {
-            if (Input.GetMouseButtonDown(0))    // change to bool that checks if enemy needs to attack player
-            {
-                PV.RPC("RPC_Shooting", RpcTarget.All);
-                nextAttackTime = Time.time + 1f / attackRate;
-            }
-        }
-
-        // weapon switch
         if (Time.time >= nextAttackTime)
         {
             int previousSelectedWeapon = selectedWeapon;
