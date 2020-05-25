@@ -29,7 +29,10 @@ public class LevelLoader : MonoBehaviourPunCallbacks, IInRoomCallbacks
         }
         else if (SceneManager.GetActiveScene().buildIndex != 1)
         {
-            FindObjectOfType<SoloAvatarSetup>().InstantiateSoloPlayer();
+            int spawnPicker = Random.Range(0, GameSetup.GS.spawnPoints.Length);
+
+            Instantiate(PlayerInfo.PI.allCharacters[PlayerInfo.PI.selectedCharacter],
+                GameSetup.GS.spawnPoints[spawnPicker].position, GameSetup.GS.spawnPoints[spawnPicker].rotation);
         }
             //instantiate player if not in main menu scene
     }
@@ -44,6 +47,7 @@ public class LevelLoader : MonoBehaviourPunCallbacks, IInRoomCallbacks
     [PunRPC]
     public void RestartLevel()
     {
+        completeLevelUI.SetActive(false);
         StartCoroutine(LoadAsynchronously(SceneManager.GetActiveScene().buildIndex));
     }
     
@@ -56,15 +60,21 @@ public class LevelLoader : MonoBehaviourPunCallbacks, IInRoomCallbacks
     [PunRPC]
     public void MoveToNextLevel()
     {
+        completeLevelUI.SetActive(false);
         StartCoroutine(LoadAsynchronously(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
     [PunRPC]
     public void LoadLevel(int sceneIndex)
     {
+        if (!MultiplayerSettings.multiplayerSettings.isMultiplayer)
+            Destroy(FindObjectOfType<PhotonRoom>().gameObject);
+
         StartCoroutine(LoadAsynchronously(sceneIndex));
         //photonRoom.isFirtOnlineLevel = false;   // migth need to put this after StarCoroutine
         Debug.Log("Instantiating character");
+        
+
     }
 
     IEnumerator LoadAsynchronously(int sceneIndex)
@@ -108,6 +118,14 @@ public class LevelLoader : MonoBehaviourPunCallbacks, IInRoomCallbacks
             {
                 float progress = Mathf.Clamp01(operation.progress / .9f);
                 slider.value = progress;
+
+                if (operation.isDone)
+                {
+                    int spawnPicker = Random.Range(0, GameSetup.GS.spawnPoints.Length);
+
+                    Instantiate(PlayerInfo.PI.allCharacters[PlayerInfo.PI.selectedCharacter],
+                        GameSetup.GS.spawnPoints[spawnPicker].position, GameSetup.GS.spawnPoints[spawnPicker].rotation);
+                }
 
                 yield return null;
             }
