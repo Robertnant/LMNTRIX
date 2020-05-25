@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviourPunCallbacks, IInRoomCallbacks
 {
-    public bool isMultiplayer = false;
     public GameObject loadingScreen;
     public GameObject completeLevelUI;
     public GameObject gameOverUI;
@@ -15,13 +14,22 @@ public class LevelLoader : MonoBehaviourPunCallbacks, IInRoomCallbacks
 
     public Animator transition;
     public float transitionTime = 1f;
-    private PhotonRoom photonRoom;
+    //private PhotonRoom photonRoom;
     private PhotonView PV;
 
     void Start()
     {
-        photonRoom = FindObjectOfType<PhotonRoom>();
-        PV = GetComponent<PhotonView>();
+
+        if (MultiplayerSettings.multiplayerSettings.isMultiplayer)
+        {
+            //photonRoom = FindObjectOfType<PhotonRoom>();
+            PV = GetComponent<PhotonView>();
+        }
+        else if (SceneManager.GetActiveScene().buildIndex != 1)
+        {
+            FindObjectOfType<SoloAvatarSetup>().InstantiateSoloPlayer();
+        }
+            //instantiate player if not in main menu scene
     }
     void Update()
     {
@@ -53,6 +61,8 @@ public class LevelLoader : MonoBehaviourPunCallbacks, IInRoomCallbacks
     public void LoadLevel(int sceneIndex)
     {
         StartCoroutine(LoadAsynchronously(sceneIndex));
+        //photonRoom.isFirtOnlineLevel = false;   // migth need to put this after StarCoroutine
+        Debug.Log("Instantiating character");
     }
 
     IEnumerator LoadAsynchronously(int sceneIndex)
@@ -69,13 +79,11 @@ public class LevelLoader : MonoBehaviourPunCallbacks, IInRoomCallbacks
 
         yield return new WaitForSeconds(transitionTime);
 
-        if (isMultiplayer)
+        if (MultiplayerSettings.multiplayerSettings.isMultiplayer)
         {
             PhotonNetwork.LoadLevel(sceneIndex);
 
             loadingScreen.SetActive(true);
-
-            photonRoom.isFirtOnlineLevel = false;   // migth need to put this after StarCoroutine
 
             while (PhotonNetwork.LevelLoadingProgress != 1)
             {
@@ -105,9 +113,4 @@ public class LevelLoader : MonoBehaviourPunCallbacks, IInRoomCallbacks
 
     }
 
-    // Reset isMultiplayer to false (useful when going back to main menu)
-    public bool NotMultiplayer
-    {
-        set { isMultiplayer = false; }
-    }
 }

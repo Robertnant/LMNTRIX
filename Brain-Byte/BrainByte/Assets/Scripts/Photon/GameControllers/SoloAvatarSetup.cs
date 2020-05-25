@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class SoloAvatarSetup : MonoBehaviour
 {
-    public GameObject myCharacter;
     public int characterValue;
-
-    void Start()
+    public void InstantiateSoloPlayer()
     {
+        //levelLoader.LoadLevel(MultiplayerSettings.multiplayerSettings.multiPlayerScene);
+        int spawnPicker = Random.Range(0, GameSetup.GS.spawnPoints.Length);
+
         characterValue = PlayerInfo.PI.selectedCharacter;
-        myCharacter = Instantiate(PlayerInfo.PI.allCharacters[PlayerInfo.PI.selectedCharacter], transform.position, transform.rotation,
-            transform);
+        Instantiate(PlayerInfo.PI.allCharacters[PlayerInfo.PI.selectedCharacter], 
+            GameSetup.GS.spawnPoints[spawnPicker].position, GameSetup.GS.spawnPoints[spawnPicker].rotation); //, transform);
     }
 
 }

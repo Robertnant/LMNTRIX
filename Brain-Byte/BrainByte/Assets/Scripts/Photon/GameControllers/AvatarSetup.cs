@@ -17,30 +17,22 @@ public class AvatarSetup : MonoBehaviour
     public Camera myCamera;
     private AudioListener myAL;
     public Animator animator;
-
-    public bool isMultiplayer;
     void Start()
     {
-        isMultiplayer = FindObjectOfType<LevelLoader>().isMultiplayer;
+        PV = GetComponent<PhotonView>();
+        Debug.Log($"{PV.GetInstanceID()}");
 
-        if (isMultiplayer)
+        if (PV.IsMine)
         {
-            PV = GetComponent<PhotonView>();
-            Debug.Log($"{PV.GetInstanceID()}");
-
-            if (PV.IsMine)
-            {
-                Debug.Log("Added character");
-                AddCharacter(PlayerInfo.PI.selectedCharacter);
-            }
-            else
-            {
-                Destroy(myCamera);
-                Destroy(myAL);
-                Debug.Log("Did not add character");
-            }
+            Debug.Log("Added character");
+            AddCharacter(PlayerInfo.PI.selectedCharacter);
         }
-
+        else
+        {
+            Destroy(myCamera);
+            Destroy(myAL);
+            Debug.Log("Did not add character");
+        }
     }
 
     void AddCharacter(int characterIndex)

@@ -10,6 +10,7 @@ public class MultiplayerSettings : MonoBehaviour
     public int maxPlayers;
     public int menuScene;
     public int multiPlayerScene;
+    public bool isMultiplayer = false;
 
     void Awake()
     {
@@ -24,5 +25,11 @@ public class MultiplayerSettings : MonoBehaviour
         }
 
         DontDestroyOnLoad(this.gameObject);
+    }
+
+    // Reset isMultiplayer to false (useful when going back to main menu)
+    public void SetMultiplayer (bool val)
+    {
+        isMultiplayer = val;
     }
 }

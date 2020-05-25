@@ -93,7 +93,6 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   myCamera: {fileID: 0}
   animator: {fileID: 0}
-  isMultiplayer: 0
 --- !u!114 &114326672079688568
 MonoBehaviour:
   m_ObjectHideFlags: 0

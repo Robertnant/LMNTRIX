@@ -64,6 +64,9 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
 
     void Update()
     {
+        if (levelLoader == null)
+            FindObjectOfType<LevelLoader>();
+
         if (MultiplayerSettings.multiplayerSettings.delayStart)
         {
             if(playersInRoom == 1)
@@ -183,7 +186,7 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
             PhotonNetwork.CurrentRoom.IsOpen = false;
         }
         //PhotonNetwork.LoadLevel(MultiplayerSettings.multiplayerSettings.multiPlayerScene);
-        levelLoader.isMultiplayer = true;
+        MultiplayerSettings.multiplayerSettings.isMultiplayer = true;
         levelLoader.LoadLevel(MultiplayerSettings.multiplayerSettings.multiPlayerScene);
 
         Debug.Log("Starting game (Loading level)");
@@ -204,9 +207,10 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
 
         //Debug.Log("Loaded new scene " + currentScene);
 
-        if(currentScene == MultiplayerSettings.multiplayerSettings.multiPlayerScene)    // basically first multiplayer scene
+        if (currentScene == MultiplayerSettings.multiplayerSettings.multiPlayerScene)    // basically first multiplayer scene
         {
             isGameLoaded = true;
+            isFirtOnlineLevel = false;
 
             if (MultiplayerSettings.multiplayerSettings.delayStart)
             {
@@ -229,21 +233,14 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
             foreach (PhotonPlayer player in FindObjectsOfType<PhotonPlayer>())
             {
                 Debug.Log("Trying to spawn players in next multiplayer scene");
-                player.ChangePlayerPosition();
+
+                //PV.RPC("ChangePlayerPosition", RpcTarget.All);
+                player.GetComponent<PhotonView>().RPC("ChangePlayerPosition", RpcTarget.All);
+                
+                //player.ChangePlayerPosition();
             }
         }
-        {
-
-        }
-        {
-
-        }
-        {
-
-        }
-        {
-
-        }
+        
     }
 
     [PunRPC]

@@ -12,7 +12,6 @@ public class PhotonPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         PV = GetComponent<PhotonView>();
         int spawnPicker = Random.Range(0, GameSetup.GS.spawnPoints.Length);
         if (PV.IsMine)
@@ -40,6 +39,9 @@ public class PhotonPlayer : MonoBehaviour
         // New 22.05.20: the player network prefab will not be destroyed on next scene load
     }
 
+    
+    
+    [PunRPC]
     public void ChangePlayerPosition()
     {
         int spawnPicker = Random.Range(0, GameSetup.GS.spawnPoints.Length);
@@ -49,10 +51,6 @@ public class PhotonPlayer : MonoBehaviour
             // So it seems logical to use the same here
             myAvatar = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerAvatar"),
                 GameSetup.GS.spawnPoints[spawnPicker].position, GameSetup.GS.spawnPoints[spawnPicker].rotation, 0);
-
-
-            /*myAvatar = PhotonNetwork.InstantiateSceneObject(Path.Combine("PhotonPrefabs", "PlayerAvatar"),
-                GameSetup.GS.spawnPoints[spawnPicker].position, GameSetup.GS.spawnPoints[spawnPicker].rotation, 0);*/
 
             // Enable scripts of character object
             myAvatar.GetComponent<AvatarSetup>().enabled = true;
@@ -64,4 +62,5 @@ public class PhotonPlayer : MonoBehaviour
         else
             Debug.Log("Failed to instantiate player");  //this else case should be deleted later
     }
+    
 }

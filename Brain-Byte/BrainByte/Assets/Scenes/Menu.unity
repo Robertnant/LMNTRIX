@@ -4999,17 +4999,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1510183393}
-        m_MethodName: OnBattleButtonClicked
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
       - m_Target: {fileID: 2017610008}
         m_MethodName: SetActive
         m_Mode: 6
@@ -5028,6 +5017,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 156547805}
+        m_MethodName: LoadLevel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -8607,8 +8607,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 156547805}
-        m_MethodName: set_NotMultiplayer
+      - m_Target: {fileID: 1452176950}
+        m_MethodName: SetMultiplayer
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8616,7 +8616,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 157022248}
         m_MethodName: OnClickCharacterPick
@@ -24982,6 +24982,7 @@ GameObject:
   - component: {fileID: 1188501395}
   - component: {fileID: 1188501394}
   - component: {fileID: 1188501396}
+  - component: {fileID: 1188501397}
   m_Layer: 0
   m_Name: RoomController
   m_TagString: Untagged
@@ -25044,6 +25045,20 @@ MonoBehaviour:
   viewIdField: 999
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &1188501397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188501393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe54c31b2286f09428dc8672e52fe442, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterValue: 0
+  levelLoader: {fileID: 156547805}
 --- !u!1 &1188906291
 GameObject:
   m_ObjectHideFlags: 0
@@ -27204,9 +27219,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 156547805}
-        m_MethodName: set_NotMultiplayer
+      - m_Target: {fileID: 1452176950}
+        m_MethodName: SetMultiplayer
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 157022248}
+        m_MethodName: OnClickCharacterPick
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -31961,6 +31987,7 @@ MonoBehaviour:
   maxPlayers: 4
   menuScene: 1
   multiPlayerScene: 4
+  isMultiplayer: 0
 --- !u!4 &1452176951
 Transform:
   m_ObjectHideFlags: 0
@@ -46094,6 +46121,17 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2017610008}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2105355207
 MonoBehaviour:

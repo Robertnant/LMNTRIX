@@ -47,7 +47,7 @@ public class EnemyCombat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        isMultiplayer = FindObjectOfType<LevelLoader>().isMultiplayer;
+        isMultiplayer = MultiplayerSettings.multiplayerSettings.isMultiplayer;
 
         if (isMultiplayer)
             PV = GetComponent<PhotonView>();
@@ -56,7 +56,7 @@ public class EnemyCombat : MonoBehaviour
         animator = GetComponent<Animator>();
 
         // set enemy default weapon
-        if (FindObjectOfType<LevelLoader>().isMultiplayer)
+        if (isMultiplayer)
             PV.RPC("RPC_SelectWeapon", RpcTarget.All);
         else
             RPC_SelectWeapon();

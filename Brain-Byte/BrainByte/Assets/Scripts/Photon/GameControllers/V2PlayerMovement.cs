@@ -50,6 +50,12 @@ public class V2PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (completeLevelUI == null)
+            completeLevelUI = FindObjectOfType<LevelLoader>().completeLevelUI;
+
+        if (gameOverUI == null)
+            gameOverUI = FindObjectOfType<LevelLoader>().gameOverUI;
+
         if (PV.IsMine)
         {
             if (animator == null)
