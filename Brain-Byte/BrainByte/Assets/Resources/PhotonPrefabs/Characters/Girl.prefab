@@ -1626,7 +1626,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: 0
   maxHealth: 0
-  playerDamage: 0
   healthBar: {fileID: 4755298860291020730}
   valsSet: 0
   isDead: 0

@@ -9,6 +9,7 @@ public class EndTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(levelLoader.photonView);
         levelLoader.photonView.RPC("CompleteLevel", RpcTarget.All);
     }
 
