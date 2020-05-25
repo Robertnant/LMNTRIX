@@ -8,7 +8,6 @@ public class HeadsUpDisplay : MonoBehaviourPunCallbacks, IPunObservable
 {
     public int playerHealth;
     public int maxHealth;
-    public int playerDamage;
     public HealthBar healthBar;
 
     private PhotonView PV;
@@ -33,7 +32,7 @@ public class HeadsUpDisplay : MonoBehaviourPunCallbacks, IPunObservable
             healthBar.SetHealth(playerHealth);
         }
     }
-    public void WasHit()
+    public void WasHit(int damage)
     {
         if (playerHealth <= 0)
             return;
@@ -42,9 +41,9 @@ public class HeadsUpDisplay : MonoBehaviourPunCallbacks, IPunObservable
     }
 
     [PunRPC]
-    void TakeDamage()
+    void TakeDamage(int damage)
     {
-        playerHealth -= playerHealth - 25 <= 0 ? playerHealth : 25;
+        playerHealth -= playerHealth - damage <= 0 ? playerHealth : damage;
         healthBar.SetHealth(playerHealth);
 
         // Die if necessary

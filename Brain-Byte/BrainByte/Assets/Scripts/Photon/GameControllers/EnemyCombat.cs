@@ -21,10 +21,13 @@ public class EnemyCombat : MonoBehaviour
     public int selectedWeapon = -1; // -1 for no weapon
 
     // Enemy Health and Damage
-    float enemyMaxHealth = 85f;
-    float ShootDamage = 10f;
-    float PunchDamage = 6f;
-    float ScratchDamage = 20f;
+    public float enemyHealth = 85f;
+    public float enemyDamage = 5f;
+    public float ShootDamage = 10f;
+    public float PunchDamage = 6f;
+    public float ScratchDamage = 20f;
+
+    private bool isMultiplayer;
 
     // attack state
     public enum State
@@ -44,18 +47,25 @@ public class EnemyCombat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PV = GetComponent<PhotonView>();
+        isMultiplayer = FindObjectOfType<LevelLoader>().isMultiplayer;
+
+        if (isMultiplayer)
+            PV = GetComponent<PhotonView>();
+
         rayOrigin = transform;
         animator = GetComponent<Animator>();
 
         // set enemy default weapon
-        PV.RPC("RPC_SelectWeapon", RpcTarget.All);
+        if (FindObjectOfType<LevelLoader>().isMultiplayer)
+            PV.RPC("RPC_SelectWeapon", RpcTarget.All);
+        else
+            RPC_SelectWeapon();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!PV.IsMine)
+        if (isMultiplayer && !PV.IsMine)
             return;
 
         // attack
@@ -79,7 +89,11 @@ public class EnemyCombat : MonoBehaviour
 
             if (previousSelectedWeapon != selectedWeapon)
             {
-                PV.RPC("RPC_SelectWeapon", RpcTarget.All);
+                if (isMultiplayer)
+                    PV.RPC("RPC_SelectWeapon", RpcTarget.All);
+                else
+                    RPC_SelectWeapon();
+
                 nextAttackTime = Time.time + 1f / attackRate;
             }
         }
@@ -97,5 +111,47 @@ public class EnemyCombat : MonoBehaviour
         {
             weaponHolder.GetChild(0).gameObject.SetActive(true);
         }
+    }
+    [PunRPC]
+    public void WasHit(int damage)
+    {
+        if (enemyHealth <= 0)
+            return;
+
+        if (isMultiplayer)
+            PV.RPC("TakeDamage", RpcTarget.All);
+        else
+            TakeDamage(damage);
+    }
+
+    [PunRPC]
+    void TakeDamage(int damage)
+    {
+        enemyHealth -= enemyHealth - damage <= 0 ? enemyHealth : damage;
+
+        // Die if necessary
+        if (enemyHealth <= 0)
+            Die();
+
+        Debug.Log($"Enemy's remote health is now: {enemyHealth}");
+    }
+
+    void Die()
+    {
+        System.Random random = new System.Random();
+
+        int deathAnim = random.Next(2);
+
+        // randomaly play one of the two death animations
+        if (deathAnim == 0)
+            animator.SetTrigger("Dead1");
+        else
+            animator.SetTrigger("Dead2");
+
+        Debug.Log($"Enemy {PV.ViewID} was killed");
+
+        GetComponent<EnemyFollow>().enabled = false;
+        this.enabled = false;
+
     }
 }

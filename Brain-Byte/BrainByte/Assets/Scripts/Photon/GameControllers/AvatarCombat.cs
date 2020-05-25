@@ -16,6 +16,7 @@ public class AvatarCombat : MonoBehaviour
     public float attackRate = 1.25f;
     private float nextAttackTime = 0f;
     public LayerMask enemyLayers;
+    public int playerDamage;
 
     public int selectedWeapon = -1; // -1 for no weapon
     public float attackSelectionRate = 2f;
@@ -140,7 +141,7 @@ public class AvatarCombat : MonoBehaviour
 
                 if (enemyHUD != null)
                 {
-                    enemyHUD.WasHit();
+                    enemyHUD.WasHit(playerDamage);
                     Debug.Log("Set new health");
                     Debug.Log($"Enemy's local health is now: {enemyHUD.playerHealth}");
                 }
@@ -198,7 +199,7 @@ public class AvatarCombat : MonoBehaviour
 
                 if (enemyHUD != null)
                 {
-                    enemyHUD.WasHit();
+                    enemyHUD.WasHit(playerDamage);
                     Debug.Log("Set new health");
                     Debug.Log($"Enemy's local health is now: {enemyHUD.playerHealth}");
                 }
