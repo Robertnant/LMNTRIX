@@ -2855,11 +2855,11 @@ GameObject:
   - component: {fileID: 1476689234286219961}
   - component: {fileID: 7948118893647019761}
   - component: {fileID: 7856189280745056771}
-  - component: {fileID: 8030045913839055289}
   - component: {fileID: 7950479270678836097}
+  - component: {fileID: 8030045913839055289}
   - component: {fileID: 8048298184542517109}
   m_Layer: 0
-  m_Name: SinglePlayerAvatar
+  m_Name: SoloDetective
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2949,22 +2949,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!54 &8030045913839055289
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1476689234295742847}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 122
-  m_CollisionDetection: 0
 --- !u!136 &7950479270678836097
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2979,6 +2963,22 @@ CapsuleCollider:
   m_Height: 1.7645172
   m_Direction: 1
   m_Center: {x: 0, y: 0.85960275, z: 0}
+--- !u!54 &8030045913839055289
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1476689234295742847}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 122
+  m_CollisionDetection: 0
 --- !u!114 &8048298184542517109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2991,10 +2991,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78079ad98c0ba99479f913786fd1d631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 100
+  defaultMouseSensitivity: 50
+  mouseSensitivityX: 0
+  mouseSensitivityY: 1.5
+  clamp: 0.001
   playerCamera: {fileID: 7589777592880339741}
-  clamMin: -1
-  clamMax: 1
   maxTopRotation: -50
   minBottomRotation: 10
   groundDistance: 0

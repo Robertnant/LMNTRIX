@@ -21,19 +21,6 @@ public class SoloPlayerMovement : MonoBehaviour
     public float jumpRate = 1.25f;
     private float nextJumpTime = 0f;
 
-    public Transform attackPoint;
-    public float attackRange = 0.6f;
-    public LayerMask enemyLayers;
-
-    public float attackRate = 1.25f;
-    private float nextAttackTime = 0f;
-
-    // for attack modes
-    public float attackSelectionRate = 2f;
-    private float nextSelectionTime = 0;
-    public string[] attackModes;
-    public int attackMode;
-
     // Use this for initialization
     void Start()
     {
@@ -43,10 +30,6 @@ public class SoloPlayerMovement : MonoBehaviour
         // lock and hide cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
-        // set up attack modes
-        attackModes = new string[] { "Punch", "Pistol", "Semi-auto", "Knife" };
-        attackMode = 0;     // default
     }
 
     // Update is called once per frame
@@ -78,13 +61,6 @@ public class SoloPlayerMovement : MonoBehaviour
 
         transform.Rotate((Vector3.up * mouseX));
 
-        
-        /* Change weapon or attack mode*/
-        
-        if (Time.time >= nextSelectionTime)
-        {
-            ChangeAttackMode();
-        }
 
         if (Time.time >= nextJumpTime)
         {
@@ -104,74 +80,7 @@ public class SoloPlayerMovement : MonoBehaviour
                 animator.SetBool("Grounded", true);
             }
         }
-            
-
-        // temporary till creation of single player combat script
-        if (Time.time >= nextAttackTime)
-        {
-            if (Input.GetMouseButtonDown(1))
-            {
-                Attack();
-                nextAttackTime = Time.time + 1f / attackRate;
-            }
-        }
 
     }
 
-    void ChangeAttackMode()
-    {
-        // with num keys
-        if (Input.anyKeyDown)
-        {
-            for (int i = 1; i <= attackModes.Length; i++)
-            {
-                if (Input.inputString == i.ToString())
-                {
-                    attackMode = i - 1;
-                    nextSelectionTime = Time.time + 1f / attackSelectionRate;
-                    Debug.Log("Selected attack mode/weapon: " + attackModes[attackMode]);
-                }
-            }
-        }
-
-        // with mouse scroll wheel
-        if (Input.GetAxis("Mouse ScrollWheel") > 0f) // up
-        {
-            attackMode = attackMode + 1 < attackModes.Length ? attackMode + 1 : 0;
-            nextSelectionTime = Time.time + 1f / attackSelectionRate;
-            Debug.Log("Selected attack mode/weapon: " + attackModes[attackMode]);
-        }
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0f) // down
-        {
-            attackMode = attackMode - 1 >= 0 ? attackMode - 1 : attackModes.Length - 1;
-            nextSelectionTime = Time.time + 1f / attackSelectionRate;
-            Debug.Log("Selected attack mode/weapon: " + attackModes[attackMode]);
-        }
-
-
-    }
-
-    void Attack()
-    {
-        // Play attack animation
-        animator.SetTrigger("Punch");
-
-        // Detect enemy
-        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
-
-        // Damage enemy
-        foreach(Collider enemy in hitEnemies)
-        {
-            Debug.Log("We hit " + enemy.name);
-        }
-
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        if (attackPoint == null)
-            return;
-
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-    }
 }

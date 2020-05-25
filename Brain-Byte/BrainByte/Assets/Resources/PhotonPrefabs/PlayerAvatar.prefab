@@ -93,6 +93,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   myCamera: {fileID: 0}
   animator: {fileID: 0}
+  isMultiplayer: 0
 --- !u!114 &114326672079688568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,6 +139,7 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 24576
+  playerDamage: 0
   selectedWeapon: -1
   attackSelectionRate: 2
   currentWeapon: 

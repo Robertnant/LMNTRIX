@@ -48,5 +48,6 @@ MonoBehaviour:
   - MoveToNextLevel
   - RestartLevel
   - CompleteLevel
+  - WasHit
   DisableAutoOpenWizard: 1
   ShowSettings: 1

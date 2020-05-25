@@ -18,21 +18,27 @@ public class AvatarSetup : MonoBehaviour
     private AudioListener myAL;
     public Animator animator;
 
+    public bool isMultiplayer;
     void Start()
     {
-        PV = GetComponent<PhotonView>();
-        Debug.Log($"{PV.GetInstanceID()}");
-        
-        if(PV.IsMine)
+        isMultiplayer = FindObjectOfType<LevelLoader>().isMultiplayer;
+
+        if (isMultiplayer)
         {
-            Debug.Log("Added character");
-            AddCharacter(PlayerInfo.PI.selectedCharacter);
-        }
-        else
-        {
-            Destroy(myCamera);
-            Destroy(myAL);
-            Debug.Log("Did not add character");
+            PV = GetComponent<PhotonView>();
+            Debug.Log($"{PV.GetInstanceID()}");
+
+            if (PV.IsMine)
+            {
+                Debug.Log("Added character");
+                AddCharacter(PlayerInfo.PI.selectedCharacter);
+            }
+            else
+            {
+                Destroy(myCamera);
+                Destroy(myAL);
+                Debug.Log("Did not add character");
+            }
         }
 
     }
@@ -66,7 +72,7 @@ public class AvatarSetup : MonoBehaviour
 
         // check if HeadsUpDisplay values were set
         if (myCharacter.GetComponent<HeadsUpDisplay>().maxHealth == maxHealth &&
-            myCharacter.GetComponent<HeadsUpDisplay>().playerDamage == playerDamage &&
+            //myCharacter.GetComponent<HeadsUpDisplay>().playerDamage == playerDamage &&
             myCharacter.GetComponent<HeadsUpDisplay>().playerHealth == playerHealth)
         {
             myCharacter.GetComponent<HeadsUpDisplay>().valsSet = true;
@@ -78,7 +84,7 @@ public class AvatarSetup : MonoBehaviour
     void SetRemoteVals()
     {
         myCharacter.GetComponent<HeadsUpDisplay>().maxHealth = maxHealth;
-        myCharacter.GetComponent<HeadsUpDisplay>().playerDamage = playerDamage;
+        //myCharacter.GetComponent<HeadsUpDisplay>().playerDamage = playerDamage;
         myCharacter.GetComponent<HeadsUpDisplay>().playerHealth = playerHealth;
 
     }

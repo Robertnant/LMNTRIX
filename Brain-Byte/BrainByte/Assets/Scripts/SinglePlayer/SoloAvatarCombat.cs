@@ -23,7 +23,7 @@ public class SoloAvatarCombat : MonoBehaviour
         rayOrigin = transform;
         animator = GetComponent<Animator>();
 
-        RPC_SelectWeapon();
+        SelectWeapon();
 
 
 
@@ -36,12 +36,12 @@ public class SoloAvatarCombat : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                RPC_Shooting();
+                Shooting();
                 nextAttackTime = Time.time + 1f / attackRate;
             }
             if (Input.GetMouseButtonDown(1))
             {
-                RPC_Hit();
+                Hit();
                 nextAttackTime = Time.time + 1f / attackRate;
             }
 
@@ -81,14 +81,14 @@ public class SoloAvatarCombat : MonoBehaviour
 
             if (previousSelectedWeapon != selectedWeapon)
             {
-                RPC_SelectWeapon();
+                SelectWeapon();
                 nextSelectionTime = Time.time + 1f / attackSelectionRate;
             }
         }
 
     }
 
-    void RPC_Hit()
+    void Hit()
     {
         // Play attack animation
         animator.SetTrigger(currentWeapon);
@@ -123,7 +123,7 @@ public class SoloAvatarCombat : MonoBehaviour
     }
 
     //To activate or deactivate the weapon
-    void RPC_SelectWeapon()
+    void SelectWeapon()
     {
         if (selectedWeapon == -1)
             currentWeapon = "Punch";
@@ -146,7 +146,7 @@ public class SoloAvatarCombat : MonoBehaviour
         }
     }
 
-    void RPC_Shooting()
+    void Shooting()
     {
         RaycastHit hit;
 
