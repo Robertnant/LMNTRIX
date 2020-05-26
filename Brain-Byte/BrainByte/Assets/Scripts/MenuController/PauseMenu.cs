@@ -12,7 +12,10 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        LevelLoader levelLoader = FindObjectOfType<LevelLoader>();
+        bool cannotHitPause = levelLoader.completeLevelUI.activeSelf || levelLoader.gameOverUI.activeSelf;
+
+        if (!cannotHitPause && Input.GetKeyDown(KeyCode.Escape))
         {
             if (GameIsPaused)
             {
