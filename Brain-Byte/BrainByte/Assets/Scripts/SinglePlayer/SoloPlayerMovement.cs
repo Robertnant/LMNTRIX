@@ -41,9 +41,6 @@ public class SoloPlayerMovement : MonoBehaviour
         // rotation with mouse
         float mouseX = Input.GetAxis("Mouse X") * defaultMouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * defaultMouseSensitivity * Time.deltaTime;
-
-        /* push the camera back into range of rotation if max or min range reached
-         * Basically prevent user from doing 360° camera rotation*/
         
         float negPosAngle = playerCamera.eulerAngles.x;     // logical: cause by rotating up and down, the camera rotates around x axis (Physics)
         negPosAngle = negPosAngle > 180 ? negPosAngle - 360 : negPosAngle;
@@ -79,6 +76,17 @@ public class SoloPlayerMovement : MonoBehaviour
             {
                 animator.SetBool("Grounded", true);
             }
+        }
+
+        // To be ran by every player (regardless of if PV.isMine)
+        LevelLoader levelLoader = FindObjectOfType<LevelLoader>();
+
+        if (levelLoader.completeLevelUI.activeSelf || levelLoader.gameOverUI.activeSelf)
+        {
+            animator.enabled = false;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            this.enabled = false;
         }
 
     }

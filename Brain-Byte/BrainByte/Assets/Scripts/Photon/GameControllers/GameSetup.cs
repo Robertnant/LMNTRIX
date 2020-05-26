@@ -16,6 +16,16 @@ public class GameSetup : MonoBehaviour
     {
         if (GameSetup.GS == null)
             GameSetup.GS = this;
+
+        if (!MultiplayerSettings.multiplayerSettings.isMultiplayer)
+        {
+            int spawnPicker = Random.Range(0, GameSetup.GS.spawnPoints.Length);
+
+            Instantiate(PlayerInfo.PI.allCharacters[PlayerInfo.PI.selectedCharacter],
+                GameSetup.GS.spawnPoints[spawnPicker].position, GameSetup.GS.spawnPoints[spawnPicker].rotation);
+
+            Debug.Log("Instantiating character");
+        }
     }
 
     public void DisconnectPlayer()

@@ -1557,8 +1557,7 @@ MonoBehaviour:
   mouseSensitivityX: 0
   mouseSensitivityY: 1.5
   clamp: 0.001
-  playerCamera: {fileID: 7589777592880339741, guid: ffa092cbcd6d5bd4082f5fdbbdf2e9ce,
-    type: 3}
+  playerCamera: {fileID: 3989838759511342708}
   maxTopRotation: -50
   minBottomRotation: 10
   groundDistance: 0
@@ -3477,7 +3476,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3989838759511342708
 Transform:
   m_ObjectHideFlags: 0

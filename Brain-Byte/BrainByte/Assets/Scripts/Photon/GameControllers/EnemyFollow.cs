@@ -10,12 +10,13 @@ public class EnemyFollow : MonoBehaviour
     public static GameObject objToFollow;
     private Animator animator;
     public double minDist = 10f;
-    public bool isMultiplayer = true;
+    public bool isMultiplayer;
     private float distance;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        isMultiplayer = MultiplayerSettings.multiplayerSettings.isMultiplayer;
     }
     // Update is called once per frame
     void Update()
