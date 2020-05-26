@@ -150,6 +150,7 @@ public class EnemyCombat : MonoBehaviourPunCallbacks, IPunObservable
         }
     }
 
+    #region EnemyDamage
     [PunRPC]
     public void WasHit()
     {
@@ -186,13 +187,16 @@ public class EnemyCombat : MonoBehaviourPunCallbacks, IPunObservable
         else
             animator.SetTrigger("Dead2");
 
-        Debug.Log($"Enemy {PV.ViewID} was killed");
+        if (isMultiplayer)
+            Debug.Log($"Enemy {PV.ViewID} was killed");
 
         GetComponent<EnemyFollow>().enabled = false;
         this.enabled = false;
 
     }
+    #endregion
 
+    #region Attacks
     [PunRPC]
     void RPC_Shooting()
     {
@@ -251,7 +255,7 @@ public class EnemyCombat : MonoBehaviourPunCallbacks, IPunObservable
 
             if (hit.transform.tag == "Character")
             {
-                HeadsUpDisplay enemyHUD = hit.transform.gameObject.GetComponent<HeadsUpDisplay>(); // to modify with new script
+                SoloHeadsUpDisplay enemyHUD = hit.transform.gameObject.GetComponent<SoloHeadsUpDisplay>(); // to modify with new script
 
                 if (enemyHUD != null)
                 {
@@ -295,20 +299,33 @@ public class EnemyCombat : MonoBehaviourPunCallbacks, IPunObservable
         // Damage enemy
         foreach (Collider enemy in hitEnemies)
         {
-            Debug.Log($"Player {PV.ViewID} hit {enemy.gameObject.GetComponent<PhotonView>().ViewID}");
-
-            // Deduct health
-            HeadsUpDisplay enemyHUD = enemy.gameObject.GetComponent<HeadsUpDisplay>();
-
-            if (enemyHUD != null)
+            if (MultiplayerSettings.multiplayerSettings.isMultiplayer)
             {
-                enemyHUD.WasHit();
-                Debug.Log("Set new health");
-                Debug.Log($"Enemy's local health is now: {enemyHUD.playerHealth}");
+                Debug.Log($"Player {PV.ViewID} hit {enemy.gameObject.GetComponent<PhotonView>().ViewID}");
+
+                // Deduct health
+                HeadsUpDisplay enemyHUD = enemy.gameObject.GetComponent<HeadsUpDisplay>();
+
+                if (enemyHUD != null)
+                {
+                    enemyHUD.WasHit();
+                    Debug.Log($"Enemy's new health is now: {enemyHUD.playerHealth}");
+                }
             }
+            else
+            {
+                SoloHeadsUpDisplay enemyHUD = enemy.gameObject.GetComponent<SoloHeadsUpDisplay>();
+
+                if (enemyHUD != null)
+                {
+                    enemyHUD.WasHit();
+                    Debug.Log($"Enemy's new health is now: {enemyHUD.playerHealth}");
+                }
+            }
+
         }
     }
-    
+    #endregion
 
     void OnDrawGizmosSelected()
     {

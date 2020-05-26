@@ -65,14 +65,20 @@ public class AvatarCombat : MonoBehaviour
         // attack
         if (Time.time >= nextAttackTime)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
             {
-                PV.RPC("RPC_Shooting", RpcTarget.All);
-                nextAttackTime = Time.time + 1f / attackRate;
-            }
-            if (Input.GetMouseButtonDown(1))
-            {
-                PV.RPC("RPC_Hit", RpcTarget.All);
+                // Play attack animation
+                animator.SetTrigger(currentWeapon);
+
+                if (currentWeapon == "SARP" || currentWeapon == "Pistol")
+                {
+                    PV.RPC("RPC_Shooting", RpcTarget.All);
+                }
+                else
+                {
+                    PV.RPC("RPC_Hit", RpcTarget.All);
+                }
+
                 nextAttackTime = Time.time + 1f / attackRate;
             }
             
@@ -134,9 +140,6 @@ public class AvatarCombat : MonoBehaviour
     [PunRPC]
     void RPC_Hit()
     {
-        // Play attack animation
-        animator.SetTrigger(currentWeapon);
-
         // Detect enemy
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
 

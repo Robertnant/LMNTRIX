@@ -57,6 +57,16 @@ public class LevelLoader : MonoBehaviourPunCallbacks, IInRoomCallbacks
     public void CompleteLevel()
     {
         completeLevelUI.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    [PunRPC]
+    public void LoseLevel()
+    {
+        gameOverUI.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     [PunRPC]

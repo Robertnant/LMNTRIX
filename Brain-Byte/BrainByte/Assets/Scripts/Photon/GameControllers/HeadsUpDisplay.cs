@@ -16,7 +16,7 @@ public class HeadsUpDisplay : MonoBehaviourPunCallbacks, IPunObservable
     private AvatarCombat combat;
     public bool valsSet = false;
     public bool isDead = false;
-
+    
     void Start()
     {
         PV = GetComponent<PhotonView>();
@@ -31,6 +31,7 @@ public class HeadsUpDisplay : MonoBehaviourPunCallbacks, IPunObservable
         {
             healthBar.SetHealth(playerHealth);
         }
+
     }
     public void WasHit()
     {
@@ -38,6 +39,7 @@ public class HeadsUpDisplay : MonoBehaviourPunCallbacks, IPunObservable
             return;
 
         PV.RPC("TakeDamage", RpcTarget.All);
+        
     }
 
     [PunRPC]
@@ -59,17 +61,20 @@ public class HeadsUpDisplay : MonoBehaviourPunCallbacks, IPunObservable
 
         int deathAnim = random.Next(2);
 
-        // randomaly play one of the two death animations
+        // randomly play one of the two death animations
         if (deathAnim == 0)
             animator.SetTrigger("Dead1");
         else
             animator.SetTrigger("Dead2");
 
         isDead = true;                // can be useful when checking if player is dead by other components
+
         movement.enabled = false;
         combat.enabled = false;
+        FindObjectOfType<LevelLoader>().photonView.RPC("LoseLevel", RpcTarget.All);
 
         Debug.Log($"Player {PV.ViewID} has died");
+
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -79,12 +84,14 @@ public class HeadsUpDisplay : MonoBehaviourPunCallbacks, IPunObservable
             if (stream.IsWriting)
             {
                 stream.SendNext(playerHealth);
+                stream.SendNext(combat.selectedWeapon);         // new 26/05/20 test
                 Debug.Log("I am the local client: " + GetComponent<PhotonView>().ViewID);
                 Debug.Log("My local health is " + playerHealth);
             }
             else
             {
                 playerHealth = (int)stream.ReceiveNext();
+                combat.selectedWeapon = (int)stream.ReceiveNext();
                 Debug.Log("I am the remote client: " + GetComponent<PhotonView>().ViewID);
                 Debug.Log("My remote health is " + playerHealth);
             }

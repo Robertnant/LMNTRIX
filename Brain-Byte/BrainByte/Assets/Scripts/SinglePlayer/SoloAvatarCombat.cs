@@ -7,6 +7,7 @@ public class SoloAvatarCombat : MonoBehaviour
 
     // for attack
     public Transform weaponHolder;
+    public Transform attackPoint;
     public float attackRange = 0.6f;
     public float attackRate = 1.25f;
     private float nextAttackTime = 0f;
@@ -34,14 +35,20 @@ public class SoloAvatarCombat : MonoBehaviour
         // attack
         if (Time.time >= nextAttackTime)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
             {
-                Shooting();
-                nextAttackTime = Time.time + 1f / attackRate;
-            }
-            if (Input.GetMouseButtonDown(1))
-            {
-                Hit();
+                // Play attack animation
+                animator.SetTrigger(currentWeapon);
+
+                if (currentWeapon == "SARP" || currentWeapon == "Pistol")
+                {
+                    Shooting();
+                }
+                else
+                {
+                    Hit();
+                }
+
                 nextAttackTime = Time.time + 1f / attackRate;
             }
 
@@ -90,11 +97,8 @@ public class SoloAvatarCombat : MonoBehaviour
 
     void Hit()
     {
-        // Play attack animation
-        animator.SetTrigger(currentWeapon);
-
         // Detect enemy
-        Collider[] hitEnemies = Physics.OverlapSphere(weaponHolder.position, attackRange, enemyLayers);
+        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
 
         // Damage enemy
         foreach (Collider enemy in hitEnemies)
@@ -119,7 +123,7 @@ public class SoloAvatarCombat : MonoBehaviour
         if (weaponHolder == null)
             return;
 
-        Gizmos.DrawWireSphere(weaponHolder.position, attackRange);
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
     //To activate or deactivate the weapon

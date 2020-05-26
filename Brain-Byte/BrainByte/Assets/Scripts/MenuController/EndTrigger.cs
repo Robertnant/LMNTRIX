@@ -9,15 +9,18 @@ public class EndTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (MultiplayerSettings.multiplayerSettings.isMultiplayer)
+        if (other.gameObject.tag == "Character")
         {
-            Debug.Log(levelLoader.photonView);
-            levelLoader.photonView.RPC("CompleteLevel", RpcTarget.All);
-        }
-        else
-        {
-            Debug.Log("trying to load next singleplayer level");
-            levelLoader.CompleteLevel();
+            if (MultiplayerSettings.multiplayerSettings.isMultiplayer)
+            {
+                Debug.Log(levelLoader.photonView);
+                levelLoader.photonView.RPC("CompleteLevel", RpcTarget.All);
+            }
+            else
+            {
+                Debug.Log("trying to load next singleplayer level");
+                levelLoader.CompleteLevel();
+            }
         }
     }
 
