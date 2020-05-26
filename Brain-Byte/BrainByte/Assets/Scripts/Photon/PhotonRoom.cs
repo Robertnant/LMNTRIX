@@ -232,13 +232,16 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
 
             foreach (PhotonPlayer player in FindObjectsOfType<PhotonPlayer>())
             {
-                Debug.Log("Trying to spawn players in next multiplayer scene");
+                if (PV.IsMine)
+                {
+                    Debug.Log("Trying to spawn players in next multiplayer scene");
 
-                //PV.RPC("ChangePlayerPosition", RpcTarget.All);
-                player.GetComponent<PhotonView>().RPC("ChangePlayerPosition", RpcTarget.All);
-                
+                    //PV.RPC("ChangePlayerPosition", RpcTarget.All);
+                    player.GetComponent<PhotonView>().RPC("ChangePlayerPosition", RpcTarget.All);
+                }
                 //player.ChangePlayerPosition();
             }
+            
         }
         
     }
