@@ -2276,6 +2276,7 @@ Transform:
   - {fileID: 838201530585316462}
   - {fileID: 838201530585316460}
   - {fileID: 838201530585316458}
+  - {fileID: 6496321007640415099}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2370,6 +2371,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114572883016075462}
   - {fileID: 114060752217204616}
+  - {fileID: 114749638387929390}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -2419,12 +2421,18 @@ MonoBehaviour:
   rayOrigin: {fileID: 0}
   animator: {fileID: 0}
   weaponHolder: {fileID: 3122320267181670164}
-  attackRange: 0.6
+  attackRange: 1
   attackRate: 1.25
   enemyLayers:
     serializedVersion: 2
     m_Bits: 16384
+  attackPoint: {fileID: 0}
   selectedWeapon: -1
+  enemyHealth: 85
+  enemyDamage: 5
+  ShootDamage: 10
+  PunchDamage: 6
+  ScratchDamage: 20
   state: 0
 --- !u!114 &1065773950631588208
 MonoBehaviour:
@@ -3307,6 +3315,36 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0012666732, y: 0.08218396, z: 0.13374123}
     m_Extent: {x: 0.069157906, y: 0.011248231, z: 0.013546884}
   m_DirtyAABB: 0
+--- !u!1 &2660114812842750640
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6496321007640415099}
+  m_Layer: 14
+  m_Name: AttackPoint
+  m_TagString: HitPoint
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6496321007640415099
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2660114812842750640}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.248, z: 1.467}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 838201530585316838}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8258219820330969046
 GameObject:
   m_ObjectHideFlags: 0

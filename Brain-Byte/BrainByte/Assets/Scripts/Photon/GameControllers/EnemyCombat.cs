@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class EnemyCombat : MonoBehaviour
+public class EnemyCombat : MonoBehaviourPunCallbacks, IPunObservable
 {
     #region Attributes
 
@@ -17,6 +17,7 @@ public class EnemyCombat : MonoBehaviour
     public float attackRate = 1.25f;
     private float nextAttackTime = 0f;
     public LayerMask enemyLayers;
+    public Transform attackPoint;
 
     public int selectedWeapon = -1; // -1 for no weapon
 
@@ -52,6 +53,14 @@ public class EnemyCombat : MonoBehaviour
         if (isMultiplayer)
             PV = GetComponent<PhotonView>();
 
+        foreach (Transform t in transform)
+        {
+            if (t.tag == "HitPoint")
+            {
+                attackPoint = t;
+            }
+        }
+
         rayOrigin = transform;
         animator = GetComponent<Animator>();
 
@@ -73,18 +82,46 @@ public class EnemyCombat : MonoBehaviour
         {
             int previousSelectedWeapon = selectedWeapon;
 
-            switch (state)
+            if (isMultiplayer)
             {
-                case State.Shooting:
-                    selectedWeapon = 0;     // weapon
-                    break;
-                case State.Scratching:
-                    selectedWeapon = -2;    // no weapon
-                    break;
-                case State.Punching:
-                    selectedWeapon = -1;    // no weapon
-                    break;
+                switch (state)
+                {
+                    case State.Shooting:
+                        selectedWeapon = 0;     // weapon
+                        PV.RPC("RPC_Shooting", RpcTarget.All);
+                        Debug.Log("Shooting!");
+                        break;
+                    case State.Scratching:
+                        selectedWeapon = -2;    // no weapon
+                        PV.RPC("RPC_Hit", RpcTarget.All);
+                        Debug.Log("Hit!");
+                        break;
+                    case State.Punching:
+                        selectedWeapon = -1;    // no weapon
+                        PV.RPC("RPC_Hit", RpcTarget.All);
+                        Debug.Log("Hit!");
+                        break;
 
+                }
+            }
+            else
+            {
+                switch (state)
+                {
+                    case State.Shooting:
+                        selectedWeapon = 0;     // weapon
+                        Shooting();
+                        break;
+                    case State.Scratching:
+                        selectedWeapon = -2;    // no weapon
+                        RPC_Hit();
+                        break;
+                    case State.Punching:
+                        selectedWeapon = -1;    // no weapon
+                        RPC_Hit();
+                        break;
+
+                }
             }
 
             if (previousSelectedWeapon != selectedWeapon)
@@ -112,8 +149,9 @@ public class EnemyCombat : MonoBehaviour
             weaponHolder.GetChild(0).gameObject.SetActive(true);
         }
     }
+
     [PunRPC]
-    public void WasHit(int damage)
+    public void WasHit()
     {
         if (enemyHealth <= 0)
             return;
@@ -121,13 +159,13 @@ public class EnemyCombat : MonoBehaviour
         if (isMultiplayer)
             PV.RPC("TakeDamage", RpcTarget.All);
         else
-            TakeDamage(damage);
+            TakeDamage();
     }
 
     [PunRPC]
-    void TakeDamage(int damage)
+    void TakeDamage()
     {
-        enemyHealth -= enemyHealth - damage <= 0 ? enemyHealth : damage;
+        enemyHealth -= enemyHealth - 25 <= 0 ? enemyHealth : 25;
 
         // Die if necessary
         if (enemyHealth <= 0)
@@ -153,5 +191,146 @@ public class EnemyCombat : MonoBehaviour
         GetComponent<EnemyFollow>().enabled = false;
         this.enabled = false;
 
+    }
+
+    [PunRPC]
+    void RPC_Shooting()
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 1000))
+        {
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
+
+            if (hit.transform.tag == "Character")
+            {
+                Debug.Log($"Player {PV.ViewID} shot {hit.transform.gameObject.GetComponent<PhotonView>().ViewID}");
+                HeadsUpDisplay enemyHUD = hit.transform.gameObject.GetComponent<HeadsUpDisplay>(); // to modify with new script
+
+                if (enemyHUD != null)
+                {
+                    enemyHUD.WasHit();
+                    Debug.Log("Set new health");
+                    Debug.Log($"Enemy's local health is now: {enemyHUD.playerHealth}");
+                }
+                else
+                {
+                    // Display all availble components of enemy
+                    Debug.Log("Enemy AvatarSetup is null");
+
+                    Component[] enemyComponents = hit.collider.gameObject.GetComponents<Component>();
+
+                    Debug.Log("Available ennemy components are: ");
+
+                    foreach (Component comp in enemyComponents)
+                        Debug.Log("Supposed to be Enemy avatar's comps: " + comp.name + " " + comp);
+
+                }
+
+            }
+            else
+            {
+                Debug.Log($"Hit a random {hit.transform.tag} object");
+            }
+        }
+        else
+        {
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
+            Debug.Log("Did not hit anyone");
+        }
+
+    }
+
+    void Shooting()
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 1000))
+        {
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
+
+            if (hit.transform.tag == "Character")
+            {
+                HeadsUpDisplay enemyHUD = hit.transform.gameObject.GetComponent<HeadsUpDisplay>(); // to modify with new script
+
+                if (enemyHUD != null)
+                {
+                    enemyHUD.WasHit();
+                }
+                else
+                {
+                    // Display all availble components of enemy
+                    Debug.Log("Enemy AvatarSetup is null");
+
+                    Component[] enemyComponents = hit.collider.gameObject.GetComponents<Component>();
+
+                    Debug.Log("Available ennemy components are: ");
+
+                    foreach (Component comp in enemyComponents)
+                        Debug.Log("Supposed to be Enemy avatar's comps: " + comp.name + " " + comp);
+
+                }
+
+            }
+            else
+            {
+                Debug.Log($"Hit a random {hit.transform.tag} object");
+            }
+        }
+        else
+        {
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
+            Debug.Log("Did not hit anyone");
+        }
+
+    }
+
+    [PunRPC]
+    void RPC_Hit()
+    {
+
+        // Detect enemy
+        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
+
+        // Damage enemy
+        foreach (Collider enemy in hitEnemies)
+        {
+            Debug.Log($"Player {PV.ViewID} hit {enemy.gameObject.GetComponent<PhotonView>().ViewID}");
+
+            // Deduct health
+            HeadsUpDisplay enemyHUD = enemy.gameObject.GetComponent<HeadsUpDisplay>();
+
+            if (enemyHUD != null)
+            {
+                enemyHUD.WasHit();
+                Debug.Log("Set new health");
+                Debug.Log($"Enemy's local health is now: {enemyHUD.playerHealth}");
+            }
+        }
+    }
+    
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (MultiplayerSettings.multiplayerSettings.isMultiplayer)
+        {
+            if (stream.IsWriting)
+            {
+                stream.SendNext(selectedWeapon);
+                stream.SendNext(enemyHealth);
+                Debug.Log("I am the local client: " + GetComponent<PhotonView>().ViewID);
+            }
+            else
+            {
+                selectedWeapon = (int)stream.ReceiveNext();
+                enemyHealth = (float)stream.ReceiveNext();
+                Debug.Log("I am the remote client: " + GetComponent<PhotonView>().ViewID);
+            }
+        }
     }
 }

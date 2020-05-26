@@ -32,7 +32,7 @@ public class HeadsUpDisplay : MonoBehaviourPunCallbacks, IPunObservable
             healthBar.SetHealth(playerHealth);
         }
     }
-    public void WasHit(int damage)
+    public void WasHit()
     {
         if (playerHealth <= 0)
             return;
@@ -41,9 +41,9 @@ public class HeadsUpDisplay : MonoBehaviourPunCallbacks, IPunObservable
     }
 
     [PunRPC]
-    void TakeDamage(int damage)
+    void TakeDamage()
     {
-        playerHealth -= playerHealth - damage <= 0 ? playerHealth : damage;
+        playerHealth -= playerHealth - 5 <= 0 ? playerHealth : 5;
         healthBar.SetHealth(playerHealth);
 
         // Die if necessary
@@ -74,15 +74,20 @@ public class HeadsUpDisplay : MonoBehaviourPunCallbacks, IPunObservable
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        if (stream.IsWriting)
+        if (MultiplayerSettings.multiplayerSettings.isMultiplayer)
         {
-            stream.SendNext(playerHealth);
-            Debug.Log("I am the local client: " + GetComponent<PhotonView>().ViewID);
-        }
-        else
-        {
-            playerHealth = (int)stream.ReceiveNext();
-            Debug.Log("I am the remote client: " + GetComponent<PhotonView>().ViewID);
+            if (stream.IsWriting)
+            {
+                stream.SendNext(playerHealth);
+                Debug.Log("I am the local client: " + GetComponent<PhotonView>().ViewID);
+                Debug.Log("My local health is " + playerHealth);
+            }
+            else
+            {
+                playerHealth = (int)stream.ReceiveNext();
+                Debug.Log("I am the remote client: " + GetComponent<PhotonView>().ViewID);
+                Debug.Log("My remote health is " + playerHealth);
+            }
         }
     }
 

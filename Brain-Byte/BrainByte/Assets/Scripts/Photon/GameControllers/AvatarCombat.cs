@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class AvatarCombat : MonoBehaviour
 {
+    #region Attributes
+
     private PhotonView PV;
     private AvatarSetup avatarSetup;
     public Transform rayOrigin;
@@ -12,6 +14,7 @@ public class AvatarCombat : MonoBehaviour
 
     // for attack
     public Transform weaponHolder;
+    public Transform attackPoint;
     public float attackRange = 0.6f;
     public float attackRate = 1.25f;
     private float nextAttackTime = 0f;
@@ -23,6 +26,8 @@ public class AvatarCombat : MonoBehaviour
     private float nextSelectionTime = 0f;
     public string currentWeapon;
 
+    #endregion
+
     void Start()
     {
         PV = GetComponent<PhotonView>();
@@ -31,14 +36,20 @@ public class AvatarCombat : MonoBehaviour
         rayOrigin = avatarSetup.myCharacter.transform;
         animator = avatarSetup.animator;
 
-        /* Get weapon holder (also attack point)*/
+        /* Get weapon holder and attack point*/
 
-        FindAttackPoint(avatarSetup.myCharacter.transform);
-        Debug.Log("Found attack point: " + weaponHolder.name);
+        foreach (Transform t in avatarSetup.myCharacter.transform)
+        {
+            if (t.tag == "HitPoint")
+            {
+                attackPoint = t;
+            }
+        }
+
+        FindWeaponHolder(avatarSetup.myCharacter.transform);
+        Debug.Log("Found weapon holder: " + weaponHolder.name);
 
         PV.RPC("RPC_SelectWeapon", RpcTarget.All);
-
-        
 
     }
 
@@ -108,14 +119,14 @@ public class AvatarCombat : MonoBehaviour
 
     }
 
-    void FindAttackPoint(Transform point)
+    void FindWeaponHolder(Transform point)
     {
         foreach (Transform t in point)
         {
-            if (t.tag == "AttackPoint")
+            if (t.tag == "AttackPoint") // tag should have named differently (weaponHolder)
             {
                 weaponHolder = t;
-                FindAttackPoint(t);
+                FindWeaponHolder(t);
             }
         }
     }
@@ -127,12 +138,12 @@ public class AvatarCombat : MonoBehaviour
         animator.SetTrigger(currentWeapon);
 
         // Detect enemy
-        Collider[] hitEnemies = Physics.OverlapSphere(weaponHolder.position, attackRange, enemyLayers);
+        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
 
         // Damage enemy
         foreach (Collider enemy in hitEnemies)
         {
-            if (!enemy.gameObject.GetComponent<PhotonView>().IsMine)    // prevent player from hitting itself
+            if (enemy.tag == "Character" && !enemy.gameObject.GetComponent<PhotonView>().IsMine)    // 2nd condition prevents player from hitting itself
             {
                 Debug.Log($"Player {PV.ViewID} hit {enemy.gameObject.GetComponent<PhotonView>().ViewID}");
 
@@ -141,9 +152,23 @@ public class AvatarCombat : MonoBehaviour
 
                 if (enemyHUD != null)
                 {
-                    enemyHUD.WasHit(playerDamage);
+                    enemyHUD.WasHit();
                     Debug.Log("Set new health");
                     Debug.Log($"Enemy's local health is now: {enemyHUD.playerHealth}");
+                }
+            }
+            else
+            {
+                foreach (Collider soloEnemy in hitEnemies)
+                {
+                    EnemyCombat enemyState = enemy.gameObject.GetComponent<EnemyCombat>();
+
+                    if (enemyState != null)
+                    {
+                        enemyState.WasHit();
+                        Debug.Log("Set new enemy health");
+                        Debug.Log($"Enemy's health is now: {enemyState.enemyHealth}");
+                    }
                 }
             }
         }
@@ -155,7 +180,7 @@ public class AvatarCombat : MonoBehaviour
         if (weaponHolder == null)
             return;
 
-        Gizmos.DrawWireSphere(weaponHolder.position, attackRange);
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
     [PunRPC]
@@ -199,7 +224,7 @@ public class AvatarCombat : MonoBehaviour
 
                 if (enemyHUD != null)
                 {
-                    enemyHUD.WasHit(playerDamage);
+                    enemyHUD.WasHit();
                     Debug.Log("Set new health");
                     Debug.Log($"Enemy's local health is now: {enemyHUD.playerHealth}");
                 }
@@ -218,6 +243,31 @@ public class AvatarCombat : MonoBehaviour
                 }
 
             }
+            else if (hit.transform.tag == "Enemy")
+            {
+                Debug.Log($"Player {PV.ViewID} shot {hit.transform.gameObject.GetComponent<PhotonView>().ViewID}");
+                EnemyCombat enemyState = hit.transform.gameObject.GetComponent<EnemyCombat>();
+
+                if (enemyState != null)
+                {
+                    enemyState.WasHit();
+                    Debug.Log("Set new health");
+                    Debug.Log($"Enemy's local health is now: {enemyState.enemyHealth}");
+                }
+                else
+                {
+                    // Display all availble components of enemy
+                    Debug.Log("Enemy AvatarSetup is null");
+
+                    Component[] enemyComponents = hit.collider.gameObject.GetComponents<Component>();
+
+                    Debug.Log("Available ennemy components are: ");
+
+                    foreach (Component comp in enemyComponents)
+                        Debug.Log("Supposed to be Enemy avatar's comps: " + comp.name + " " + comp);
+
+                }
+            }
             else
             {
                 Debug.Log($"Hit a random {hit.transform.tag} object");
@@ -230,4 +280,20 @@ public class AvatarCombat : MonoBehaviour
         }
 
     }
+
+    /*
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(selectedWeapon);
+            Debug.Log("I am the local client: " + GetComponent<PhotonView>().ViewID);
+        }
+        else
+        {
+            selectedWeapon = (int)stream.ReceiveNext();
+            Debug.Log("I am the remote client: " + GetComponent<PhotonView>().ViewID);
+        }
+    }
+    */
 }

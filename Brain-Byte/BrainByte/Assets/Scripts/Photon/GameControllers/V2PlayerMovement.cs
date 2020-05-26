@@ -100,7 +100,7 @@ public class V2PlayerMovement : MonoBehaviour
                     rigid.AddForce(Vector3.up * JumpForce);
                     animator.SetTrigger("Jump");
                     nextJumpTime = Time.time + 1f / jumpRate;
-                    Debug.Log($"Player {GetComponent<AvatarSetup>().myCharacter.name} jumped");
+                    //Debug.Log($"Player {GetComponent<AvatarSetup>().myCharacter.name} jumped");
                 }
                 if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, groundDistance, whatIsGround))
                 {

@@ -106,7 +106,7 @@ public class SoloAvatarCombat : MonoBehaviour
 
             if (enemyState != null)
             {
-                enemyState.WasHit(playerDamage);
+                enemyState.WasHit();
                 Debug.Log("Set new enemy health");
                 Debug.Log($"Enemy's health is now: {enemyState.enemyHealth}");
             }
@@ -161,7 +161,7 @@ public class SoloAvatarCombat : MonoBehaviour
 
                 if (enemyState != null)
                 {
-                    enemyState.WasHit(playerDamage);
+                    enemyState.WasHit();
                     Debug.Log("Set new health");
                     Debug.Log($"Enemy's local health is now: {enemyState.enemyHealth}");
                 }

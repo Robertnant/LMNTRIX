@@ -4490,12 +4490,12 @@ MonoBehaviour:
   selectedCharacter: 0
   allCharacters:
   - {fileID: 5088223265345895949, guid: a42b369b7fdb7fa4d84ca8ced2fbc57a, type: 3}
-  - {fileID: 5036414920683141276, guid: e18f732240fb40444a0f8d52fbae7259, type: 3}
   - {fileID: 4915287742733223843, guid: 724048194f572764c8f9f07762942995, type: 3}
+  - {fileID: 5036414920683141276, guid: e18f732240fb40444a0f8d52fbae7259, type: 3}
   - {fileID: 631100102223604649, guid: 1ed4d6e7b01f2b8448fe3da835a1c6a6, type: 3}
   - {fileID: 5088223265345895949, guid: 1b0ec7917be4543428a0d6e8703441d7, type: 3}
-  - {fileID: 5036414920683141276, guid: f570ae6d07440e949abff3d82bc03a9b, type: 3}
   - {fileID: 4915287742733223843, guid: 07366a34318bbad4daf3ddd13f046aaa, type: 3}
+  - {fileID: 5036414920683141276, guid: f570ae6d07440e949abff3d82bc03a9b, type: 3}
   - {fileID: 631100102223604649, guid: 9aa314b8b0a49d941a000c17965d596d, type: 3}
 --- !u!4 &175391913
 Transform:

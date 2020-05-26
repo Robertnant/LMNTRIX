@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -36,30 +37,29 @@ public class EnemyFollow : MonoBehaviour
         }
         else
         {
-            EnemyCombat.State currentState = GetComponent<EnemyCombat>().state;
-
+            
             //Debug.Log("Distance between enemy and player: " + distance);
 
             // Distance for shooting
             if (distance <= minDist && distance >= minDist - 3f)
             {
                 // Switch to Correct weapon
-                Debug.Log("Setting shooting weapon " + distance);
-                currentState = EnemyCombat.State.Shooting;
+                //Debug.Log("Setting shooting weapon " + distance);
+                GetComponent<EnemyCombat>().state = EnemyCombat.State.Shooting;
                 animator.SetTrigger("Shoot");
             }
             else if (distance > minDist - 5f)
             {
                 // Switch to Correct weapon
-                Debug.Log("Setting punching weapon" + distance);
-                currentState = EnemyCombat.State.Punching;
+                //Debug.Log("Setting punching weapon" + distance);
+                GetComponent<EnemyCombat>().state = EnemyCombat.State.Punching;
                 animator.SetTrigger("Punch");
             }
             else
             {
                 // Switch to Correct weapon
-                Debug.Log("Setting scratching weapon" + distance);
-                currentState = EnemyCombat.State.Scratching;
+                //Debug.Log("Setting scratching weapon" + distance);
+                GetComponent<EnemyCombat>().state = EnemyCombat.State.Scratching;
                 animator.SetTrigger("Scratch");
             }
 
@@ -67,11 +67,6 @@ public class EnemyFollow : MonoBehaviour
             //agent.SetDestination(transform.position);
         }
 
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawWireSphere(transform.position, distance);
     }
 
     private GameObject FindClosestEnemy(GameObject[] playersList)
@@ -102,4 +97,5 @@ public class EnemyFollow : MonoBehaviour
         // Else
         return playersList[0];
     }
+
 }

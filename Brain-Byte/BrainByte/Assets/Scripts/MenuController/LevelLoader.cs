@@ -19,8 +19,10 @@ public class LevelLoader : MonoBehaviourPunCallbacks, IInRoomCallbacks
 
     void Start()
     {
-        completeLevelUI = FindObjectOfType<GameOverReference>().gameObject;
-        gameOverUI = FindObjectOfType<VictoryReference>().gameObject;
+        if (FindObjectOfType<VictoryReference>().gameObject != null)
+            completeLevelUI = FindObjectOfType<VictoryReference>().gameObject;
+        if (FindObjectOfType<GameOverReference>().gameObject != null)
+            gameOverUI = FindObjectOfType<GameOverReference>().gameObject;
 
         if (MultiplayerSettings.multiplayerSettings.isMultiplayer)
         {
