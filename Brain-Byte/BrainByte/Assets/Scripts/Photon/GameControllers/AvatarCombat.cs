@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AvatarCombat : MonoBehaviour
+public class AvatarCombat : MonoBehaviourPunCallbacks, IPunObservable
 {
     #region Attributes
 
@@ -55,12 +55,16 @@ public class AvatarCombat : MonoBehaviour
 
     void Update()
     {
+        
         if (!PV.IsMine)
             return;
 
         // might not be necessary
         if (animator == null)
             animator = avatarSetup.animator;
+
+        // for remote weapon switch
+        //RPC_SelectWeapon();  // if fails, change to normal call
 
         // attack
         if (Time.time >= nextAttackTime)
@@ -72,11 +76,15 @@ public class AvatarCombat : MonoBehaviour
 
                 if (currentWeapon == "SARP" || currentWeapon == "Pistol")
                 {
+                    // test without rpc
                     PV.RPC("RPC_Shooting", RpcTarget.All);
+                    //RPC_Shooting();
                 }
                 else
                 {
+                    // test without rpc
                     PV.RPC("RPC_Hit", RpcTarget.All);
+                    //RPC_Hit();
                 }
 
                 nextAttackTime = Time.time + 1f / attackRate;
@@ -118,7 +126,9 @@ public class AvatarCombat : MonoBehaviour
 
             if (previousSelectedWeapon != selectedWeapon)
             {
+                // test without RPC
                 PV.RPC("RPC_SelectWeapon", RpcTarget.All);
+                //RPC_SelectWeapon();
                 nextSelectionTime = Time.time + 1f / attackSelectionRate;
             }
         }
@@ -138,7 +148,7 @@ public class AvatarCombat : MonoBehaviour
     }
 
     [PunRPC]
-    void RPC_Hit()
+    public void RPC_Hit()
     {
         // Detect enemy
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
@@ -188,7 +198,7 @@ public class AvatarCombat : MonoBehaviour
 
     [PunRPC]
     //To activate or deactivate the weapon
-    void RPC_SelectWeapon()
+    public void RPC_SelectWeapon()
     {
         if (selectedWeapon == -1)
             currentWeapon = "Punch";
@@ -212,7 +222,7 @@ public class AvatarCombat : MonoBehaviour
     }
 
     [PunRPC]
-    void RPC_Shooting()
+    public void RPC_Shooting()
     {
         RaycastHit hit;
 
@@ -284,19 +294,19 @@ public class AvatarCombat : MonoBehaviour
 
     }
 
-    /*
+    
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)
         {
             stream.SendNext(selectedWeapon);
-            Debug.Log("I am the local client: " + GetComponent<PhotonView>().ViewID);
+            Debug.Log("I am the local client: " + GetComponent<PhotonView>().ViewID + ". Current weapon is " + selectedWeapon);
         }
         else
         {
             selectedWeapon = (int)stream.ReceiveNext();
-            Debug.Log("I am the remote client: " + GetComponent<PhotonView>().ViewID);
+            Debug.Log("I am the remote client: " + GetComponent<PhotonView>().ViewID + ". Current weapon is " + selectedWeapon);
         }
     }
-    */
+    
 }
