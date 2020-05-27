@@ -20,23 +20,10 @@ public class StreamSplashScreen : MonoBehaviour
 
     void LoadScene(VideoPlayer vidP)
     {
-        SceneManager.LoadScene(menuScene);
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        else
+            SceneManager.LoadScene(menuScene);
     }
 
-    /*
-    IEnumerator StartVideo()
-    {
-        videoPlayer.Prepare();
-        WaitForSeconds waitForSeconds = new WaitForSeconds(1);
-
-        while(!videoPlayer.isPrepared)
-        {
-            yield return waitForSeconds;
-            break;
-        }
-
-        rawImage.texture = videoPlayer.texture;
-        videoPlayer.Play();
-    }
-    */
 }

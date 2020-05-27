@@ -55,16 +55,12 @@ public class AvatarCombat : MonoBehaviourPunCallbacks, IPunObservable
 
     void Update()
     {
-        
         if (!PV.IsMine)
             return;
 
         // might not be necessary
         if (animator == null)
             animator = avatarSetup.animator;
-
-        // for remote weapon switch
-        //RPC_SelectWeapon();  // if fails, change to normal call
 
         // attack
         if (Time.time >= nextAttackTime)
@@ -76,20 +72,16 @@ public class AvatarCombat : MonoBehaviourPunCallbacks, IPunObservable
 
                 if (currentWeapon == "SARP" || currentWeapon == "Pistol")
                 {
-                    // test without rpc
                     PV.RPC("RPC_Shooting", RpcTarget.All);
-                    //RPC_Shooting();
                 }
                 else
                 {
-                    // test without rpc
                     PV.RPC("RPC_Hit", RpcTarget.All);
-                    //RPC_Hit();
                 }
 
                 nextAttackTime = Time.time + 1f / attackRate;
             }
-            
+
         }
 
         // weapon switch
@@ -126,9 +118,7 @@ public class AvatarCombat : MonoBehaviourPunCallbacks, IPunObservable
 
             if (previousSelectedWeapon != selectedWeapon)
             {
-                // test without RPC
                 PV.RPC("RPC_SelectWeapon", RpcTarget.All);
-                //RPC_SelectWeapon();
                 nextSelectionTime = Time.time + 1f / attackSelectionRate;
             }
         }
@@ -148,7 +138,7 @@ public class AvatarCombat : MonoBehaviourPunCallbacks, IPunObservable
     }
 
     [PunRPC]
-    public void RPC_Hit()
+    void RPC_Hit()
     {
         // Detect enemy
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
@@ -198,7 +188,7 @@ public class AvatarCombat : MonoBehaviourPunCallbacks, IPunObservable
 
     [PunRPC]
     //To activate or deactivate the weapon
-    public void RPC_SelectWeapon()
+    void RPC_SelectWeapon()
     {
         if (selectedWeapon == -1)
             currentWeapon = "Punch";
@@ -222,7 +212,7 @@ public class AvatarCombat : MonoBehaviourPunCallbacks, IPunObservable
     }
 
     [PunRPC]
-    public void RPC_Shooting()
+    void RPC_Shooting()
     {
         RaycastHit hit;
 
@@ -231,7 +221,7 @@ public class AvatarCombat : MonoBehaviourPunCallbacks, IPunObservable
             Debug.DrawRay(rayOrigin.position, rayOrigin.TransformDirection(Vector3.forward) * hit.distance, Color.red);
 
             if (hit.transform.tag == "Character")
-            {   
+            {
                 Debug.Log($"Player {PV.ViewID} shot {hit.transform.gameObject.GetComponent<PhotonView>().ViewID}");
                 HeadsUpDisplay enemyHUD = hit.transform.gameObject.GetComponent<HeadsUpDisplay>(); // to modify with new script
 
@@ -245,9 +235,9 @@ public class AvatarCombat : MonoBehaviourPunCallbacks, IPunObservable
                 {
                     // Display all availble components of enemy
                     Debug.Log("Enemy AvatarSetup is null");
-                    
+
                     Component[] enemyComponents = hit.collider.gameObject.GetComponents<Component>();
-                    
+
                     Debug.Log("Available ennemy components are: ");
 
                     foreach (Component comp in enemyComponents)
@@ -300,12 +290,12 @@ public class AvatarCombat : MonoBehaviourPunCallbacks, IPunObservable
         if (stream.IsWriting)
         {
             stream.SendNext(selectedWeapon);
-            Debug.Log("I am the local client: " + GetComponent<PhotonView>().ViewID + ". Current weapon is " + selectedWeapon);
+            Debug.Log("I am the local client: " + GetComponent<PhotonView>().ViewID);
         }
         else
         {
             selectedWeapon = (int)stream.ReceiveNext();
-            Debug.Log("I am the remote client: " + GetComponent<PhotonView>().ViewID + ". Current weapon is " + selectedWeapon);
+            Debug.Log("I am the remote client: " + GetComponent<PhotonView>().ViewID);
         }
     }
     

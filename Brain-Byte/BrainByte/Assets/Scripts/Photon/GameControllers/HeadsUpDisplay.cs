@@ -85,7 +85,6 @@ public class HeadsUpDisplay : MonoBehaviourPunCallbacks, IPunObservable
             {
                 // Next time try RPCing from here. And then next time in other file, try RPCing in both read and write
                 stream.SendNext(playerHealth);
-                combat.RPC_SelectWeapon();
                 //stream.SendNext(combat.selectedWeapon);         // new 26/05/20 test
                 Debug.Log("I am the local client: " + GetComponent<PhotonView>().ViewID);
                 Debug.Log("My local health is " + playerHealth);
@@ -93,7 +92,6 @@ public class HeadsUpDisplay : MonoBehaviourPunCallbacks, IPunObservable
             else
             {
                 playerHealth = (int)stream.ReceiveNext();
-                combat.RPC_SelectWeapon();
                 //combat.selectedWeapon = (int)stream.ReceiveNext();
                 //Debug.Log("Other player changed weapon to: " + combat.selectedWeapon);
                 Debug.Log("I am the remote client: " + GetComponent<PhotonView>().ViewID);
