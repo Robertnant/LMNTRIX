@@ -7,7 +7,7 @@ public class CheckData : MonoBehaviour
     public GameObject soloCharactersSelection;
     public GameObject loadGameMenu;
 
-    void OnCheckButtonClicked() // singleplayer button
+    public void OnCheckButtonClicked() // singleplayer button
     {
         if (SaveSystem.LoadPayer() != null)
             loadGameMenu.SetActive(true);

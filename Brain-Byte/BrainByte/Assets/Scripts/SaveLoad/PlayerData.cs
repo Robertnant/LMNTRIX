@@ -6,9 +6,11 @@ using UnityEngine;
 public class PlayerData
 {
     public int level;
+    public int currentCharacter;
 
     public PlayerData (MultiplayerSettings settings)
     {
-        level = settings.currentScene;
+        level = settings.currentScene + 1;
+        currentCharacter = PlayerInfo.PI.selectedCharacter;
     }
 }

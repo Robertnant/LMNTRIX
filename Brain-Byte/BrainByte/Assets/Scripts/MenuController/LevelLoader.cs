@@ -35,14 +35,18 @@ public class LevelLoader : MonoBehaviourPunCallbacks, IInRoomCallbacks
             //photonRoom = FindObjectOfType<PhotonRoom>();
             PV = GetComponent<PhotonView>();
         }
-        else if (SceneManager.GetActiveScene().buildIndex != 1)
+        /*
+        else if (SceneManager.GetActiveScene().name != "Menu")
         {
+            Debug.Log("not in menu");
+
             int spawnPicker = Random.Range(0, GameSetup.GS.spawnPoints.Length);
 
             Instantiate(PlayerInfo.PI.allCharacters[PlayerInfo.PI.selectedCharacter],
                 GameSetup.GS.spawnPoints[spawnPicker].position, GameSetup.GS.spawnPoints[spawnPicker].rotation);
         }
             //instantiate player if not in main menu scene
+            */
     }
     void Update()
     {
@@ -122,7 +126,13 @@ public class LevelLoader : MonoBehaviourPunCallbacks, IInRoomCallbacks
         PlayerData data = SaveSystem.LoadPayer();
 
         if (data != null)
+        {
             level = data.level;
+            PlayerInfo.PI.selectedCharacter = data.currentCharacter;
+
+            if (FindObjectOfType<MenuController>() != null)
+                FindObjectOfType<MenuController>().OnClickCharacterPick(data.currentCharacter);
+        }
 
         LoadLevel(level);
     }

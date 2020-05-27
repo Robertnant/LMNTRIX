@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EndTrigger : MonoBehaviour
 {
@@ -19,6 +20,11 @@ public class EndTrigger : MonoBehaviour
             else
             {
                 Debug.Log("trying to load next singleplayer level");
+                if (SceneManager.GetActiveScene().name != "LEVEL 4")
+                {
+                    levelLoader.SaveLevel();
+                    Debug.Log("Saving level");
+                }
                 levelLoader.CompleteLevel();
             }
         }
