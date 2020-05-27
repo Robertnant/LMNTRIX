@@ -394,7 +394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 2114333239}
-  menuScene: 1
+  menuScene: 2
 --- !u!4 &2114333241
 Transform:
   m_ObjectHideFlags: 0

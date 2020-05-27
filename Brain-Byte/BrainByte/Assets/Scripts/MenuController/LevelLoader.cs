@@ -79,7 +79,7 @@ public class LevelLoader : MonoBehaviourPunCallbacks, IInRoomCallbacks
     [PunRPC]
     public void LoadLevel(int sceneIndex)
     {
-        if (!MultiplayerSettings.multiplayerSettings.isMultiplayer)
+        if (!MultiplayerSettings.multiplayerSettings.isMultiplayer && FindObjectOfType<PhotonRoom>() != null)
             Destroy(FindObjectOfType<PhotonRoom>().gameObject);
 
         StartCoroutine(LoadAsynchronously(sceneIndex));
