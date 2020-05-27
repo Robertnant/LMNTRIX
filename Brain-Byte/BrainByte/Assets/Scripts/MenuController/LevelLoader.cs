@@ -19,9 +19,9 @@ public class LevelLoader : MonoBehaviourPunCallbacks, IInRoomCallbacks
 
     void Start()
     {
-        if (FindObjectOfType<VictoryReference>().gameObject != null)
+        if (FindObjectOfType<VictoryReference>() != null)
             completeLevelUI = FindObjectOfType<VictoryReference>().gameObject;
-        if (FindObjectOfType<GameOverReference>().gameObject != null)
+        if (FindObjectOfType<GameOverReference>() != null)
             gameOverUI = FindObjectOfType<GameOverReference>().gameObject;
 
         if (MultiplayerSettings.multiplayerSettings.isMultiplayer)
@@ -56,9 +56,18 @@ public class LevelLoader : MonoBehaviourPunCallbacks, IInRoomCallbacks
     [PunRPC]
     public void CompleteLevel()
     {
-        completeLevelUI.SetActive(true);
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        if (SceneManager.GetActiveScene().name != "LEVEL 4")
+        {
+            completeLevelUI.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            SceneManager.LoadScene("Credits");
+        }
     }
 
     [PunRPC]
@@ -84,6 +93,17 @@ public class LevelLoader : MonoBehaviourPunCallbacks, IInRoomCallbacks
 
         StartCoroutine(LoadAsynchronously(sceneIndex));
         //photonRoom.isFirtOnlineLevel = false;   // migth need to put this after StarCoroutine
+    }
+
+    public void LoadMenu()
+    {
+        Time.timeScale = 1f;
+        Cursor.visible = true;
+
+        if (!MultiplayerSettings.multiplayerSettings.isMultiplayer)
+            SceneManager.LoadScene("Menu");
+        else
+            GameSetup.GS.DisconnectPlayer();
     }
 
     IEnumerator LoadAsynchronously(int sceneIndex)
