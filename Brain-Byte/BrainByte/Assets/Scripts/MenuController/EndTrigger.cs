@@ -25,6 +25,10 @@ public class EndTrigger : MonoBehaviour
                     levelLoader.SaveLevel();
                     Debug.Log("Saving level");
                 }
+                else
+                {
+                    levelLoader.DeleteSave();
+                }
                 levelLoader.CompleteLevel();
             }
         }

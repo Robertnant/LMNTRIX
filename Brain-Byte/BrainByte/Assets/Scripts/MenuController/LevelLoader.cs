@@ -54,6 +54,15 @@ public class LevelLoader : MonoBehaviourPunCallbacks, IInRoomCallbacks
         if (Input.GetKeyDown(KeyCode.Alpha9))
             PV.RPC("LoadLevel", RpcTarget.All, SceneManager.GetActiveScene().buildIndex + 1);    // Test to move to next scene: must be replaced
 
+        if (SceneManager.GetActiveScene().name == "LEVEL 4")
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                if (finishGameUI != null)
+                {
+                    finishGameUI.SetActive(false);
+                    LoadCredits();
+                }
+            }
     }
 
     [PunRPC]
