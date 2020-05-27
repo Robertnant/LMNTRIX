@@ -81,7 +81,8 @@ public class SoloPlayerMovement : MonoBehaviour
         // To be ran by every player (regardless of if PV.isMine)
         LevelLoader levelLoader = FindObjectOfType<LevelLoader>();
 
-        if (levelLoader.completeLevelUI.activeSelf || levelLoader.gameOverUI.activeSelf)
+        if (levelLoader.completeLevelUI.activeSelf || levelLoader.gameOverUI.activeSelf || 
+            (levelLoader.finishGameUI != null && levelLoader.finishGameUI.activeSelf))
         {
             animator.enabled = false;
             Cursor.lockState = CursorLockMode.None;

@@ -29,6 +29,7 @@ public class V2PlayerMovement : MonoBehaviour
 
     private GameObject completeLevelUI;
     private GameObject gameOverUI;
+    private GameObject finishGameUI;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +37,7 @@ public class V2PlayerMovement : MonoBehaviour
         avatarSetup = GetComponent<AvatarSetup>();
         completeLevelUI = FindObjectOfType<LevelLoader>().completeLevelUI;
         gameOverUI = FindObjectOfType<LevelLoader>().gameOverUI;
+        finishGameUI = FindObjectOfType<LevelLoader>().finishGameUI;
 
         playerCamera = avatarSetup.myCamera.transform;
 
@@ -122,7 +124,8 @@ public class V2PlayerMovement : MonoBehaviour
 
 
         // To be ran by every player (regardless of if PV.isMine)
-        if (completeLevelUI.activeSelf || gameOverUI.activeSelf)
+        if (completeLevelUI.activeSelf || gameOverUI.activeSelf ||
+            (finishGameUI != null && finishGameUI.activeSelf))
         {
             animator.enabled = false;
             Cursor.lockState = CursorLockMode.None;

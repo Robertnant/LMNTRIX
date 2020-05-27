@@ -9,6 +9,7 @@ public class LevelLoader : MonoBehaviourPunCallbacks, IInRoomCallbacks
 {
     public GameObject loadingScreen;
     public GameObject completeLevelUI;
+    public GameObject finishGameUI;
     public GameObject gameOverUI;
     public Slider slider;
 
@@ -17,12 +18,17 @@ public class LevelLoader : MonoBehaviourPunCallbacks, IInRoomCallbacks
     //private PhotonRoom photonRoom;
     private PhotonView PV;
 
+    public int level = 3;   // default
+
     void Start()
     {
         if (FindObjectOfType<VictoryReference>() != null)
             completeLevelUI = FindObjectOfType<VictoryReference>().gameObject;
         if (FindObjectOfType<GameOverReference>() != null)
             gameOverUI = FindObjectOfType<GameOverReference>().gameObject;
+        if (FindObjectOfType<FinishGameReference>() != null)
+            finishGameUI = FindObjectOfType<FinishGameReference>().gameObject;
+
 
         if (MultiplayerSettings.multiplayerSettings.isMultiplayer)
         {
@@ -64,10 +70,15 @@ public class LevelLoader : MonoBehaviourPunCallbacks, IInRoomCallbacks
         }
         else
         {
+            finishGameUI.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            SceneManager.LoadScene("Credits");
         }
+    }
+
+    public void LoadCredits()
+    {
+        SceneManager.LoadScene("Credits");
     }
 
     [PunRPC]
@@ -104,6 +115,26 @@ public class LevelLoader : MonoBehaviourPunCallbacks, IInRoomCallbacks
             SceneManager.LoadScene("Menu");
         else
             GameSetup.GS.DisconnectPlayer();
+    }
+
+    public void ResumeLevel()
+    {
+        PlayerData data = SaveSystem.LoadPayer();
+
+        if (data != null)
+            level = data.level;
+
+        LoadLevel(level);
+    }
+    public void SaveLevel()
+    {
+        SaveSystem.SavePlayer(MultiplayerSettings.multiplayerSettings);
+    }
+
+    public void DeleteSave()
+    {
+        SaveSystem.DeleteData();
+        level = 3;
     }
 
     IEnumerator LoadAsynchronously(int sceneIndex)

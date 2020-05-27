@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MultiplayerSettings : MonoBehaviour
 {
@@ -12,9 +13,12 @@ public class MultiplayerSettings : MonoBehaviour
     public int multiPlayerScene;
     public bool isMultiplayer = false;
     public bool isTeamMode = false;
+    public int currentScene;
 
     void Awake()
     {
+        currentScene = SceneManager.GetActiveScene().buildIndex;
+
         if (MultiplayerSettings.multiplayerSettings == null)
         {
             MultiplayerSettings.multiplayerSettings = this;
