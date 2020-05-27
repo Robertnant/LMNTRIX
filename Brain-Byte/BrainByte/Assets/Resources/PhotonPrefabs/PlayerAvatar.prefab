@@ -144,6 +144,7 @@ MonoBehaviour:
   selectedWeapon: -1
   attackSelectionRate: 2
   currentWeapon: 
+  isTeamMode: 0
 --- !u!114 &4379930401857687193
 MonoBehaviour:
   m_ObjectHideFlags: 0

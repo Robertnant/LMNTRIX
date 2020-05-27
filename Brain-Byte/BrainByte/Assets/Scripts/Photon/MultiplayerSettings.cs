@@ -11,6 +11,7 @@ public class MultiplayerSettings : MonoBehaviour
     public int menuScene;
     public int multiPlayerScene;
     public bool isMultiplayer = false;
+    public bool isTeamMode = false;
 
     void Awake()
     {
@@ -31,5 +32,10 @@ public class MultiplayerSettings : MonoBehaviour
     public void SetMultiplayer (bool val)
     {
         isMultiplayer = val;
+    }
+    
+    public void SetTeamMode (bool val)
+    {
+        isTeamMode = val;
     }
 }

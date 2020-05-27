@@ -26,10 +26,15 @@ public class AvatarCombat : MonoBehaviourPunCallbacks, IPunObservable
     private float nextSelectionTime = 0f;
     public string currentWeapon;
 
+    public bool isTeamMode;
+
     #endregion
 
     void Start()
     {
+        if (MultiplayerSettings.multiplayerSettings.isTeamMode)
+            enemyLayers = LayerMask.GetMask("Enemy");
+
         PV = GetComponent<PhotonView>();
         avatarSetup = GetComponent<AvatarSetup>();
 
